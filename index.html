@@ -22,14 +22,6 @@
     --gold-light: #f7f0e6;
   }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.75;
-  }
-
-  /* Hide scrollbar */
   html { scrollbar-width: none; -ms-overflow-style: none; }
   html::-webkit-scrollbar { display: none; }
 
@@ -40,24 +32,10 @@
     line-height: 1.75;
   }
 
-  /* Scroll-triggered fade-in - exp items only */
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* Progress bar */
   #progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 2px;
-    width: 0%;
+    position: fixed; top: 0; left: 0;
+    height: 2px; width: 0%;
     background: var(--gold);
     z-index: 200;
     transition: width 0.1s linear;
@@ -65,8 +43,7 @@
 
   /* NAV */
   nav {
-    position: sticky;
-    top: 0;
+    position: sticky; top: 0;
     background: rgba(245,242,238,0.92);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
@@ -76,28 +53,18 @@
     align-items: center;
     z-index: 100;
   }
-
   nav .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text);
-    text-decoration: none;
+    font-size: 1rem; font-weight: 400;
+    color: var(--text); text-decoration: none;
     letter-spacing: 0.01em;
   }
-
   nav ul { list-style: none; display: flex; gap: 2rem; }
-
   nav ul a {
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    font-weight: 500;
+    font-size: 0.75rem; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.12em;
+    text-transform: uppercase; transition: color 0.2s; font-weight: 500;
   }
-
   nav ul a:hover { color: var(--accent); }
 
   .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
@@ -106,43 +73,26 @@
   .hero {
     padding: 7rem 0 5rem;
     border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
-
   .hero::before {
     content: '';
-    position: absolute;
-    top: -40px;
-    right: -80px;
-    width: 400px;
-    height: 400px;
+    position: absolute; top: -40px; right: -80px;
+    width: 400px; height: 400px;
     background: radial-gradient(circle, rgba(184,151,106,0.1) 0%, transparent 70%);
     pointer-events: none;
   }
-
   .hero .eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.8rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.8rem; font-weight: 500;
+    display: flex; align-items: center; gap: 0.7rem;
+    animation: fadeUp 0.7s ease both;
   }
-
   .hero .eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 1px;
-    background: var(--gold);
+    content: ''; display: inline-block;
+    width: 28px; height: 1px; background: var(--gold);
   }
-
-  /* Hero entrance animation */
-  .hero .eyebrow { animation: fadeUp 0.7s ease both; }
   .hero .hero-name { animation: fadeUp 0.7s 0.1s ease both; }
   .hero h1 { animation: fadeUp 0.7s 0.2s ease both; }
   .hero p { animation: fadeUp 0.7s 0.35s ease both; }
@@ -155,53 +105,30 @@
 
   .hero-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 400;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    opacity: 0.75;
+    font-size: 1.05rem; font-weight: 400;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--text); margin-bottom: 0.5rem; opacity: 0.75;
   }
-
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.4rem;
-    font-weight: 400;
-    line-height: 1.15;
-    margin-bottom: 1.8rem;
-    letter-spacing: -0.02em;
-    color: var(--text);
+    font-size: 3.4rem; font-weight: 400;
+    line-height: 1.15; margin-bottom: 1.8rem;
+    letter-spacing: -0.02em; color: var(--text);
   }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
+  .hero h1 em { font-style: italic; color: var(--accent); }
   .hero p {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
-    font-weight: 300;
+    font-size: 1rem; color: var(--muted);
+    max-width: 520px; margin-bottom: 2.5rem;
+    line-height: 1.8; font-weight: 300;
   }
-
   .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
   .btn {
-    font-size: 0.75rem;
-    padding: 0.7rem 1.6rem;
-    border-radius: 2px;
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: all 0.2s;
-    font-weight: 500;
-    display: inline-block;
+    font-size: 0.75rem; padding: 0.7rem 1.6rem;
+    border-radius: 2px; text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all 0.2s; font-weight: 500; display: inline-block;
   }
-
   .btn-primary { background: var(--accent); color: #faf8f6; }
   .btn-primary:hover { background: #5c3d22; }
   .btn-secondary { border: 1px solid var(--border); color: var(--muted); background: transparent; }
@@ -211,363 +138,289 @@
   section:last-child { border-bottom: none; }
 
   .section-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2.5rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    font-size: 0.68rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 2.5rem; font-weight: 500;
+    display: flex; align-items: center; gap: 0.7rem;
   }
-
   .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 1px;
-    background: var(--gold);
+    content: ''; display: inline-block;
+    width: 20px; height: 1px; background: var(--gold);
   }
 
   /* PROJECT CARDS */
   .case-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden;
     transition: box-shadow 0.25s, transform 0.25s;
     margin-bottom: 2rem;
   }
-
   .case-card:hover {
     box-shadow: 0 8px 32px rgba(124,92,62,0.1);
     transform: translateY(-1px);
   }
-
   .case-header {
     padding: 2.2rem 2.2rem 1.8rem;
     border-bottom: 1px solid var(--border);
     position: relative;
   }
-
-  /* Color-coded top border per project type */
   .case-card.uxr-primary .case-header { border-top: 3px solid var(--gold); }
   .case-card.uxr-secondary .case-header { border-top: 3px solid #a8b5c0; }
   .case-card.design-project .case-header { border-top: 3px solid #c4a882; }
+  .case-card.ai-reflection .case-header { border-top: 3px solid #9b8ec4; }
 
   .project-type {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 0.6rem;
+    font-size: 0.65rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 0.6rem;
   }
-
   .case-card.uxr-secondary .project-type { color: #7a8fa0; }
   .case-card.design-project .project-type { color: #9a7a5a; }
+  .case-card.ai-reflection .project-type { color: #7a6ea8; }
 
   .case-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1rem; }
-
   .tag-pill {
-    font-size: 0.65rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 0.2rem 0.6rem;
-    border-radius: 2px;
-    font-weight: 500;
+    font-size: 0.65rem; letter-spacing: 0.06em;
+    text-transform: uppercase; background: var(--bg);
+    border: 1px solid var(--border); color: var(--muted);
+    padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500;
   }
-
   .case-header h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 0.35rem;
-    color: var(--text);
+    font-size: 1.4rem; font-weight: 400;
+    margin-bottom: 0.35rem; color: var(--text);
   }
-
-  .case-header .subtitle {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-weight: 300;
-  }
+  .case-header .subtitle { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
 
   .case-body { padding: 2rem 2.2rem; }
-  .case-body > p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.8; }
+  .case-body > p { color: var(--muted); font-size: 0.96rem; margin-bottom: 1.5rem; line-height: 1.85; }
 
-  /* Key insight bar */
   .insight-bar {
-    background: var(--gold-light);
-    border-left: 2px solid var(--gold);
-    padding: 0.9rem 1.1rem;
-    margin-bottom: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--text);
-    line-height: 1.6;
+    background: var(--gold-light); border-left: 2px solid var(--gold);
+    padding: 0.9rem 1.1rem; margin-bottom: 1.5rem;
+    font-size: 0.85rem; color: var(--text); line-height: 1.6;
   }
-
   .insight-bar .insight-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 0.3rem;
+    font-size: 0.62rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 0.3rem;
   }
 
-  /* Findings grid */
   .findings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-
   .finding {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 1rem;
-    text-align: center;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 3px; padding: 1rem; text-align: center;
   }
-
-  .finding .icon {
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-    font-weight: 600;
-    color: var(--accent2);
-  }
-
+  .finding .icon { font-size: 0.9rem; margin-bottom: 0.3rem; font-weight: 600; color: var(--accent2); }
   .finding .label {
-    font-size: 0.63rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.3rem;
-    font-weight: 500;
+    font-size: 0.63rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 0.3rem; font-weight: 500;
   }
-
   .finding .value { font-size: 0.8rem; color: var(--text); }
   .finding.confirmed { border-color: var(--gold); }
   .finding.rejected { border-color: #c4a882; }
 
-  /* JetBrains severity indicators */
   .severity-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-
   .severity-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 1rem;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 3px; padding: 1rem;
   }
-
   .severity-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 0.4rem;
+    font-size: 0.62rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem;
   }
-
   .severity-high { color: #9b5e4a; border-top: 2px solid #c4826a; }
   .severity-high .severity-label { color: #9b5e4a; }
   .severity-medium { color: #7a6040; border-top: 2px solid var(--gold); }
   .severity-medium .severity-label { color: #9a7a3a; }
+  .severity-item p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
-  .severity-item p {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* Quote block */
   .quote-block {
     border-left: 2px solid var(--border);
-    padding: 0.8rem 1.2rem;
-    margin: 1.2rem 0;
-    font-style: italic;
-    color: var(--muted);
+    padding: 0.8rem 1.2rem; margin: 1.2rem 0;
+    font-style: italic; color: var(--muted);
     font-size: 0.88rem;
-    font-family: 'Playfair Display', serif;
-    line-height: 1.7;
+    font-family: 'Playfair Display', serif; line-height: 1.7;
   }
-
   .quote-block cite {
-    display: block;
-    font-style: normal;
+    display: block; font-style: normal;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 0.5rem;
-    font-weight: 500;
+    font-size: 0.7rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gold);
+    margin-top: 0.5rem; font-weight: 500;
   }
 
   .toggle-btn {
-    font-size: 0.75rem;
-    color: var(--accent);
-    background: none;
-    border: 1px solid var(--accent);
-    border-radius: 2px;
-    padding: 0.5rem 1.1rem;
-    cursor: pointer;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: all 0.2s;
-    font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem; color: var(--accent);
+    background: none; border: 1px solid var(--accent);
+    border-radius: 2px; padding: 0.5rem 1.1rem;
+    cursor: pointer; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: all 0.2s;
+    font-weight: 500; font-family: 'DM Sans', sans-serif;
   }
-
   .toggle-btn:hover { background: var(--accent); color: var(--bg); }
 
   .expanded-content { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
   .expanded-content.open { display: block; }
 
   .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-
   .method-block h4 {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.5rem; font-weight: 600;
   }
-
   .method-block p, .method-block li { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
   .method-block ul { padding-left: 1rem; }
   .method-block ul li { margin-bottom: 0.25rem; }
 
   .stat-row {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 0.85rem 1rem;
-    margin-bottom: 0.4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 3px; padding: 0.85rem 1rem;
+    margin-bottom: 0.4rem; display: flex;
+    justify-content: space-between; align-items: center; font-size: 0.8rem;
   }
-
   .stat-row .stat-label { color: var(--muted); }
   .stat-row .stat-value { color: var(--text); font-weight: 600; }
 
   .reflection-box {
-    background: var(--accent-light);
-    border-left: 2px solid var(--gold);
-    padding: 1rem 1.2rem;
-    margin-top: 1.2rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.7;
+    background: var(--accent-light); border-left: 2px solid var(--gold);
+    padding: 1rem 1.2rem; margin-top: 1.2rem;
+    font-size: 0.85rem; color: var(--muted); line-height: 1.7;
   }
-
   .reflection-box strong {
-    color: var(--text);
-    display: block;
-    margin-bottom: 0.3rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
+    color: var(--text); display: block; margin-bottom: 0.3rem;
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 600;
   }
 
-  /* Recommendations list */
-  .reco-list { list-style: none; margin-top: 1rem; }
+  .reco-list { list-style: none; margin-top: 1rem; counter-reset: reco; }
   .reco-list li {
-    padding: 0.7rem 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--muted);
-    display: flex;
-    gap: 0.8rem;
-    align-items: flex-start;
-    line-height: 1.6;
+    padding: 0.7rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.85rem; color: var(--muted);
+    display: flex; gap: 0.8rem; align-items: flex-start; line-height: 1.6;
   }
   .reco-list li::before {
-    content: counter(reco);
-    counter-increment: reco;
-    background: var(--gold-light);
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-size: 0.65rem;
-    font-weight: 700;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 0.15rem;
+    content: counter(reco); counter-increment: reco;
+    background: var(--gold-light); border: 1px solid var(--gold);
+    color: var(--gold); font-size: 0.65rem; font-weight: 700;
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 0.15rem;
   }
-  .reco-list { counter-reset: reco; }
 
-  /* Other projects section */
-  .other-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .mini-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 1.4rem;
+  /* Research Designs section */
+  .design-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .design-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 3px; padding: 1.4rem;
+    border-top: 2px solid var(--border);
     transition: box-shadow 0.2s;
   }
-
-  .mini-card:hover { box-shadow: 0 4px 16px rgba(124,92,62,0.07); }
-
-  .mini-card h4 {
+  .design-card:hover { box-shadow: 0 4px 16px rgba(124,92,62,0.07); }
+  .design-card .design-label {
+    font-size: 0.62rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .design-card h4 {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 0.3rem;
+    font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem;
   }
-
-  .mini-card .mini-type {
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-    margin-bottom: 0.6rem;
-  }
-
-  .mini-card p {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 0.8rem;
+  .design-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.6rem; }
+  .design-note {
+    font-size: 0.72rem; color: var(--gold);
+    font-style: italic; border-top: 1px solid var(--border);
+    padding-top: 0.5rem; margin-top: 0.5rem;
   }
 
   /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-
   .about-grid h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-    grid-column: 1 / -1;
-    color: var(--text);
-    line-height: 1.4;
+    font-size: 1.6rem; font-weight: 400;
+    margin-bottom: 1rem; grid-column: 1 / -1;
+    color: var(--text); line-height: 1.4;
   }
-
   .about-grid p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; font-weight: 300; }
 
   .skills-list { list-style: none; }
-
   .skills-list li {
-    padding: 0.45rem 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.82rem;
+    padding: 0.45rem 0; border-bottom: 1px solid var(--border);
+    color: var(--muted); display: flex; align-items: center;
+    gap: 0.6rem; font-size: 0.82rem;
   }
-
   .skills-list li::before { content: '—'; color: var(--gold); font-size: 0.75rem; }
+
+  /* STRENGTHS WHEEL */
+  .strengths-section { margin-top: 3rem; }
+  .wheel-outer {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2rem 0 1rem;
+  }
+  .wheel-hint {
+    font-size: 0.75rem; color: var(--muted);
+    margin-top: 0.75rem; letter-spacing: 0.06em;
+    font-weight: 300; transition: opacity 0.3s;
+  }
+  .wheel-hint.hidden { opacity: 0; }
+
+  /* Detail card */
+  .strength-detail {
+    width: 100%; max-width: 500px;
+    margin-top: 1.5rem; min-height: 100px;
+  }
+  .strength-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 1.4rem 1.6rem;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    border-left: 3px solid var(--gold);
+  }
+  .strength-card.show { opacity: 1; transform: translateY(0); }
+  .strength-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 400;
+    color: var(--text); margin-bottom: 2px;
+  }
+  .strength-card-eng {
+    font-size: 0.65rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 0.8rem;
+  }
+  .strength-card-desc {
+    font-size: 0.88rem; color: var(--muted);
+    line-height: 1.7; margin-bottom: 1rem;
+  }
+  .strength-ask-btn {
+    font-size: 0.72rem; background: none;
+    border: 1px solid var(--border); border-radius: 2px;
+    padding: 0.4rem 1rem; cursor: pointer;
+    color: var(--muted); letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .strength-ask-btn:hover { border-color: var(--gold); color: var(--accent); }
+
+  /* Fire brigade */
+  .brigade-note {
+    margin-top: 2rem;
+    border: 1px solid var(--border); border-radius: 3px;
+    padding: 1.2rem 1.4rem; background: var(--card);
+    display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .brigade-icon {
+    font-size: 1.1rem; flex-shrink: 0;
+    width: 32px; height: 32px;
+    background: var(--gold-light); border: 1px solid var(--border);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .brigade-note h5 {
+    font-size: 0.8rem; font-weight: 500;
+    margin-bottom: 0.25rem; color: var(--text);
+  }
+  .brigade-note p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
 
   /* EXPERIENCE */
   .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; margin-bottom: 2rem; }
@@ -580,17 +433,15 @@
   .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
   footer {
-    padding: 2rem;
-    text-align: center;
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    font-weight: 300;
+    padding: 2rem; text-align: center;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.08em; font-weight: 300;
   }
 
   @media (max-width: 600px) {
     .hero h1 { font-size: 2.2rem; }
-    .about-grid, .findings-grid, .method-grid, .severity-grid, .other-projects { grid-template-columns: 1fr; }
+    .about-grid, .findings-grid, .method-grid,
+    .severity-grid, .design-grid { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
     nav ul { gap: 1rem; }
   }
@@ -613,10 +464,10 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="eyebrow">UX Researcher</div>
+    <div class="eyebrow">UX Researcher · AI Products</div>
     <div class="hero-name">Magdalena Homel</div>
     <h1>Less guessing.<br><em>More knowing.</em></h1>
-    <p>Cognitive Science student at Jagiellonian University with hands-on experience in qualitative and quantitative research, usability testing, and AI-assisted product evaluation.</p>
+    <p>Cognitive Science student at Jagiellonian University with hands-on experience in qualitative and quantitative research, usability testing, and AI product evaluation — with a background in building LLM-powered products from the inside.</p>
     <div class="hero-links">
       <a href="#work" class="btn btn-primary">View my work</a>
       <a href="#contact" class="btn btn-secondary">Get in touch</a>
@@ -627,128 +478,10 @@
   <section id="work">
     <div class="section-label">Selected Work</div>
 
-    <!-- PROJECT 1: JetBrains -->
+    <!-- PROJECT 1: FOMO — full quantitative study first -->
     <div class="case-card uxr-primary">
       <div class="case-header">
-        <div class="project-type">UX Research · Usability Study</div>
-        <div class="case-tags">
-          <span class="tag-pill">Moderated Testing</span>
-          <span class="tag-pill">Think-Aloud</span>
-          <span class="tag-pill">Task Analysis</span>
-          <span class="tag-pill">Recommendations</span>
-        </div>
-        <h3>JetBrains Store — Usability Study</h3>
-        <div class="subtitle">Independent research project · March 2026 · N=1 moderated session · Remote via Zoom</div>
-      </div>
-
-      <div class="case-body">
-        <p>The JetBrains Store serves millions of developers worldwide, but how does it perform for someone unfamiliar with the product ecosystem? I designed and conducted a moderated usability session to identify friction points across three key user goals: finding the right tool, understanding pricing, and discovering promotions.</p>
-
-        <div class="insight-bar">
-          <div class="insight-label">Core Finding</div>
-          A semi-technical user with no prior JetBrains experience could not find a Python development tool — not because it didn't exist, but because the Store speaks in product names, not use cases. He searched for "Python" and found nothing.
-        </div>
-
-        <div class="severity-grid">
-          <div class="severity-item severity-high">
-            <div class="severity-label">High severity</div>
-            <p>Product-to-use-case mapping is absent. Users who think in terms of tasks ("I want Python") cannot connect to a product (PyCharm) without prior knowledge.</p>
-          </div>
-          <div class="severity-item severity-medium">
-            <div class="severity-label">Medium severity</div>
-            <p>Inconsistent Buy button styling — blue vs white — with no visible functional distinction created confusion about what each button does.</p>
-          </div>
-          <div class="severity-item severity-medium">
-            <div class="severity-label">Medium severity</div>
-            <p>The Students section has no direct CTA. After successfully finding a relevant offer, the user hit a dead end with no way to proceed.</p>
-          </div>
-        </div>
-
-        <button class="toggle-btn" onclick="toggleCase(this)">Read full case study ↓</button>
-
-        <div class="expanded-content">
-          <div class="method-grid">
-            <div class="method-block">
-              <h4>Research Questions</h4>
-              <ul>
-                <li>How easily can users find the tools they need?</li>
-                <li>Is pricing information clear and discoverable?</li>
-                <li>Are special offers visible and understandable?</li>
-              </ul>
-            </div>
-            <div class="method-block">
-              <h4>Participant</h4>
-              <p>Male, 50s. Semi-technical background, familiar with online purchasing and developer tools broadly, no prior JetBrains experience. Session conducted in Polish to minimize language barriers and support natural think-aloud verbalization.</p>
-            </div>
-            <div class="method-block">
-              <h4>Why this profile?</h4>
-              <p>A deliberate choice: non-expert users surface navigation and clarity issues that domain-familiar users tend to overlook automatically. Their confusion is the most honest signal of structural problems.</p>
-            </div>
-            <div class="method-block">
-              <h4>Tasks</h4>
-              <ul>
-                <li>Find a tool for learning Python and determine its price</li>
-                <li>Find student discounts or free options for young people</li>
-                <li>Find any promotions or special offers on the Store</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="method-block" style="margin-bottom:1rem">
-            <h4>Findings by research question</h4>
-          </div>
-
-          <div class="stat-row">
-            <span class="stat-label">RQ1 — Finding the right tool</span>
-            <span class="stat-value">High severity issue</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">RQ2 — Pricing clarity</span>
-            <span class="stat-value">Medium severity issue</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">RQ3 — Special offers & promotions</span>
-            <span class="stat-value">Medium severity issue</span>
-          </div>
-
-          <div class="quote-block">
-            "I'm looking for the word Python in these boxes and I can barely see it. I'll probably give up on this page because there are no tools for Python programming here at all."
-            <cite>— Participant, Task 1 (translated from Polish)</cite>
-          </div>
-
-          <div class="quote-block">
-            "Why are some of these buttons blue and some white?"
-            <cite>— Participant, Task 2</cite>
-          </div>
-
-          <div class="quote-block">
-            "The page is readable, but there's no Buy button — at least not on the student section. I don't understand why it's not there."
-            <cite>— Participant, end-of-session debrief</cite>
-          </div>
-
-          <div class="method-block" style="margin: 1.2rem 0 0.7rem">
-            <h4>Recommendations</h4>
-          </div>
-          <ul class="reco-list">
-            <li>Add use-case or language labels to product cards (e.g. "For Python development") so users can orient by task, not by product name.</li>
-            <li>Make "For Individual Use" the default landing tab, or add a prominent user-type selector at the top to reduce wrong-audience confusion from the first second.</li>
-            <li>Standardize Buy button styling. If two colors serve different functions, add a visible label or tooltip explaining the distinction.</li>
-            <li>Add a clear CTA or next-step instructions within the Students section so users know how to proceed after finding a relevant offer.</li>
-            <li>Consider a "What are you trying to do?" entry-point selector that routes users to the right product without requiring them to know JetBrains product names in advance.</li>
-          </ul>
-
-          <div class="reflection-box" style="margin-top:1.2rem">
-            <strong>Limitations</strong>
-            N=1 limits generalizability. Session ran ~11 min (planned 20) as the participant completed tasks efficiently. One moderator prompt was used in Task 2. The participant's intermediate English proficiency may have contributed to some navigation difficulties. A follow-up study with a larger, more diverse sample would strengthen conclusions.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 2: FOMO -->
-    <div class="case-card uxr-secondary">
-      <div class="case-header">
-        <div class="project-type">Quantitative Research · Intervention Study</div>
+        <div class="project-type">UX Research · Quantitative Study</div>
         <div class="case-tags">
           <span class="tag-pill">Survey Design</span>
           <span class="tag-pill">Statistical Analysis</span>
@@ -846,7 +579,120 @@
 
           <div class="reflection-box" style="margin-top:0.5rem">
             <strong>Limitations</strong>
-            Small convenience sample (N = 30) limits generalizability. FOMO measured post-intervention only. No control group. Self-report bias possible.
+            Small convenience sample (N=30) limits generalizability. FOMO measured post-intervention only. No control group. Self-report bias possible.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: JetBrains — n=1 framed as recruitment task -->
+    <div class="case-card uxr-primary">
+      <div class="case-header">
+        <div class="project-type">UX Research · Usability Study</div>
+        <div class="case-tags">
+          <span class="tag-pill">Moderated Testing</span>
+          <span class="tag-pill">Think-Aloud</span>
+          <span class="tag-pill">Task Analysis</span>
+          <span class="tag-pill">Recommendations</span>
+        </div>
+        <h3>JetBrains Store — Usability Study</h3>
+        <div class="subtitle">Recruitment task · March 2026 · N=1 exploratory session · Remote via Zoom</div>
+      </div>
+
+      <div class="case-body">
+        <p>This was a recruitment task requiring a usability study of the JetBrains Store. The task was intentionally scoped as a single-participant exploratory session — the goal was to demonstrate research process, analytical reasoning, and ability to generate actionable recommendations from limited data, rather than produce generalizable findings.</p>
+        <p>The participant: a semi-technical user with no prior JetBrains experience. A deliberate choice — non-expert users surface navigation and clarity issues that domain-familiar users tend to overlook automatically.</p>
+
+        <div class="insight-bar">
+          <div class="insight-label">Core Finding</div>
+          A semi-technical user could not find a Python development tool — not because it didn't exist, but because the Store speaks in product names, not use cases. He searched for "Python" and found nothing.
+        </div>
+
+        <div class="severity-grid">
+          <div class="severity-item severity-high">
+            <div class="severity-label">High severity</div>
+            <p>Product-to-use-case mapping is absent. Users who think in terms of tasks ("I want Python") cannot connect to a product (PyCharm) without prior knowledge.</p>
+          </div>
+          <div class="severity-item severity-medium">
+            <div class="severity-label">Medium severity</div>
+            <p>Inconsistent Buy button styling — blue vs white — with no visible functional distinction created confusion about what each button does.</p>
+          </div>
+          <div class="severity-item severity-medium">
+            <div class="severity-label">Medium severity</div>
+            <p>The Students section has no direct CTA. After successfully finding a relevant offer, the user hit a dead end with no way to proceed.</p>
+          </div>
+        </div>
+
+        <button class="toggle-btn" onclick="toggleCase(this)">Read full case study ↓</button>
+
+        <div class="expanded-content">
+          <div class="method-grid">
+            <div class="method-block">
+              <h4>Research Questions</h4>
+              <ul>
+                <li>How easily can users find the tools they need?</li>
+                <li>Is pricing information clear and discoverable?</li>
+                <li>Are special offers visible and understandable?</li>
+              </ul>
+            </div>
+            <div class="method-block">
+              <h4>Participant</h4>
+              <p>Male, 50s. Semi-technical background, familiar with online purchasing and developer tools broadly, no prior JetBrains experience. Session conducted in Polish to minimise language barriers and support natural think-aloud verbalization.</p>
+            </div>
+            <div class="method-block">
+              <h4>Tasks</h4>
+              <ul>
+                <li>Find a tool for learning Python and determine its price</li>
+                <li>Find student discounts or free options for young people</li>
+                <li>Find any promotions or special offers on the Store</li>
+              </ul>
+            </div>
+            <div class="method-block">
+              <h4>Method note</h4>
+              <p>Single-participant exploratory scope per task requirements. Findings serve as hypotheses for future larger-scale testing, not as statistically significant conclusions.</p>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">RQ1 — Finding the right tool</span>
+            <span class="stat-value">High severity issue</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">RQ2 — Pricing clarity</span>
+            <span class="stat-value">Medium severity issue</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">RQ3 — Special offers &amp; promotions</span>
+            <span class="stat-value">Medium severity issue</span>
+          </div>
+
+          <div class="quote-block">
+            "I'm looking for the word Python in these boxes and I can barely see it. I'll probably give up on this page because there are no tools for Python programming here at all."
+            <cite>— Participant, Task 1 (translated from Polish)</cite>
+          </div>
+          <div class="quote-block">
+            "Why are some of these buttons blue and some white?"
+            <cite>— Participant, Task 2</cite>
+          </div>
+          <div class="quote-block">
+            "The page is readable, but there's no Buy button — at least not on the student section. I don't understand why it's not there."
+            <cite>— Participant, end-of-session debrief</cite>
+          </div>
+
+          <div class="method-block" style="margin: 1.2rem 0 0.7rem">
+            <h4>Recommendations</h4>
+          </div>
+          <ul class="reco-list">
+            <li>Add use-case or language labels to product cards (e.g. "For Python development") so users can orient by task, not by product name.</li>
+            <li>Make "For Individual Use" the default landing tab, or add a prominent user-type selector at the top to reduce wrong-audience confusion.</li>
+            <li>Standardise Buy button styling. If two colors serve different functions, add a visible label or tooltip explaining the distinction.</li>
+            <li>Add a clear CTA within the Students section so users know how to proceed after finding a relevant offer.</li>
+            <li>Consider a "What are you trying to do?" entry-point selector that routes users to the right product without requiring JetBrains product knowledge upfront.</li>
+          </ul>
+
+          <div class="reflection-box" style="margin-top:1.2rem">
+            <strong>Limitations</strong>
+            N=1 limits generalizability — findings should be treated as hypotheses to test with a larger sample. Session ran ~11 min (planned 20) as the participant completed tasks efficiently. One moderator prompt was used in Task 2.
           </div>
         </div>
       </div>
@@ -865,17 +711,13 @@
         <h3>Decision Diary</h3>
         <div class="subtitle">Personal project · 2025 · Mobile flow · Figma interactive prototype</div>
       </div>
-
       <div class="case-body">
-        <p>A calm mobile experience designed to support more reflective decision-making — built for people who tend to overthink or struggle with a sense of control. Rather than pushing users toward quick action, the interface encourages slowing down and identifying what they actually feel.</p>
-
+        <p>A calm mobile experience designed to support more reflective decision-making — built for people who tend to overthink or struggle with a sense of control.</p>
         <div class="insight-bar">
           <div class="insight-label">Why this is in a UXR portfolio</div>
           Building this sharpened my understanding of how design decisions — spacing, motion, hierarchy — shape how users feel during an interaction. That sensitivity directly informs how I approach research: I'm not just looking at what users do, but how the interface makes them feel while doing it.
         </div>
-
         <button class="toggle-btn" onclick="toggleCase(this)">Read more ↓</button>
-
         <div class="expanded-content">
           <div class="method-grid">
             <div class="method-block">
@@ -894,39 +736,44 @@
                 <li>No time pressure or forced choices</li>
                 <li>Soft visual language, rounded components</li>
                 <li>Subtle progress indicator for sense of control</li>
-                <li>Gentle transitions (Smart Animate, ease-out)</li>
               </ul>
-            </div>
-            <div class="method-block">
-              <h4>What I Learned</h4>
-              <ul>
-                <li>How visual hierarchy affects emotional perception</li>
-                <li>How pacing and transitions influence user comfort</li>
-                <li>How to design for reflection rather than speed</li>
-                <li>How small UI decisions change emotional tone</li>
-              </ul>
-            </div>
-            <div class="method-block">
-              <h4>Tools</h4>
-              <p>Figma — UI design, components, auto layout, interactive prototyping</p>
             </div>
           </div>
         </div>
-
         <a href="https://www.figma.com/proto/n0igHDM36mKptsX5wx0jLj/Decision-Diary-%E2%80%93-Wireframes" target="_blank" class="btn btn-secondary" style="display:inline-block; margin-top:1.5rem;">View Figma prototype →</a>
       </div>
     </div>
 
-    <!-- OTHER PROJECTS -->
+    <!-- RESEARCH DESIGNS -->
     <div style="margin-top:1rem">
-      <div class="section-label" style="margin-bottom:1.5rem">Other Projects</div>
-      <div>
-        <div class="mini-card">
-          <div class="mini-type">Cognitive Psychology · Python · Academic</div>
-          <h4>Simon's Task</h4>
-          <p>An experiment investigating how spatial stimulus-response compatibility affects reaction time and accuracy — based on the Simon effect (1967). Built the full experiment logic in Python with millisecond-precision reaction logging.</p>
-          <p style="font-size:0.78rem; color:var(--muted); margin-bottom:0.5rem">What it gave me: experimental design intuition and a deep understanding of how small interface decisions (position, timing, layout) can systematically alter user behavior. That translates directly into how I think about usability research.</p>
-          <a href="https://github.com/mhomel/simons-task-experiment" target="_blank" class="btn btn-secondary" style="font-size:0.7rem; padding:0.4rem 0.9rem;">View on GitHub →</a>
+      <div class="section-label" style="margin-bottom:1rem">Research Designs</div>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem; line-height:1.7; max-width:560px;">
+        Academic projects designed as part of university coursework. These are methodological proposals — fully developed research designs including hypotheses, measures, procedures, and ethical considerations — not conducted studies. They demonstrate research design thinking and methodological knowledge.
+      </p>
+      <div class="design-grid">
+        <div class="design-card">
+          <div class="design-label">Cognitive Psychology · Experimental Design</div>
+          <h4>Color, Grammar & Temperature Perception</h4>
+          <p>A 2×2 within-subjects design investigating whether background color (red vs. blue) and grammatical perspective (1st vs. 3rd person) jointly modulate imagined temperature perception. Draws on cross-modal correspondences and embodied cognition.</p>
+          <div class="design-note">Methodological proposal · N=30 planned · Co-authored with 2 collaborators</div>
+        </div>
+        <div class="design-card">
+          <div class="design-label">Animal Cognition · Longitudinal Design</div>
+          <h4>Long-Term Memory Retention in Horses</h4>
+          <p>A longitudinal design testing whether horses retain visual discrimination rules after 6+ years without retraining — based on paradigms from Sappington & Goldman (1994). Includes full ethical protocol, apparatus design, and retention criteria.</p>
+          <div class="design-note">Methodological proposal · N=40 planned · Co-authored with 4 collaborators</div>
+        </div>
+        <div class="design-card">
+          <div class="design-label">Attention Research · Between-Subjects</div>
+          <h4>Random Microbreaks & Sustained Attention</h4>
+          <p>A 4-group between-subjects design comparing random, regular, flexible, and no-break conditions on sustained attention using CPT-X and NASA-TLX. Directly relevant to focus tools and workplace software design.</p>
+          <div class="design-note">Methodological proposal · N=100 planned · Co-authored with 2 collaborators</div>
+        </div>
+        <div class="design-card" style="border-top-color: var(--gold)">
+          <div class="design-label">Simon's Task · Python · Academic</div>
+          <h4>Stimulus-Response Compatibility</h4>
+          <p>An experiment investigating how spatial stimulus-response compatibility affects reaction time and accuracy — based on the Simon effect (1967). Built full experiment logic in Python with millisecond-precision reaction logging.</p>
+          <div class="design-note">Conducted study · Python implementation · Individual project</div>
         </div>
       </div>
     </div>
@@ -936,22 +783,44 @@
   <section id="about">
     <div class="section-label">About</div>
     <div class="about-grid">
-      <h2>Research at the intersection of human cognition and technology.</h2>
+      <h2>Research at the intersection of human cognition and AI.</h2>
       <div>
-        <p>I'm a 2nd-year Cognitive Science student at Jagiellonian University in Kraków, with a focus on how people think, decide, and interact with digital products. My background combines academic research training with hands-on experience in UX research and AI product evaluation.</p>
+        <p>I'm a 2nd-year Cognitive Science student at Jagiellonian University in Kraków with a background that spans both sides of the AI product equation — I've built LLM-powered products as a Junior AI Engineer, and I'm now focused on understanding how people actually experience them.</p>
         <br>
-        <p>I'm drawn to the human and product side of technology — understanding user behaviour, translating insights into decisions, and asking the questions that teams haven't thought to ask yet.</p>
+        <p>That dual perspective shapes how I research. I know what questions to ask a product team because I've been inside one. And I know what "the model does X" actually means when it gets translated into interface decisions.</p>
+        <br>
+        <p>I'm drawn to the human side of AI: the gap between what a product can do and what a user believes it can do.</p>
       </div>
       <div>
         <ul class="skills-list">
           <li>Qualitative research — interviews, observation</li>
           <li>Quantitative research — surveys, statistics</li>
-          <li>Usability testing</li>
-          <li>Research synthesis & reporting</li>
+          <li>Usability testing &amp; moderation</li>
+          <li>Research synthesis &amp; reporting</li>
           <li>AI / LLM product evaluation</li>
-          <li>HCI & cognitive psychology</li>
-          <li>Python, R, Figma</li>
+          <li>Conversational UX &amp; dialogue design</li>
+          <li>HCI &amp; cognitive psychology</li>
+          <li>Python · R · Figma · Miro · Notion</li>
+          <li>FastAPI · Django · RAG pipelines</li>
+          <li>LangChain · pgvector · Azure DevOps</li>
+          <li>Jira · Git · CI/CD</li>
         </ul>
+      </div>
+    </div>
+
+    <!-- STRENGTHS WHEEL -->
+    <div class="strengths-section">
+      <div class="section-label" style="margin-bottom:1.2rem">Strengths · Gallup CliftonStrengths</div>
+      <div class="wheel-outer">
+        <canvas id="strength-wheel" width="300" height="300" style="display:block;cursor:pointer;"></canvas>
+        <p class="wheel-hint" id="wheel-hint">Kliknij w segment</p>
+        <div class="strength-detail">
+          <div class="strength-card" id="strength-card">
+            <div class="strength-card-name" id="sc-name"></div>
+            <div class="strength-card-eng" id="sc-eng"></div>
+            <div class="strength-card-desc" id="sc-desc"></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -962,7 +831,7 @@
         <div class="exp-date">Feb 2025 – present</div>
         <div class="exp-content">
           <h4>UX Research Volunteer</h4>
-          <div class="org">Fundacja Kompetencji Cyfrowych · "Strona od Nowa" · Remote</div>
+          <div class="org">Fundacja Kompetencji Cyfrowych · Remote</div>
           <p>Conducting user interviews, usability tests, UX audits, and research synthesis as part of a pro-bono initiative redesigning websites for NGOs. Working alongside designers, developers, and PMs in cross-functional sprints.</p>
         </div>
       </div>
@@ -988,7 +857,7 @@
       <div class="exp-item">
         <div class="exp-date">Feb 2025 – present</div>
         <div class="exp-content">
-          <h4>Mentee — UXR & AI Track</h4>
+          <h4>Mentee — UXR &amp; AI Track</h4>
           <div class="org">Tech Leaders Mentoring Program</div>
           <p>Structured mentorship developing UX research and AI product skills, with a focus on career direction and cross-functional thinking.</p>
         </div>
@@ -1011,8 +880,27 @@
         <div class="exp-content">
           <h4>BSc Cognitive Science</h4>
           <div class="org">Jagiellonian University · Kraków</div>
-          <p>Interdisciplinary programme combining cognitive psychology, HCI, statistics, neuroscience and AI. Relevant coursework: research methods, human-computer interaction, statistical analysis.</p>
+          <p>Interdisciplinary programme combining cognitive psychology, HCI, statistics, neuroscience and AI. Relevant coursework: research methods, human-computer interaction, statistical analysis, perception, bilingualism &amp; cognition.</p>
         </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">Aug 2025</div>
+        <div class="exp-content">
+          <h4>Certificate in Advanced English — C1</h4>
+          <div class="org">Cambridge English · CEFR Level C1 · Score 198/210</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIGADE -->
+  <section id="brigade" style="padding:3rem 0">
+    <div class="section-label">Beyond Work</div>
+    <div class="brigade-note">
+      <div class="brigade-icon">🔥</div>
+      <div>
+        <h5>Volunteer Fire Brigade · Jun 2022 – present</h5>
+        <p>Active member of a volunteer fire brigade. Competed in municipal and county firefighting competitions, earning 1st place in the women's team category twice. Rapid decision-making under pressure, precise teamwork in high-stakes environments, and a strong sense of personal responsibility — skills that translate directly into research: staying calm when a session goes sideways, knowing when to act and when to wait.</p>
       </div>
     </div>
   </section>
@@ -1042,35 +930,156 @@
     bar.style.width = (scrolled / total * 100) + '%';
   });
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Toggle buttons
+  // Toggle case studies
   function toggleCase(btn) {
     const expanded = btn.nextElementSibling;
     const isOpen = expanded.classList.contains('open');
     expanded.classList.toggle('open');
-    const originalLabel = btn.dataset.originalLabel || btn.textContent;
-    if (!btn.dataset.originalLabel) btn.dataset.originalLabel = originalLabel;
-    btn.textContent = isOpen ? originalLabel : 'Close ↑';
+    if (!btn.dataset.originalLabel) btn.dataset.originalLabel = btn.textContent;
+    btn.textContent = isOpen ? btn.dataset.originalLabel : 'Close ↑';
   }
 
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
-</script>
 
+  // ---- STRENGTHS WHEEL (Canvas) ----
+  (function(){
+    const S=[
+      {label:"Bliskość",   eng:"Relator",     fill:"#c5dcf2",stroke:"#1a6ab5",txt:"#0a3d6e",
+       desc:"Dostrzegam głębię w relacjach — uczestnicy badań mi ufają i mówią więcej niż innym. To rzadki kapitał w UXR."},
+      {label:"Wizjoner",   eng:"Futuristic",  fill:"#c8dea0",stroke:"#3a6a12",txt:"#1e420a",
+       desc:"Widzę, co mogłoby być. Dostrzegam implikacje technologii na długo przed innymi — szczególnie cenne w AI+UXR."},
+      {label:"Dyscyplina", eng:"Discipline",  fill:"#d8d6cb",stroke:"#5a5954",txt:"#282826",
+       desc:"Buduję strukturę tam, gdzie inni widzą chaos. Moje badania mają metodologię dopracowaną do szczegółu."},
+      {label:"Poważanie",  eng:"Significance",fill:"#f5c8b6",stroke:"#9e3a1a",txt:"#6e240c",
+       desc:"Potrzebuję, żeby moja praca miała znaczenie — to napędza moją ambicję i jakość tego, co robię."},
+      {label:"Aktywator",  eng:"Activator",   fill:"#beb8e5",stroke:"#4e45b8",txt:"#2c2878",
+       desc:"Nie czekam — działam. W projektach badawczych jestem tą osobą, która popycha do przodu kiedy inni wciąż planują."}
+    ];
+    const cv=document.getElementById('strength-wheel');
+    if(!cv) return;
+    const ctx=cv.getContext('2d');
+    const W=300,H=300,CX=150,CY=150,R=128,Ri=44,GAP=0.028;
+    const N=S.length,SLICE=Math.PI*2/N;
+    let spin=0,spinning=true,spinVel=0.003;
+    let hovered=-1,active=-1;
+    const sc=Array(N).fill(1),tsc=Array(N).fill(1);
+
+    function baseSA(i){ return i*SLICE-Math.PI/2+GAP; }
+    function baseEA(i){ return (i+1)*SLICE-Math.PI/2-GAP; }
+    function normA(a){ return ((a%(Math.PI*2))+Math.PI*2)%(Math.PI*2); }
+
+    function drawSeg(i){
+      const sa=baseSA(i)+spin,ea=baseEA(i)+spin,mid=(sa+ea)/2;
+      const s=S[i];
+      ctx.save();
+      ctx.translate(CX,CY);ctx.scale(sc[i],sc[i]);ctx.translate(-CX,-CY);
+      ctx.beginPath();
+      ctx.arc(CX,CY,Ri,sa,ea,false);
+      ctx.arc(CX,CY,R,ea,sa,true);
+      ctx.closePath();
+      ctx.globalAlpha=(active!==-1&&active!==i)?0.28:1;
+      ctx.fillStyle=s.fill;ctx.fill();
+      ctx.globalAlpha=1;ctx.strokeStyle=s.stroke;ctx.lineWidth=1.2;ctx.stroke();
+      const lR=(R+Ri)/2+2,lx=CX+Math.cos(mid)*lR,ly=CY+Math.sin(mid)*lR;
+      ctx.globalAlpha=(active!==-1&&active!==i)?0.28:1;
+      ctx.fillStyle=s.txt;ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.font="600 12.5px 'DM Sans',system-ui,sans-serif";
+      ctx.fillText(s.label,lx,ly-7);
+      ctx.font="400 10px 'DM Sans',system-ui,sans-serif";
+      ctx.globalAlpha=(active!==-1&&active!==i)?0.15:0.6;
+      ctx.fillText(s.eng,lx,ly+7);
+      ctx.restore();
+    }
+
+    function drawRings(){
+      ctx.save();ctx.translate(CX,CY);ctx.rotate(spin*0.3);ctx.translate(-CX,-CY);
+      ctx.strokeStyle='#c8c3bc';ctx.lineWidth=0.6;ctx.globalAlpha=0.4;ctx.setLineDash([5,10]);
+      ctx.beginPath();ctx.arc(CX,CY,143,0,Math.PI*2);ctx.stroke();
+      ctx.strokeStyle='#b8976a';ctx.lineWidth=0.4;ctx.globalAlpha=0.35;ctx.setLineDash([1.5,18]);
+      ctx.beginPath();ctx.arc(CX,CY,137,0,Math.PI*2);ctx.stroke();
+      ctx.restore();
+      ctx.save();ctx.translate(CX,CY);ctx.rotate(-spin*0.5);ctx.translate(-CX,-CY);
+      ctx.strokeStyle='#c8c3bc';ctx.lineWidth=0.5;ctx.globalAlpha=0.5;ctx.setLineDash([2,8]);
+      ctx.beginPath();ctx.arc(CX,CY,42,0,Math.PI*2);ctx.stroke();
+      ctx.restore();ctx.setLineDash([]);
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      drawRings();
+      S.forEach((_,i)=>drawSeg(i));
+      ctx.globalAlpha=1;
+      ctx.beginPath();ctx.arc(CX,CY,Ri-3,0,Math.PI*2);
+      ctx.fillStyle='#f5f2ee';ctx.fill();
+      ctx.strokeStyle='#ddd8d2';ctx.lineWidth=0.8;ctx.stroke();
+      ctx.beginPath();ctx.arc(CX,CY,3.5,0,Math.PI*2);
+      ctx.fillStyle='#b8976a';ctx.globalAlpha=0.7;ctx.fill();ctx.globalAlpha=1;
+    }
+
+    function hitTest(mx,my){
+      const dx=mx-CX,dy=my-CY,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<Ri||dist>R) return -1;
+      const angle=normA(Math.atan2(dy,dx));
+      for(let i=0;i<N;i++){
+        const sa=normA(baseSA(i)+spin),ea=normA(baseEA(i)+spin);
+        const inside=sa<ea?(angle>=sa&&angle<=ea):(angle>=sa||angle<=ea);
+        if(inside) return i;
+      }
+      return -1;
+    }
+
+    function pos(e){
+      const r=cv.getBoundingClientRect(),ratio=W/r.width;
+      if(e.touches) return [(e.touches[0].clientX-r.left)*ratio,(e.touches[0].clientY-r.top)*ratio];
+      return [(e.clientX-r.left)*ratio,(e.clientY-r.top)*ratio];
+    }
+
+    cv.addEventListener('mousemove',e=>{
+      const [mx,my]=pos(e);hovered=hitTest(mx,my);
+      spinning=hovered<0&&active<0;
+      cv.style.cursor=hovered>=0?'pointer':'default';
+    });
+    cv.addEventListener('mouseleave',()=>{ hovered=-1;if(active<0) spinning=true; });
+    cv.addEventListener('click',e=>{
+      const [mx,my]=pos(e),hit=hitTest(mx,my);
+      if(hit<0) return;
+      const card=document.getElementById('strength-card');
+      if(active===hit){
+        active=-1;spinning=true;
+        card.classList.remove('show');
+        document.getElementById('wheel-hint').classList.remove('hidden');
+      } else {
+        active=hit;spinning=false;
+        card.classList.remove('show');
+        setTimeout(()=>{
+          document.getElementById('sc-name').textContent=S[hit].label;
+          document.getElementById('sc-eng').textContent=S[hit].eng;
+          document.getElementById('sc-desc').textContent=S[hit].desc;
+          card.classList.add('show');
+        },60);
+        document.getElementById('wheel-hint').classList.add('hidden');
+      }
+    });
+
+    let last=0;
+    function loop(ts){
+      const dt=Math.min(ts-last,50);last=ts;
+      if(spinning) spin+=spinVel*(dt/16);
+      S.forEach((_,i)=>{
+        const isA=active===i,isH=hovered===i&&active===-1;
+        tsc[i]=isA?1.06:isH?1.035:1;
+        sc[i]+=(tsc[i]-sc[i])*0.15;
+      });
+      draw();requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(t=>{last=t;loop(t);});
+  })();
+</script>
 </body>
 </html>
