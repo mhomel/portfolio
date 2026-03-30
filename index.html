@@ -773,7 +773,7 @@
           <div class="design-label">Simon's Task · Python · Academic</div>
           <h4>Stimulus-Response Compatibility</h4>
           <p>An experiment investigating how spatial stimulus-response compatibility affects reaction time and accuracy — based on the Simon effect (1967). Built full experiment logic in Python with millisecond-precision reaction logging.</p>
-          <div class="design-note">Conducted study · Python implementation · Individual project</div>
+          <div class="design-note">Conducted study · Python implementation · Co-authored with 2 collaborators</div>
         </div>
       </div>
     </div>
@@ -810,14 +810,13 @@
 
     <!-- STRENGTHS WHEEL -->
     <div class="strengths-section">
-      <div class="section-label" style="margin-bottom:1.2rem">Strengths · Gallup CliftonStrengths</div>
+      <div class="section-label" style="margin-bottom:1.2rem">Strengths · Gallup CliftonStrengths Top 5</div>
       <div class="wheel-outer">
         <canvas id="strength-wheel" width="300" height="300" style="display:block;cursor:pointer;"></canvas>
-        <p class="wheel-hint" id="wheel-hint">Kliknij w segment</p>
+        <p class="wheel-hint" id="wheel-hint">Click a segment</p>
         <div class="strength-detail">
           <div class="strength-card" id="strength-card">
             <div class="strength-card-name" id="sc-name"></div>
-            <div class="strength-card-eng" id="sc-eng"></div>
             <div class="strength-card-desc" id="sc-desc"></div>
           </div>
         </div>
@@ -950,16 +949,16 @@
   // ---- STRENGTHS WHEEL (Canvas) ----
   (function(){
     const S=[
-      {label:"Bliskość",   eng:"Relator",     fill:"#c5dcf2",stroke:"#1a6ab5",txt:"#0a3d6e",
-       desc:"Dostrzegam głębię w relacjach — uczestnicy badań mi ufają i mówią więcej niż innym. To rzadki kapitał w UXR."},
-      {label:"Wizjoner",   eng:"Futuristic",  fill:"#c8dea0",stroke:"#3a6a12",txt:"#1e420a",
-       desc:"Widzę, co mogłoby być. Dostrzegam implikacje technologii na długo przed innymi — szczególnie cenne w AI+UXR."},
-      {label:"Dyscyplina", eng:"Discipline",  fill:"#d8d6cb",stroke:"#5a5954",txt:"#282826",
-       desc:"Buduję strukturę tam, gdzie inni widzą chaos. Moje badania mają metodologię dopracowaną do szczegółu."},
-      {label:"Poważanie",  eng:"Significance",fill:"#f5c8b6",stroke:"#9e3a1a",txt:"#6e240c",
-       desc:"Potrzebuję, żeby moja praca miała znaczenie — to napędza moją ambicję i jakość tego, co robię."},
-      {label:"Aktywator",  eng:"Activator",   fill:"#beb8e5",stroke:"#4e45b8",txt:"#2c2878",
-       desc:"Nie czekam — działam. W projektach badawczych jestem tą osobą, która popycha do przodu kiedy inni wciąż planują."}
+      {label:"Relator",      eng:"Relator",     fill:"#c5dcf2",stroke:"#1a6ab5",txt:"#0a3d6e",
+       desc:"I build deep, authentic relationships. Research participants trust me and share more than they would with others — a rare asset in UXR."},
+      {label:"Futuristic",   eng:"Futuristic",  fill:"#c8dea0",stroke:"#3a6a12",txt:"#1e420a",
+       desc:"I see what could be. I notice the implications of technology long before others do — especially valuable at the AI+UXR intersection."},
+      {label:"Discipline",   eng:"Discipline",  fill:"#d8d6cb",stroke:"#5a5954",txt:"#282826",
+       desc:"I bring structure where others see chaos. My research has methodology refined to the last detail — rare in a field that's often improvised."},
+      {label:"Significance", eng:"Significance",fill:"#f5c8b6",stroke:"#9e3a1a",txt:"#6e240c",
+       desc:"I need my work to matter. That drives my ambition and the quality of everything I produce."},
+      {label:"Activator",    eng:"Activator",   fill:"#beb8e5",stroke:"#4e45b8",txt:"#2c2878",
+       desc:"I don't wait — I act. In research projects I'm the one who pushes forward when others are still planning."}
     ];
     const cv=document.getElementById('strength-wheel');
     if(!cv) return;
@@ -990,10 +989,7 @@
       ctx.globalAlpha=(active!==-1&&active!==i)?0.28:1;
       ctx.fillStyle=s.txt;ctx.textAlign='center';ctx.textBaseline='middle';
       ctx.font="600 12.5px 'DM Sans',system-ui,sans-serif";
-      ctx.fillText(s.label,lx,ly-7);
-      ctx.font="400 10px 'DM Sans',system-ui,sans-serif";
-      ctx.globalAlpha=(active!==-1&&active!==i)?0.15:0.6;
-      ctx.fillText(s.eng,lx,ly+7);
+      ctx.fillText(s.label,lx,ly);
       ctx.restore();
     }
 
@@ -1059,7 +1055,6 @@
         card.classList.remove('show');
         setTimeout(()=>{
           document.getElementById('sc-name').textContent=S[hit].label;
-          document.getElementById('sc-eng').textContent=S[hit].eng;
           document.getElementById('sc-desc').textContent=S[hit].desc;
           card.classList.add('show');
         },60);
