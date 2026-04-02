@@ -32,7 +32,6 @@
     line-height: 1.75;
   }
 
-  /* Progress bar */
   #progress-bar {
     position: fixed; top: 0; left: 0;
     height: 2px; width: 0%;
@@ -41,7 +40,6 @@
     transition: width 0.1s linear;
   }
 
-  /* NAV */
   nav {
     position: sticky; top: 0;
     background: rgba(245,242,238,0.92);
@@ -69,7 +67,6 @@
 
   .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
 
-  /* HERO */
   .hero {
     padding: 7rem 0 5rem;
     border-bottom: 1px solid var(--border);
@@ -148,7 +145,6 @@
     width: 20px; height: 1px; background: var(--gold);
   }
 
-  /* PROJECT CARDS */
   .case-card {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 4px; overflow: hidden;
@@ -309,7 +305,6 @@
     flex-shrink: 0; margin-top: 0.15rem;
   }
 
-  /* Research Designs section */
   .design-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
   .design-card {
     background: var(--card); border: 1px solid var(--border);
@@ -334,7 +329,6 @@
     padding-top: 0.5rem; margin-top: 0.5rem;
   }
 
-  /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
   .about-grid h2 {
     font-family: 'Playfair Display', serif;
@@ -352,58 +346,54 @@
   }
   .skills-list li::before { content: '—'; color: var(--gold); font-size: 0.75rem; }
 
-  /* STRENGTHS WHEEL */
   .strengths-section { margin-top: 3rem; }
-  .wheel-outer {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 2rem 0 1rem;
+  .strength-accordion { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .strength-item { border-bottom: 1px solid var(--border); }
+  .strength-item:last-child { border-bottom: none; }
+  .strength-trigger {
+    width: 100%; background: none; border: none;
+    padding: 1.1rem 1.4rem; display: flex;
+    justify-content: space-between; align-items: center;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: background 0.18s; text-align: left;
   }
-  .wheel-hint {
-    font-size: 0.75rem; color: var(--muted);
-    margin-top: 0.75rem; letter-spacing: 0.06em;
-    font-weight: 300; transition: opacity 0.3s;
+  .strength-trigger:hover { background: var(--accent-light); }
+  .strength-trigger.open { background: var(--gold-light); }
+  .strength-trigger-left { display: flex; align-items: center; gap: 1rem; }
+  .strength-num {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--gold); width: 18px; flex-shrink: 0;
   }
-  .wheel-hint.hidden { opacity: 0; }
-
-  /* Detail card */
-  .strength-detail {
-    width: 100%; max-width: 500px;
-    margin-top: 1.5rem; min-height: 100px;
-  }
-  .strength-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 4px; padding: 1.4rem 1.6rem;
-    opacity: 0; transform: translateY(10px);
-    transition: opacity 0.28s ease, transform 0.28s ease;
-    border-left: 3px solid var(--gold);
-  }
-  .strength-card.show { opacity: 1; transform: translateY(0); }
-  .strength-card-name {
+  .strength-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem; font-weight: 400;
-    color: var(--text); margin-bottom: 2px;
+    font-size: 1rem; font-weight: 400; color: var(--text);
   }
-  .strength-card-eng {
-    font-size: 0.65rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--gold);
-    font-weight: 600; margin-bottom: 0.8rem;
+  .strength-domain {
+    font-size: 0.62rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
   }
-  .strength-card-desc {
-    font-size: 0.88rem; color: var(--muted);
-    line-height: 1.7; margin-bottom: 1rem;
+  .strength-arrow {
+    font-size: 0.75rem; color: var(--gold);
+    transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0;
   }
-  .strength-ask-btn {
-    font-size: 0.72rem; background: none;
-    border: 1px solid var(--border); border-radius: 2px;
-    padding: 0.4rem 1rem; cursor: pointer;
-    color: var(--muted); letter-spacing: 0.06em;
-    text-transform: uppercase; font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
+  .strength-trigger.open .strength-arrow { transform: rotate(180deg); }
+  .strength-body {
+    height: 0; overflow: hidden;
+    transition: height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--gold-light);
   }
-  .strength-ask-btn:hover { border-color: var(--gold); color: var(--accent); }
+  .strength-body-inner {
+    padding: 0.2rem 1.4rem 1.2rem 3.5rem;
+    font-size: 0.88rem; color: var(--muted); line-height: 1.75;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.26s ease 0.1s, transform 0.26s ease 0.1s;
+  }
+  .strength-body.open .strength-body-inner {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-  /* Fire brigade */
   .brigade-note {
     margin-top: 2rem;
     border: 1px solid var(--border); border-radius: 3px;
@@ -422,14 +412,12 @@
   }
   .brigade-note p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
 
-  /* EXPERIENCE */
   .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; margin-bottom: 2rem; }
   .exp-date { font-size: 0.75rem; color: var(--muted); padding-top: 0.2rem; font-weight: 300; }
   .exp-content h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.2rem; }
   .exp-content .org { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.5rem; font-weight: 500; letter-spacing: 0.04em; }
   .exp-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
-  /* CONTACT */
   .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
   footer {
@@ -462,7 +450,6 @@
 
 <div class="container">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="eyebrow">UX Researcher · AI Products</div>
     <div class="hero-name">Magdalena Homel</div>
@@ -474,11 +461,9 @@
     </div>
   </section>
 
-  <!-- WORK -->
   <section id="work">
     <div class="section-label">Selected Work</div>
 
-    <!-- PROJECT 1: FOMO — full quantitative study first -->
     <div class="case-card uxr-primary">
       <div class="case-header">
         <div class="project-type">UX Research · Quantitative Study</div>
@@ -585,7 +570,6 @@
       </div>
     </div>
 
-    <!-- PROJECT 2: JetBrains — n=1 framed as recruitment task -->
     <div class="case-card uxr-primary">
       <div class="case-header">
         <div class="project-type">UX Research · Usability Study</div>
@@ -698,7 +682,6 @@
       </div>
     </div>
 
-    <!-- PROJECT 3: Decision Diary -->
     <div class="case-card design-project">
       <div class="case-header">
         <div class="project-type">UX Design · Prototype</div>
@@ -744,7 +727,6 @@
       </div>
     </div>
 
-    <!-- RESEARCH DESIGNS -->
     <div style="margin-top:1rem">
       <div class="section-label" style="margin-bottom:1rem">Research Designs</div>
       <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem; line-height:1.7; max-width:560px;">
@@ -779,7 +761,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="section-label">About</div>
     <div class="about-grid">
@@ -808,16 +789,82 @@
       </div>
     </div>
 
-    <!-- STRENGTHS WHEEL -->
     <div class="strengths-section">
       <div class="section-label" style="margin-bottom:1.2rem">Strengths · Gallup CliftonStrengths Top 5</div>
-      <div class="wheel-outer">
-        <canvas id="strength-wheel" width="300" height="300" style="display:block;cursor:pointer;"></canvas>
-        <p class="wheel-hint" id="wheel-hint">Click a segment</p>
-        <div class="strength-detail">
-          <div class="strength-card" id="strength-card">
-            <div class="strength-card-name" id="sc-name"></div>
-            <div class="strength-card-desc" id="sc-desc"></div>
+      <div class="strength-accordion">
+        <div class="strength-item">
+          <button class="strength-trigger" onclick="toggleStrength(this)">
+            <div class="strength-trigger-left">
+              <span class="strength-num">01</span>
+              <div>
+                <div class="strength-name">Relator</div>
+                <div class="strength-domain">Relationship Building</div>
+              </div>
+            </div>
+            <span class="strength-arrow">▼</span>
+          </button>
+          <div class="strength-body">
+            <div class="strength-body-inner">I build deep, authentic relationships. Research participants trust me and share more than they would with others — a rare asset in UXR.</div>
+          </div>
+        </div>
+        <div class="strength-item">
+          <button class="strength-trigger" onclick="toggleStrength(this)">
+            <div class="strength-trigger-left">
+              <span class="strength-num">02</span>
+              <div>
+                <div class="strength-name">Futuristic</div>
+                <div class="strength-domain">Strategic Thinking</div>
+              </div>
+            </div>
+            <span class="strength-arrow">▼</span>
+          </button>
+          <div class="strength-body">
+            <div class="strength-body-inner">I see what could be. I notice the implications of technology long before others do — especially valuable at the AI+UXR intersection.</div>
+          </div>
+        </div>
+        <div class="strength-item">
+          <button class="strength-trigger" onclick="toggleStrength(this)">
+            <div class="strength-trigger-left">
+              <span class="strength-num">03</span>
+              <div>
+                <div class="strength-name">Discipline</div>
+                <div class="strength-domain">Executing</div>
+              </div>
+            </div>
+            <span class="strength-arrow">▼</span>
+          </button>
+          <div class="strength-body">
+            <div class="strength-body-inner">I bring structure where others see chaos. My research has methodology refined to the last detail — rare in a field that's often improvised.</div>
+          </div>
+        </div>
+        <div class="strength-item">
+          <button class="strength-trigger" onclick="toggleStrength(this)">
+            <div class="strength-trigger-left">
+              <span class="strength-num">04</span>
+              <div>
+                <div class="strength-name">Significance</div>
+                <div class="strength-domain">Influencing</div>
+              </div>
+            </div>
+            <span class="strength-arrow">▼</span>
+          </button>
+          <div class="strength-body">
+            <div class="strength-body-inner">I need my work to matter. That drives my ambition and the quality of everything I produce.</div>
+          </div>
+        </div>
+        <div class="strength-item">
+          <button class="strength-trigger" onclick="toggleStrength(this)">
+            <div class="strength-trigger-left">
+              <span class="strength-num">05</span>
+              <div>
+                <div class="strength-name">Activator</div>
+                <div class="strength-domain">Influencing</div>
+              </div>
+            </div>
+            <span class="strength-arrow">▼</span>
+          </button>
+          <div class="strength-body">
+            <div class="strength-body-inner">I don't wait — I act. In research projects I'm the one who pushes forward when others are still planning.</div>
           </div>
         </div>
       </div>
@@ -840,7 +887,7 @@
         <div class="exp-content">
           <h4>Junior AI Engineer</h4>
           <div class="org">Omniviser · Remote</div>
-          <p>Collaborated on UX improvements in LLM-powered products, including conversational design for AI chatbots — structuring dialogue flows, response logic, and interaction patterns that align with how users naturally think and communicate. Contributed to AI agent orchestration design and participated in QA of AI-driven features across cross-functional teams.</p>
+          <p>Built and iterated on LLM-powered product features end-to-end: designed conversational flows, structured RAG pipeline outputs for user-facing delivery, and contributed to AI agent orchestration logic. Participated in QA of AI-driven features across cross-functional teams.</p>
         </div>
       </div>
 
@@ -892,7 +939,6 @@
     </div>
   </section>
 
-  <!-- BRIGADE -->
   <section id="brigade" style="padding:3rem 0">
     <div class="section-label">Beyond Work</div>
     <div class="brigade-note">
@@ -904,7 +950,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="section-label">Contact</div>
     <h2 style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:400; margin-bottom:1rem">Let's talk.</h2>
@@ -921,7 +966,6 @@
 <footer>© 2026 Magdalena Homel · Kraków, Poland</footer>
 
 <script>
-  // Progress bar
   const bar = document.getElementById('progress-bar');
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
@@ -929,7 +973,6 @@
     bar.style.width = (scrolled / total * 100) + '%';
   });
 
-  // Toggle case studies
   function toggleCase(btn) {
     const expanded = btn.nextElementSibling;
     const isOpen = expanded.classList.contains('open');
@@ -938,7 +981,6 @@
     btn.textContent = isOpen ? btn.dataset.originalLabel : 'Close ↑';
   }
 
-  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -946,134 +988,36 @@
     });
   });
 
-  // ---- STRENGTHS WHEEL (Canvas) ----
   (function(){
-    const S=[
-      {label:"Relator",      eng:"Relator",     fill:"#c5dcf2",stroke:"#1a6ab5",txt:"#0a3d6e",
-       desc:"I build deep, authentic relationships. Research participants trust me and share more than they would with others — a rare asset in UXR."},
-      {label:"Futuristic",   eng:"Futuristic",  fill:"#c8dea0",stroke:"#3a6a12",txt:"#1e420a",
-       desc:"I see what could be. I notice the implications of technology long before others do — especially valuable at the AI+UXR intersection."},
-      {label:"Discipline",   eng:"Discipline",  fill:"#d8d6cb",stroke:"#5a5954",txt:"#282826",
-       desc:"I bring structure where others see chaos. My research has methodology refined to the last detail — rare in a field that's often improvised."},
-      {label:"Significance", eng:"Significance",fill:"#f5c8b6",stroke:"#9e3a1a",txt:"#6e240c",
-       desc:"I need my work to matter. That drives my ambition and the quality of everything I produce."},
-      {label:"Activator",    eng:"Activator",   fill:"#beb8e5",stroke:"#4e45b8",txt:"#2c2878",
-       desc:"I don't wait — I act. In research projects I'm the one who pushes forward when others are still planning."}
-    ];
-    const cv=document.getElementById('strength-wheel');
-    if(!cv) return;
-    const ctx=cv.getContext('2d');
-    const W=300,H=300,CX=150,CY=150,R=128,Ri=44,GAP=0.028;
-    const N=S.length,SLICE=Math.PI*2/N;
-    let spin=0,spinning=true,spinVel=0.003;
-    let hovered=-1,active=-1;
-    const sc=Array(N).fill(1),tsc=Array(N).fill(1);
-
-    function baseSA(i){ return i*SLICE-Math.PI/2+GAP; }
-    function baseEA(i){ return (i+1)*SLICE-Math.PI/2-GAP; }
-    function normA(a){ return ((a%(Math.PI*2))+Math.PI*2)%(Math.PI*2); }
-
-    function drawSeg(i){
-      const sa=baseSA(i)+spin,ea=baseEA(i)+spin,mid=(sa+ea)/2;
-      const s=S[i];
-      ctx.save();
-      ctx.translate(CX,CY);ctx.scale(sc[i],sc[i]);ctx.translate(-CX,-CY);
-      ctx.beginPath();
-      ctx.arc(CX,CY,Ri,sa,ea,false);
-      ctx.arc(CX,CY,R,ea,sa,true);
-      ctx.closePath();
-      ctx.globalAlpha=(active!==-1&&active!==i)?0.28:1;
-      ctx.fillStyle=s.fill;ctx.fill();
-      ctx.globalAlpha=1;ctx.strokeStyle=s.stroke;ctx.lineWidth=1.2;ctx.stroke();
-      const lR=(R+Ri)/2+2,lx=CX+Math.cos(mid)*lR,ly=CY+Math.sin(mid)*lR;
-      ctx.globalAlpha=(active!==-1&&active!==i)?0.28:1;
-      ctx.fillStyle=s.txt;ctx.textAlign='center';ctx.textBaseline='middle';
-      ctx.font="600 12.5px 'DM Sans',system-ui,sans-serif";
-      ctx.fillText(s.label,lx,ly);
-      ctx.restore();
+    function openBody(body) {
+      body.style.height = body.scrollHeight + 'px';
+      body.classList.add('open');
     }
-
-    function drawRings(){
-      ctx.save();ctx.translate(CX,CY);ctx.rotate(spin*0.3);ctx.translate(-CX,-CY);
-      ctx.strokeStyle='#c8c3bc';ctx.lineWidth=0.6;ctx.globalAlpha=0.4;ctx.setLineDash([5,10]);
-      ctx.beginPath();ctx.arc(CX,CY,143,0,Math.PI*2);ctx.stroke();
-      ctx.strokeStyle='#b8976a';ctx.lineWidth=0.4;ctx.globalAlpha=0.35;ctx.setLineDash([1.5,18]);
-      ctx.beginPath();ctx.arc(CX,CY,137,0,Math.PI*2);ctx.stroke();
-      ctx.restore();
-      ctx.save();ctx.translate(CX,CY);ctx.rotate(-spin*0.5);ctx.translate(-CX,-CY);
-      ctx.strokeStyle='#c8c3bc';ctx.lineWidth=0.5;ctx.globalAlpha=0.5;ctx.setLineDash([2,8]);
-      ctx.beginPath();ctx.arc(CX,CY,42,0,Math.PI*2);ctx.stroke();
-      ctx.restore();ctx.setLineDash([]);
-    }
-
-    function draw(){
-      ctx.clearRect(0,0,W,H);
-      drawRings();
-      S.forEach((_,i)=>drawSeg(i));
-      ctx.globalAlpha=1;
-      ctx.beginPath();ctx.arc(CX,CY,Ri-3,0,Math.PI*2);
-      ctx.fillStyle='#f5f2ee';ctx.fill();
-      ctx.strokeStyle='#ddd8d2';ctx.lineWidth=0.8;ctx.stroke();
-      ctx.beginPath();ctx.arc(CX,CY,3.5,0,Math.PI*2);
-      ctx.fillStyle='#b8976a';ctx.globalAlpha=0.7;ctx.fill();ctx.globalAlpha=1;
-    }
-
-    function hitTest(mx,my){
-      const dx=mx-CX,dy=my-CY,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<Ri||dist>R) return -1;
-      const angle=normA(Math.atan2(dy,dx));
-      for(let i=0;i<N;i++){
-        const sa=normA(baseSA(i)+spin),ea=normA(baseEA(i)+spin);
-        const inside=sa<ea?(angle>=sa&&angle<=ea):(angle>=sa||angle<=ea);
-        if(inside) return i;
-      }
-      return -1;
-    }
-
-    function pos(e){
-      const r=cv.getBoundingClientRect(),ratio=W/r.width;
-      if(e.touches) return [(e.touches[0].clientX-r.left)*ratio,(e.touches[0].clientY-r.top)*ratio];
-      return [(e.clientX-r.left)*ratio,(e.clientY-r.top)*ratio];
-    }
-
-    cv.addEventListener('mousemove',e=>{
-      const [mx,my]=pos(e);hovered=hitTest(mx,my);
-      spinning=hovered<0&&active<0;
-      cv.style.cursor=hovered>=0?'pointer':'default';
-    });
-    cv.addEventListener('mouseleave',()=>{ hovered=-1;if(active<0) spinning=true; });
-    cv.addEventListener('click',e=>{
-      const [mx,my]=pos(e),hit=hitTest(mx,my);
-      if(hit<0) return;
-      const card=document.getElementById('strength-card');
-      if(active===hit){
-        active=-1;spinning=true;
-        card.classList.remove('show');
-        document.getElementById('wheel-hint').classList.remove('hidden');
-      } else {
-        active=hit;spinning=false;
-        card.classList.remove('show');
-        setTimeout(()=>{
-          document.getElementById('sc-name').textContent=S[hit].label;
-          document.getElementById('sc-desc').textContent=S[hit].desc;
-          card.classList.add('show');
-        },60);
-        document.getElementById('wheel-hint').classList.add('hidden');
-      }
-    });
-
-    let last=0;
-    function loop(ts){
-      const dt=Math.min(ts-last,50);last=ts;
-      if(spinning) spin+=spinVel*(dt/16);
-      S.forEach((_,i)=>{
-        const isA=active===i,isH=hovered===i&&active===-1;
-        tsc[i]=isA?1.06:isH?1.035:1;
-        sc[i]+=(tsc[i]-sc[i])*0.15;
+    function closeBody(body) {
+      body.style.height = body.scrollHeight + 'px';
+      requestAnimationFrame(() => {
+        body.style.height = '0px';
+        body.classList.remove('open');
       });
-      draw();requestAnimationFrame(loop);
     }
-    requestAnimationFrame(t=>{last=t;loop(t);});
+    function toggleStrength(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.strength-body').forEach(b => {
+        if (b !== body && b.classList.contains('open')) closeBody(b);
+      });
+      document.querySelectorAll('.strength-trigger.open').forEach(b => {
+        if (b !== btn) b.classList.remove('open');
+      });
+      if (isOpen) {
+        closeBody(body);
+        btn.classList.remove('open');
+      } else {
+        openBody(body);
+        btn.classList.add('open');
+      }
+    }
+    window.toggleStrength = toggleStrength;
   })();
 </script>
 </body>
