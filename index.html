@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Magdalena Homel — UX Researcher</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -164,6 +165,7 @@
   .case-card.uxr-secondary .case-header { border-top: 3px solid #a8b5c0; }
   .case-card.design-project .case-header { border-top: 3px solid #c4a882; }
   .case-card.ai-reflection .case-header { border-top: 3px solid #9b8ec4; }
+  .case-card.in-progress .case-header { border-top: 3px solid #8faa9b; }
 
   .project-type {
     font-size: 0.65rem; letter-spacing: 0.18em;
@@ -173,6 +175,7 @@
   .case-card.uxr-secondary .project-type { color: #7a8fa0; }
   .case-card.design-project .project-type { color: #9a7a5a; }
   .case-card.ai-reflection .project-type { color: #7a6ea8; }
+  .case-card.in-progress .project-type { color: #5a7a6a; }
 
   .case-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1rem; }
   .tag-pill {
@@ -180,6 +183,10 @@
     text-transform: uppercase; background: var(--bg);
     border: 1px solid var(--border); color: var(--muted);
     padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500;
+  }
+  .tag-pill.wip {
+    background: #eef4f1; border-color: #8faa9b;
+    color: #5a7a6a;
   }
   .case-header h3 {
     font-family: 'Playfair Display', serif;
@@ -196,11 +203,15 @@
     padding: 0.9rem 1.1rem; margin-bottom: 1.5rem;
     font-size: 0.85rem; color: var(--text); line-height: 1.6;
   }
+  .insight-bar.green {
+    background: #eef4f1; border-left-color: #8faa9b;
+  }
   .insight-bar .insight-label {
     font-size: 0.62rem; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--gold);
     font-weight: 600; margin-bottom: 0.3rem;
   }
+  .insight-bar.green .insight-label { color: #5a7a6a; }
 
   .findings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
   .finding {
@@ -216,6 +227,22 @@
   .finding .value { font-size: 0.8rem; color: var(--text); }
   .finding.confirmed { border-color: var(--gold); }
   .finding.rejected { border-color: #c4a882; }
+
+  /* 3-col findings for trip planner */
+  .insight-findings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .insight-finding {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 3px; padding: 1rem; text-align: center;
+  }
+  .insight-finding .if-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: #7a9a8a;
+    margin-bottom: 0.2rem; font-weight: 400;
+  }
+  .insight-finding .if-label {
+    font-size: 0.63rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+  }
 
   .severity-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
   .severity-item {
@@ -256,6 +283,8 @@
     font-weight: 500; font-family: 'DM Sans', sans-serif;
   }
   .toggle-btn:hover { background: var(--accent); color: var(--bg); }
+  .toggle-btn.green-btn { color: #5a7a6a; border-color: #8faa9b; }
+  .toggle-btn.green-btn:hover { background: #5a7a6a; color: var(--bg); }
 
   .expanded-content { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
   .expanded-content.open { display: block; }
@@ -266,6 +295,7 @@
     text-transform: uppercase; color: var(--gold);
     margin-bottom: 0.5rem; font-weight: 600;
   }
+  .method-block h4.green { color: #5a7a6a; }
   .method-block p, .method-block li { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
   .method-block ul { padding-left: 1rem; }
   .method-block ul li { margin-bottom: 0.25rem; }
@@ -288,6 +318,9 @@
     color: var(--text); display: block; margin-bottom: 0.3rem;
     font-size: 0.65rem; letter-spacing: 0.12em;
     text-transform: uppercase; font-weight: 600;
+  }
+  .reflection-box.green {
+    background: #eef4f1; border-left-color: #8faa9b;
   }
 
   .reco-list { list-style: none; margin-top: 1rem; counter-reset: reco; }
@@ -426,12 +459,33 @@
     letter-spacing: 0.08em; font-weight: 300;
   }
 
+  /* Progress phases bar for in-progress project */
+  .phases-bar {
+    display: flex; gap: 0; margin-bottom: 1.5rem;
+    border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+  }
+  .phase {
+    flex: 1; padding: 0.7rem 0.6rem; text-align: center;
+    font-size: 0.62rem; letter-spacing: 0.08em;
+    text-transform: uppercase; font-weight: 500;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .phase:last-child { border-right: none; }
+  .phase.done { background: #eef4f1; color: #5a7a6a; }
+  .phase.current { background: #deeee7; color: #3a6a5a; font-weight: 600; }
+  .phase.upcoming { background: var(--bg); color: var(--muted); }
+  .phase .phase-check { display: block; font-size: 0.7rem; margin-bottom: 0.15rem; }
+
   @media (max-width: 600px) {
     .hero h1 { font-size: 2.2rem; }
     .about-grid, .findings-grid, .method-grid,
-    .severity-grid, .design-grid { grid-template-columns: 1fr; }
+    .severity-grid, .design-grid, .insight-findings { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
     nav ul { gap: 1rem; }
+    .phases-bar { flex-direction: column; }
+    .phase { border-right: none; border-bottom: 1px solid var(--border); }
+    .phase:last-child { border-bottom: none; }
   }
 </style>
 </head>
@@ -464,6 +518,7 @@
   <section id="work">
     <div class="section-label">Selected Work</div>
 
+    <!-- FOMO study -->
     <div class="case-card uxr-primary">
       <div class="case-header">
         <div class="project-type">UX Research · Quantitative Study</div>
@@ -570,6 +625,7 @@
       </div>
     </div>
 
+    <!-- JetBrains -->
     <div class="case-card uxr-primary">
       <div class="case-header">
         <div class="project-type">UX Research · Usability Study</div>
@@ -682,6 +738,123 @@
       </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- NEW: Group Trip Planner — In Progress -->
+    <!-- ============================================================ -->
+    <div class="case-card in-progress">
+      <div class="case-header">
+        <div class="project-type">UX Research + Design · In Progress</div>
+        <div class="case-tags">
+          <span class="tag-pill">Qualitative Research</span>
+          <span class="tag-pill">Survey Design</span>
+          <span class="tag-pill">Participatory Design</span>
+          <span class="tag-pill">Figma</span>
+          <span class="tag-pill wip">⟳ In Progress</span>
+        </div>
+        <h3>Group Trip Planner — From Chaos to Coordination</h3>
+        <div class="subtitle">UX course project · Spring 2026 · Complementary track · With Iga Kędra · Jagiellonian University</div>
+      </div>
+
+      <div class="case-body">
+        <p>You know the scenario: a group chat with 12 people, 40 links to Booking.com, nobody can decide anything, and one person ends up organising the whole trip alone. Dedicated tools either don't exist or are too complex (Notion) or too simple (shared Notes). This project investigates whether — and how — a purpose-built app could change that dynamic.</p>
+
+        <div class="phases-bar">
+          <div class="phase done"><span class="phase-check">✓</span>Generative Research</div>
+          <div class="phase current"><span class="phase-check">→</span>Synthesis + Design</div>
+          <div class="phase upcoming"><span class="phase-check">○</span>Prototype (Figma)</div>
+          <div class="phase upcoming"><span class="phase-check">○</span>Usability Testing</div>
+        </div>
+
+        <div class="insight-bar green">
+          <div class="insight-label">Research approach</div>
+          Two-phase mixed methods: a generative survey (Phase 1, completed) to map the problem space and identify user priorities; followed by a usability test with think-aloud protocol (Phase 2, upcoming) to evaluate the Figma prototype.
+        </div>
+
+        <div class="insight-findings">
+          <div class="insight-finding">
+            <div class="if-num">21</div>
+            <div class="if-label">Screened participants</div>
+          </div>
+          <div class="insight-finding">
+            <div class="if-num">95%</div>
+            <div class="if-label">Ages 18–22</div>
+          </div>
+          <div class="insight-finding">
+            <div class="if-num">#1</div>
+            <div class="if-label">Chat apps as planning tool</div>
+          </div>
+        </div>
+
+        <button class="toggle-btn green-btn" onclick="toggleCase(this)">Phase 1 findings ↓</button>
+
+        <div class="expanded-content">
+          <div class="method-grid">
+            <div class="method-block">
+              <h4 class="green">Study Design</h4>
+              <p>Online survey (Google Forms) distributed via social networks. Screening criteria: actively participated in planning a group trip in the past 2 years, not a professional event organiser. N=24 collected, 21 qualified after screening.</p>
+            </div>
+            <div class="method-block">
+              <h4 class="green">Research Questions</h4>
+              <ul>
+                <li>How do users currently plan group trips, and with what tools?</li>
+                <li>What are the most common friction points?</li>
+                <li>Which features would users prioritise in a dedicated app?</li>
+              </ul>
+            </div>
+            <div class="method-block">
+              <h4 class="green">Sample profile</h4>
+              <p>21 participants, predominantly 18–22 years old (95%), typical group size 3–5 people (86%). Role split: 38% main organiser, 48% active co-planner, 14% joins ready plans.</p>
+            </div>
+            <div class="method-block">
+              <h4 class="green">Participatory design element</h4>
+              <p>Participants ranked 6 potential app features by personal priority — giving us both average preference data and individual variance to identify divergent user needs.</p>
+            </div>
+          </div>
+
+          <div class="method-block" style="margin-bottom:1rem">
+            <h4 class="green">Key findings from Phase 1</h4>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">Primary planning tool</span>
+            <span class="stat-value">Group chat (Messenger/WhatsApp) — by a wide margin</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Top friction point</span>
+            <span class="stat-value">Information chaos — links and suggestions scattered across platforms</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Second friction point</span>
+            <span class="stat-value">Group decision-making — no one can agree on destination or accommodation</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">"One person organises everything"</span>
+            <span class="stat-value">Reported as frequent or occasional by majority of respondents</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Top-ranked feature</span>
+            <span class="stat-value">Shared trip board (single place for all information)</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Second-ranked feature</span>
+            <span class="stat-value">Group voting on options (destination, accommodation, dates)</span>
+          </div>
+
+          <div class="reflection-box green" style="margin-top:1.2rem">
+            <strong>Design implication</strong>
+            The gap between what people use (chat) and what they need (structure, shared visibility, decision tooling) is the space the app needs to fill — without replicating the complexity of Notion or the formlessness of a group thread. The shared board + voting combination topped the priority ranking, which gives us a clear starting point for the prototype.
+          </div>
+
+          <div class="reflection-box green" style="margin-top:0.5rem">
+            <strong>Limitations &amp; next steps</strong>
+            Convenience sample skews heavily toward 18–22 year olds — findings are most applicable to this segment. Phase 2 will involve usability testing of the Figma prototype with think-aloud protocol to validate whether the designed solution actually reduces the friction we identified here.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================ -->
+
+    <!-- Decision Diary -->
     <div class="case-card design-project">
       <div class="case-header">
         <div class="project-type">UX Design · Prototype</div>
@@ -876,7 +1049,7 @@
       <div class="exp-item">
         <div class="exp-date">Feb 2025 – present</div>
         <div class="exp-content">
-          <h4>UX Research Volunteer</h4>
+          <h4>UX Researcher</h4>
           <div class="org">Fundacja Kompetencji Cyfrowych · Remote</div>
           <p>Conducting user interviews, usability tests, UX audits, and research synthesis as part of a pro-bono initiative redesigning websites for NGOs. Working alongside designers, developers, and PMs in cross-functional sprints.</p>
         </div>
@@ -942,7 +1115,7 @@
   <section id="brigade" style="padding:3rem 0">
     <div class="section-label">Beyond Work</div>
     <div class="brigade-note">
-      <div class="brigade-icon">🔥</div>
+      <div class="brigade-icon" style="font-family:'Playfair Display',serif; font-size:1rem; color:var(--gold); letter-spacing:0;">✦</div>
       <div>
         <h5>Volunteer Fire Brigade · Jun 2022 – present</h5>
         <p>Active member of a volunteer fire brigade. Competed in municipal and county firefighting competitions, earning 1st place in the women's team category twice. Rapid decision-making under pressure, precise teamwork in high-stakes environments, and a strong sense of personal responsibility — skills that translate directly into research: staying calm when a session goes sideways, knowing when to act and when to wait.</p>
