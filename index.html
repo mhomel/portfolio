@@ -309,6 +309,25 @@
   .stat-row .stat-label { color: var(--muted); }
   .stat-row .stat-value { color: var(--text); font-weight: 600; }
 
+  /* Trip planner stat values are full sentences, not short labels —
+     ease off the weight so the rows read more naturally */
+  .case-card.in-progress .stat-row .stat-value {
+    font-weight: 400;
+    color: var(--text);
+  }
+  .case-card.in-progress .stat-row {
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .case-card.in-progress .stat-row .stat-label {
+    flex-shrink: 0;
+    max-width: 42%;
+  }
+  .case-card.in-progress .stat-row .stat-value {
+    text-align: right;
+    line-height: 1.5;
+  }
+
   .reflection-box {
     background: var(--accent-light); border-left: 2px solid var(--gold);
     padding: 1rem 1.2rem; margin-top: 1.2rem;
@@ -739,7 +758,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- NEW: Group Trip Planner — In Progress -->
+    <!-- Group Trip Planner — In Progress -->
     <!-- ============================================================ -->
     <div class="case-card in-progress">
       <div class="case-header">
@@ -752,7 +771,7 @@
           <span class="tag-pill wip">⟳ In Progress</span>
         </div>
         <h3>Group Trip Planner — From Chaos to Coordination</h3>
-        <div class="subtitle">UX course project · Spring 2026 · Complementary track · With Iga Kędra · Jagiellonian University</div>
+        <div class="subtitle">UX course project · Spring 2026 · Complementary track · Jagiellonian University</div>
       </div>
 
       <div class="case-body">
