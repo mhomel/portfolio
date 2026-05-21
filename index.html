@@ -309,8 +309,6 @@
   .stat-row .stat-label { color: var(--muted); }
   .stat-row .stat-value { color: var(--text); font-weight: 600; }
 
-  /* Trip planner stat values are full sentences, not short labels —
-     ease off the weight so the rows read more naturally */
   .case-card.in-progress .stat-row .stat-value {
     font-weight: 400;
     color: var(--text);
@@ -357,28 +355,11 @@
     flex-shrink: 0; margin-top: 0.15rem;
   }
 
-  .design-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
-  .design-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 3px; padding: 1.4rem;
-    border-top: 2px solid var(--border);
-    transition: box-shadow 0.2s;
-  }
-  .design-card:hover { box-shadow: 0 4px 16px rgba(124,92,62,0.07); }
-  .design-card .design-label {
-    font-size: 0.62rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted);
-    font-weight: 500; margin-bottom: 0.5rem;
-  }
-  .design-card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem;
-  }
-  .design-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.6rem; }
-  .design-note {
-    font-size: 0.72rem; color: var(--gold);
-    font-style: italic; border-top: 1px solid var(--border);
-    padding-top: 0.5rem; margin-top: 0.5rem;
+  .skills-group { margin-bottom: 1.4rem; }
+  .skills-group-label {
+    font-size: 0.62rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 0.5rem;
   }
 
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -478,7 +459,6 @@
     letter-spacing: 0.08em; font-weight: 300;
   }
 
-  /* Progress phases bar for in-progress project */
   .phases-bar {
     display: flex; gap: 0; margin-bottom: 1.5rem;
     border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
@@ -499,7 +479,7 @@
   @media (max-width: 600px) {
     .hero h1 { font-size: 2.2rem; }
     .about-grid, .findings-grid, .method-grid,
-    .severity-grid, .design-grid, .insight-findings { grid-template-columns: 1fr; }
+    .severity-grid, .insight-findings { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
     nav ul { gap: 1rem; }
     .phases-bar { flex-direction: column; }
@@ -547,7 +527,7 @@
           <span class="tag-pill">Pre-post Design</span>
           <span class="tag-pill">Product Implications</span>
         </div>
-        <h3>FOMO, Emotion Regulation & Sleep Quality</h3>
+        <h3>FOMO, Emotion Regulation &amp; Sleep Quality</h3>
         <div class="subtitle">Jagiellonian University · 2025 · N=30 · Pre-post intervention design</div>
       </div>
 
@@ -590,7 +570,7 @@
                 <li>FOMO Scale (Przybylski et al., 2013)</li>
                 <li>Athens Insomnia Scale (AIS)</li>
                 <li>Emotion Regulation Questionnaire (ERQ)</li>
-                <li>Custom habit & demographics surveys</li>
+                <li>Custom habit &amp; demographics surveys</li>
               </ul>
             </div>
             <div class="method-block">
@@ -757,9 +737,7 @@
       </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- Group Trip Planner — In Progress -->
-    <!-- ============================================================ -->
+    <!-- Group Trip Planner -->
     <div class="case-card in-progress">
       <div class="case-header">
         <div class="project-type">UX Research + Design · In Progress</div>
@@ -786,7 +764,7 @@
 
         <div class="insight-bar green">
           <div class="insight-label">Research approach</div>
-          Two-phase mixed methods: a generative survey (Phase 1, completed) to map the problem space and identify user priorities; followed by a usability test with think-aloud protocol (Phase 2, upcoming) to evaluate the Figma prototype.
+          Two-phase mixed methods: a generative survey (Phase 1, completed) to map the problem space and identify user priorities; followed by a usability test with think-aloud protocol (Phase 2, planned for June 2026) to evaluate the Figma prototype.
         </div>
 
         <div class="insight-findings">
@@ -866,12 +844,11 @@
 
           <div class="reflection-box green" style="margin-top:0.5rem">
             <strong>Limitations &amp; next steps</strong>
-            Convenience sample skews heavily toward 18–22 year olds — findings are most applicable to this segment. Phase 2 will involve usability testing of the Figma prototype with think-aloud protocol to validate whether the designed solution actually reduces the friction we identified here.
+            Convenience sample skews heavily toward 18–22 year olds — findings are most applicable to this segment. Phase 2 usability testing with think-aloud protocol is planned for June 2026 to validate whether the designed solution actually reduces the friction we identified here.
           </div>
         </div>
       </div>
     </div>
-    <!-- ============================================================ -->
 
     <!-- Decision Diary -->
     <div class="case-card design-project">
@@ -919,38 +896,6 @@
       </div>
     </div>
 
-    <div style="margin-top:1rem">
-      <div class="section-label" style="margin-bottom:1rem">Research Designs</div>
-      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem; line-height:1.7; max-width:560px;">
-        Academic projects designed as part of university coursework. These are methodological proposals — fully developed research designs including hypotheses, measures, procedures, and ethical considerations — not conducted studies. They demonstrate research design thinking and methodological knowledge.
-      </p>
-      <div class="design-grid">
-        <div class="design-card">
-          <div class="design-label">Cognitive Psychology · Experimental Design</div>
-          <h4>Color, Grammar & Temperature Perception</h4>
-          <p>A 2×2 within-subjects design investigating whether background color (red vs. blue) and grammatical perspective (1st vs. 3rd person) jointly modulate imagined temperature perception. Draws on cross-modal correspondences and embodied cognition.</p>
-          <div class="design-note">Methodological proposal · N=30 planned · Co-authored with 2 collaborators</div>
-        </div>
-        <div class="design-card">
-          <div class="design-label">Animal Cognition · Longitudinal Design</div>
-          <h4>Long-Term Memory Retention in Horses</h4>
-          <p>A longitudinal design testing whether horses retain visual discrimination rules after 6+ years without retraining — based on paradigms from Sappington & Goldman (1994). Includes full ethical protocol, apparatus design, and retention criteria.</p>
-          <div class="design-note">Methodological proposal · N=40 planned · Co-authored with 4 collaborators</div>
-        </div>
-        <div class="design-card">
-          <div class="design-label">Attention Research · Between-Subjects</div>
-          <h4>Random Microbreaks & Sustained Attention</h4>
-          <p>A 4-group between-subjects design comparing random, regular, flexible, and no-break conditions on sustained attention using CPT-X and NASA-TLX. Directly relevant to focus tools and workplace software design.</p>
-          <div class="design-note">Methodological proposal · N=100 planned · Co-authored with 2 collaborators</div>
-        </div>
-        <div class="design-card" style="border-top-color: var(--gold)">
-          <div class="design-label">Simon's Task · Python · Academic</div>
-          <h4>Stimulus-Response Compatibility</h4>
-          <p>An experiment investigating how spatial stimulus-response compatibility affects reaction time and accuracy — based on the Simon effect (1967). Built full experiment logic in Python with millisecond-precision reaction logging.</p>
-          <div class="design-note">Conducted study · Python implementation · Co-authored with 2 collaborators</div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <section id="about">
@@ -962,22 +907,30 @@
         <br>
         <p>That dual perspective shapes how I research. I know what questions to ask a product team because I've been inside one. And I know what "the model does X" actually means when it gets translated into interface decisions.</p>
         <br>
-        <p>I'm drawn to the human side of AI: the gap between what a product can do and what a user believes it can do.</p>
+        <p>I'm drawn to the human side of AI: the gap between what a product can do and what a user believes it can do. I'm particularly interested in research roles at the intersection of human-AI interaction and product development — where understanding how people relate to AI systems is the core of the work.</p>
       </div>
       <div>
-        <ul class="skills-list">
-          <li>Qualitative research — interviews, observation</li>
-          <li>Quantitative research — surveys, statistics</li>
-          <li>Usability testing &amp; moderation</li>
-          <li>Research synthesis &amp; reporting</li>
-          <li>AI / LLM product evaluation</li>
-          <li>Conversational UX &amp; dialogue design</li>
-          <li>HCI &amp; cognitive psychology</li>
-          <li>Python · R · Figma · Miro · Notion</li>
-          <li>FastAPI · Django · RAG pipelines</li>
-          <li>LangChain · pgvector · Azure DevOps</li>
-          <li>Jira · Git · CI/CD</li>
-        </ul>
+        <div class="skills-group">
+          <div class="skills-group-label">Research</div>
+          <ul class="skills-list">
+            <li>Qualitative research — interviews, observation</li>
+            <li>Quantitative research — surveys, statistics</li>
+            <li>Usability testing &amp; moderation</li>
+            <li>Research synthesis &amp; reporting</li>
+            <li>AI / LLM product evaluation</li>
+            <li>Conversational UX &amp; dialogue design</li>
+            <li>HCI &amp; cognitive psychology</li>
+            <li>Figma · Miro · Notion · R · Python</li>
+          </ul>
+        </div>
+        <div class="skills-group">
+          <div class="skills-group-label">Technical background</div>
+          <ul class="skills-list">
+            <li>RAG pipelines · LangChain · pgvector</li>
+            <li>FastAPI · Django · Azure DevOps</li>
+            <li>Jira · Git · CI/CD</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -1070,7 +1023,7 @@
         <div class="exp-content">
           <h4>UX Researcher</h4>
           <div class="org">Fundacja Kompetencji Cyfrowych · Remote</div>
-          <p>Conducting user interviews, usability tests, UX audits, and research synthesis as part of a pro-bono initiative redesigning websites for NGOs. Working alongside designers, developers, and PMs in cross-functional sprints.</p>
+          <p>Volunteering across two parallel tracks: a pro-bono redesign initiative ("Strona od Nowa") working directly with NGO clients on UX audits, usability testing, and research synthesis in cross-functional sprints; and a UXR-focused research project investigating the digital maturity of NGOs served by the programme, including research design, stakeholder mapping, and benchmark analysis (TechSoup Digital Assessment Tool).</p>
         </div>
       </div>
 
