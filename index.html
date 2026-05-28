@@ -7,479 +7,160 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --bg: #f5f2ee;
-    --text: #1c1917;
-    --muted: #78716c;
-    --accent: #7c5c3e;
-    --accent-light: #ede8e3;
-    --accent2: #4a5568;
-    --border: #e2ddd8;
-    --card: #faf8f6;
-    --gold: #b8976a;
-    --gold-light: #f7f0e6;
+    --bg: #f5f2ee; --text: #1c1917; --muted: #78716c; --accent: #7c5c3e;
+    --accent-light: #ede8e3; --accent2: #4a5568; --border: #e2ddd8;
+    --card: #faf8f6; --gold: #b8976a; --gold-light: #f7f0e6;
   }
-
   html { scrollbar-width: none; -ms-overflow-style: none; }
   html::-webkit-scrollbar { display: none; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.75;
-  }
-
-  #progress-bar {
-    position: fixed; top: 0; left: 0;
-    height: 2px; width: 0%;
-    background: var(--gold);
-    z-index: 200;
-    transition: width 0.1s linear;
-  }
-
-  nav {
-    position: sticky; top: 0;
-    background: rgba(245,242,238,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-  }
-  nav .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem; font-weight: 400;
-    color: var(--text); text-decoration: none;
-    letter-spacing: 0.01em;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+  #progress-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--gold); z-index: 200; transition: width 0.1s linear; }
+  nav { position: sticky; top: 0; background: rgba(245,242,238,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+  nav .logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--text); text-decoration: none; letter-spacing: 0.01em; }
   nav ul { list-style: none; display: flex; gap: 2rem; }
-  nav ul a {
-    font-size: 0.75rem; color: var(--muted);
-    text-decoration: none; letter-spacing: 0.12em;
-    text-transform: uppercase; transition: color 0.2s; font-weight: 500;
-  }
+  nav ul a { font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; font-weight: 500; }
   nav ul a:hover { color: var(--accent); }
-
   .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
-
-  .hero {
-    padding: 7rem 0 5rem;
-    border-bottom: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -40px; right: -80px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(184,151,106,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero .eyebrow {
-    font-size: 0.7rem; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 1.8rem; font-weight: 500;
-    display: flex; align-items: center; gap: 0.7rem;
-    animation: fadeUp 0.7s ease both;
-  }
-  .hero .eyebrow::before {
-    content: ''; display: inline-block;
-    width: 28px; height: 1px; background: var(--gold);
-  }
+  .hero { padding: 7rem 0 5rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -40px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(184,151,106,0.1) 0%, transparent 70%); pointer-events: none; }
+  .hero .eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; font-weight: 500; display: flex; align-items: center; gap: 0.7rem; animation: fadeUp 0.7s ease both; }
+  .hero .eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); }
   .hero .hero-name { animation: fadeUp 0.7s 0.1s ease both; }
   .hero h1 { animation: fadeUp 0.7s 0.2s ease both; }
   .hero p { animation: fadeUp 0.7s 0.35s ease both; }
   .hero-links { animation: fadeUp 0.7s 0.48s ease both; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem; font-weight: 400;
-    letter-spacing: 0.10em; text-transform: uppercase;
-    color: var(--text); margin-bottom: 0.5rem; opacity: 0.75;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.4rem; font-weight: 400;
-    line-height: 1.15; margin-bottom: 1.8rem;
-    letter-spacing: -0.02em; color: var(--text);
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text); margin-bottom: 0.5rem; opacity: 0.75; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.4rem; font-weight: 400; line-height: 1.15; margin-bottom: 1.8rem; letter-spacing: -0.02em; color: var(--text); }
   .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero p {
-    font-size: 1rem; color: var(--muted);
-    max-width: 520px; margin-bottom: 2.5rem;
-    line-height: 1.8; font-weight: 300;
-  }
+  .hero p { font-size: 1rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8; font-weight: 300; }
   .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-
-  .btn {
-    font-size: 0.75rem; padding: 0.7rem 1.6rem;
-    border-radius: 2px; text-decoration: none;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    transition: all 0.2s; font-weight: 500; display: inline-block;
-  }
+  .btn { font-size: 0.75rem; padding: 0.7rem 1.6rem; border-radius: 2px; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; font-weight: 500; display: inline-block; }
   .btn-primary { background: var(--accent); color: #faf8f6; }
   .btn-primary:hover { background: #5c3d22; }
   .btn-secondary { border: 1px solid var(--border); color: var(--muted); background: transparent; }
   .btn-secondary:hover { border-color: var(--gold); color: var(--accent); }
-
   section { padding: 4.5rem 0; border-bottom: 1px solid var(--border); }
   section:last-child { border-bottom: none; }
-
-  .section-label {
-    font-size: 0.68rem; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 2.5rem; font-weight: 500;
-    display: flex; align-items: center; gap: 0.7rem;
-  }
-  .section-label::before {
-    content: ''; display: inline-block;
-    width: 20px; height: 1px; background: var(--gold);
-  }
-
-  .case-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 4px; overflow: hidden;
-    transition: box-shadow 0.25s, transform 0.25s;
-    margin-bottom: 2rem;
-  }
-  .case-card:hover {
-    box-shadow: 0 8px 32px rgba(124,92,62,0.1);
-    transform: translateY(-1px);
-  }
-  .case-header {
-    padding: 2.2rem 2.2rem 1.8rem;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
+  .section-label { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; font-weight: 500; display: flex; align-items: center; gap: 0.7rem; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
+  .case-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; margin-bottom: 2rem; }
+  .case-card:hover { box-shadow: 0 8px 32px rgba(124,92,62,0.1); transform: translateY(-1px); }
+  .case-header { padding: 2.2rem 2.2rem 1.8rem; border-bottom: 1px solid var(--border); position: relative; }
   .case-card.uxr-primary .case-header { border-top: 3px solid var(--gold); }
   .case-card.uxr-secondary .case-header { border-top: 3px solid #a8b5c0; }
   .case-card.design-project .case-header { border-top: 3px solid #c4a882; }
   .case-card.ai-reflection .case-header { border-top: 3px solid #9b8ec4; }
   .case-card.in-progress .case-header { border-top: 3px solid #8faa9b; }
-
-  .project-type {
-    font-size: 0.65rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--gold);
-    font-weight: 600; margin-bottom: 0.6rem;
-  }
+  .project-type { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.6rem; }
   .case-card.uxr-secondary .project-type { color: #7a8fa0; }
   .case-card.design-project .project-type { color: #9a7a5a; }
   .case-card.ai-reflection .project-type { color: #7a6ea8; }
   .case-card.in-progress .project-type { color: #5a7a6a; }
-
   .case-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .tag-pill {
-    font-size: 0.65rem; letter-spacing: 0.06em;
-    text-transform: uppercase; background: var(--bg);
-    border: 1px solid var(--border); color: var(--muted);
-    padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500;
-  }
-  .tag-pill.wip {
-    background: #eef4f1; border-color: #8faa9b;
-    color: #5a7a6a;
-  }
-  .case-header h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; font-weight: 400;
-    margin-bottom: 0.35rem; color: var(--text);
-  }
+  .tag-pill { font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg); border: 1px solid var(--border); color: var(--muted); padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500; }
+  .tag-pill.wip { background: #eef4f1; border-color: #8faa9b; color: #5a7a6a; }
+  .case-header h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.35rem; color: var(--text); }
   .case-header .subtitle { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
-
   .case-body { padding: 2rem 2.2rem; }
   .case-body > p { color: var(--muted); font-size: 0.96rem; margin-bottom: 1.5rem; line-height: 1.85; }
-
-  .insight-bar {
-    background: var(--gold-light); border-left: 2px solid var(--gold);
-    padding: 0.9rem 1.1rem; margin-bottom: 1.5rem;
-    font-size: 0.85rem; color: var(--text); line-height: 1.6;
-  }
-  .insight-bar.green {
-    background: #eef4f1; border-left-color: #8faa9b;
-  }
-  .insight-bar .insight-label {
-    font-size: 0.62rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--gold);
-    font-weight: 600; margin-bottom: 0.3rem;
-  }
+  .insight-bar { background: var(--gold-light); border-left: 2px solid var(--gold); padding: 0.9rem 1.1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text); line-height: 1.6; }
+  .insight-bar.green { background: #eef4f1; border-left-color: #8faa9b; }
+  .insight-bar .insight-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.3rem; }
   .insight-bar.green .insight-label { color: #5a7a6a; }
-
   .findings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-  .finding {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 3px; padding: 1rem; text-align: center;
-  }
+  .finding { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1rem; text-align: center; }
   .finding .icon { font-size: 0.9rem; margin-bottom: 0.3rem; font-weight: 600; color: var(--accent2); }
-  .finding .label {
-    font-size: 0.63rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--muted);
-    margin-bottom: 0.3rem; font-weight: 500;
-  }
+  .finding .label { font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; font-weight: 500; }
   .finding .value { font-size: 0.8rem; color: var(--text); }
   .finding.confirmed { border-color: var(--gold); }
   .finding.rejected { border-color: #c4a882; }
-
-  /* 3-col findings for trip planner */
   .insight-findings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-  .insight-finding {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 3px; padding: 1rem; text-align: center;
-  }
-  .insight-finding .if-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; color: #7a9a8a;
-    margin-bottom: 0.2rem; font-weight: 400;
-  }
-  .insight-finding .if-label {
-    font-size: 0.63rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--muted); font-weight: 500;
-  }
-
+  .insight-finding { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1rem; text-align: center; }
+  .insight-finding .if-num { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #7a9a8a; margin-bottom: 0.2rem; font-weight: 400; }
+  .insight-finding .if-label { font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
   .severity-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-  .severity-item {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 3px; padding: 1rem;
-  }
-  .severity-label {
-    font-size: 0.62rem; letter-spacing: 0.1em;
-    text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem;
-  }
+  .severity-item { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1rem; }
+  .severity-label { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem; }
   .severity-high { color: #9b5e4a; border-top: 2px solid #c4826a; }
   .severity-high .severity-label { color: #9b5e4a; }
   .severity-medium { color: #7a6040; border-top: 2px solid var(--gold); }
   .severity-medium .severity-label { color: #9a7a3a; }
   .severity-item p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
-
-  .quote-block {
-    border-left: 2px solid var(--border);
-    padding: 0.8rem 1.2rem; margin: 1.2rem 0;
-    font-style: italic; color: var(--muted);
-    font-size: 0.88rem;
-    font-family: 'Playfair Display', serif; line-height: 1.7;
-  }
-  .quote-block cite {
-    display: block; font-style: normal;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--gold);
-    margin-top: 0.5rem; font-weight: 500;
-  }
-
-  .toggle-btn {
-    font-size: 0.75rem; color: var(--accent);
-    background: none; border: 1px solid var(--accent);
-    border-radius: 2px; padding: 0.5rem 1.1rem;
-    cursor: pointer; letter-spacing: 0.08em;
-    text-transform: uppercase; transition: all 0.2s;
-    font-weight: 500; font-family: 'DM Sans', sans-serif;
-  }
+  .quote-block { border-left: 2px solid var(--border); padding: 0.8rem 1.2rem; margin: 1.2rem 0; font-style: italic; color: var(--muted); font-size: 0.88rem; font-family: 'Playfair Display', serif; line-height: 1.7; }
+  .quote-block cite { display: block; font-style: normal; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; font-weight: 500; }
+  .toggle-btn { font-size: 0.75rem; color: var(--accent); background: none; border: 1px solid var(--accent); border-radius: 2px; padding: 0.5rem 1.1rem; cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; font-weight: 500; font-family: 'DM Sans', sans-serif; }
   .toggle-btn:hover { background: var(--accent); color: var(--bg); }
   .toggle-btn.green-btn { color: #5a7a6a; border-color: #8faa9b; }
   .toggle-btn.green-btn:hover { background: #5a7a6a; color: var(--bg); }
-
   .expanded-content { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
   .expanded-content.open { display: block; }
-
   .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-  .method-block h4 {
-    font-size: 0.65rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 0.5rem; font-weight: 600;
-  }
+  .method-block h4 { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600; }
   .method-block h4.green { color: #5a7a6a; }
   .method-block p, .method-block li { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
   .method-block ul { padding-left: 1rem; }
   .method-block ul li { margin-bottom: 0.25rem; }
-
-  .stat-row {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 3px; padding: 0.85rem 1rem;
-    margin-bottom: 0.4rem; display: flex;
-    justify-content: space-between; align-items: center; font-size: 0.8rem;
-  }
+  .stat-row { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 0.85rem 1rem; margin-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
   .stat-row .stat-label { color: var(--muted); }
   .stat-row .stat-value { color: var(--text); font-weight: 600; }
-
-  .case-card.in-progress .stat-row .stat-value {
-    font-weight: 400;
-    color: var(--text);
-  }
-  .case-card.in-progress .stat-row {
-    align-items: flex-start;
-    gap: 1.2rem;
-  }
-  .case-card.in-progress .stat-row .stat-label {
-    flex-shrink: 0;
-    max-width: 42%;
-  }
-  .case-card.in-progress .stat-row .stat-value {
-    text-align: right;
-    line-height: 1.5;
-  }
-
-  .reflection-box {
-    background: var(--accent-light); border-left: 2px solid var(--gold);
-    padding: 1rem 1.2rem; margin-top: 1.2rem;
-    font-size: 0.85rem; color: var(--muted); line-height: 1.7;
-  }
-  .reflection-box strong {
-    color: var(--text); display: block; margin-bottom: 0.3rem;
-    font-size: 0.65rem; letter-spacing: 0.12em;
-    text-transform: uppercase; font-weight: 600;
-  }
-  .reflection-box.green {
-    background: #eef4f1; border-left-color: #8faa9b;
-  }
-
+  .case-card.in-progress .stat-row .stat-value { font-weight: 400; color: var(--text); }
+  .case-card.in-progress .stat-row { align-items: flex-start; gap: 1.2rem; }
+  .case-card.in-progress .stat-row .stat-label { flex-shrink: 0; max-width: 42%; }
+  .case-card.in-progress .stat-row .stat-value { text-align: right; line-height: 1.5; }
+  .reflection-box { background: var(--accent-light); border-left: 2px solid var(--gold); padding: 1rem 1.2rem; margin-top: 1.2rem; font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .reflection-box strong { color: var(--text); display: block; margin-bottom: 0.3rem; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .reflection-box.green { background: #eef4f1; border-left-color: #8faa9b; }
   .reco-list { list-style: none; margin-top: 1rem; counter-reset: reco; }
-  .reco-list li {
-    padding: 0.7rem 0; border-bottom: 1px solid var(--border);
-    font-size: 0.85rem; color: var(--muted);
-    display: flex; gap: 0.8rem; align-items: flex-start; line-height: 1.6;
-  }
-  .reco-list li::before {
-    content: counter(reco); counter-increment: reco;
-    background: var(--gold-light); border: 1px solid var(--gold);
-    color: var(--gold); font-size: 0.65rem; font-weight: 700;
-    width: 20px; height: 20px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 0.15rem;
-  }
-
+  .reco-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.8rem; align-items: flex-start; line-height: 1.6; }
+  .reco-list li::before { content: counter(reco); counter-increment: reco; background: var(--gold-light); border: 1px solid var(--gold); color: var(--gold); font-size: 0.65rem; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
   .skills-group { margin-bottom: 1.4rem; }
-  .skills-group-label {
-    font-size: 0.62rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--gold);
-    font-weight: 600; margin-bottom: 0.5rem;
-  }
-
+  .skills-group-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .about-grid h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem; font-weight: 400;
-    margin-bottom: 1rem; grid-column: 1 / -1;
-    color: var(--text); line-height: 1.4;
-  }
+  .about-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; grid-column: 1 / -1; color: var(--text); line-height: 1.4; }
   .about-grid p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; font-weight: 300; }
-
   .skills-list { list-style: none; }
-  .skills-list li {
-    padding: 0.45rem 0; border-bottom: 1px solid var(--border);
-    color: var(--muted); display: flex; align-items: center;
-    gap: 0.6rem; font-size: 0.82rem;
-  }
+  .skills-list li { padding: 0.45rem 0; border-bottom: 1px solid var(--border); color: var(--muted); display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; }
   .skills-list li::before { content: '—'; color: var(--gold); font-size: 0.75rem; }
-
   .strengths-section { margin-top: 3rem; }
   .strength-accordion { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
   .strength-item { border-bottom: 1px solid var(--border); }
   .strength-item:last-child { border-bottom: none; }
-  .strength-trigger {
-    width: 100%; background: none; border: none;
-    padding: 1.1rem 1.4rem; display: flex;
-    justify-content: space-between; align-items: center;
-    cursor: pointer; font-family: 'DM Sans', sans-serif;
-    transition: background 0.18s; text-align: left;
-  }
+  .strength-trigger { width: 100%; background: none; border: none; padding: 1.1rem 1.4rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.18s; text-align: left; }
   .strength-trigger:hover { background: var(--accent-light); }
   .strength-trigger.open { background: var(--gold-light); }
   .strength-trigger-left { display: flex; align-items: center; gap: 1rem; }
-  .strength-num {
-    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
-    color: var(--gold); width: 18px; flex-shrink: 0;
-  }
-  .strength-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem; font-weight: 400; color: var(--text);
-  }
-  .strength-domain {
-    font-size: 0.62rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted); font-weight: 500;
-  }
-  .strength-arrow {
-    font-size: 0.75rem; color: var(--gold);
-    transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0;
-  }
+  .strength-num { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gold); width: 18px; flex-shrink: 0; }
+  .strength-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--text); }
+  .strength-domain { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .strength-arrow { font-size: 0.75rem; color: var(--gold); transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; }
   .strength-trigger.open .strength-arrow { transform: rotate(180deg); }
-  .strength-body {
-    height: 0; overflow: hidden;
-    transition: height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-    background: var(--gold-light);
-  }
-  .strength-body-inner {
-    padding: 0.2rem 1.4rem 1.2rem 3.5rem;
-    font-size: 0.88rem; color: var(--muted); line-height: 1.75;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.26s ease 0.1s, transform 0.26s ease 0.1s;
-  }
-  .strength-body.open .strength-body-inner {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .brigade-note {
-    margin-top: 2rem;
-    border: 1px solid var(--border); border-radius: 3px;
-    padding: 1.2rem 1.4rem; background: var(--card);
-    display: flex; gap: 1.2rem; align-items: flex-start;
-  }
-  .brigade-icon {
-    font-size: 1.1rem; flex-shrink: 0;
-    width: 32px; height: 32px;
-    background: var(--gold-light); border: 1px solid var(--border);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  }
-  .brigade-note h5 {
-    font-size: 0.8rem; font-weight: 500;
-    margin-bottom: 0.25rem; color: var(--text);
-  }
+  .strength-body { height: 0; overflow: hidden; transition: height 0.38s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gold-light); }
+  .strength-body-inner { padding: 0.2rem 1.4rem 1.2rem 3.5rem; font-size: 0.88rem; color: var(--muted); line-height: 1.75; opacity: 0; transform: translateY(-6px); transition: opacity 0.26s ease 0.1s, transform 0.26s ease 0.1s; }
+  .strength-body.open .strength-body-inner { opacity: 1; transform: translateY(0); }
+  .brigade-note { margin-top: 2rem; border: 1px solid var(--border); border-radius: 3px; padding: 1.2rem 1.4rem; background: var(--card); display: flex; gap: 1.2rem; align-items: flex-start; }
+  .brigade-icon { font-size: 1.1rem; flex-shrink: 0; width: 32px; height: 32px; background: var(--gold-light); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .brigade-note h5 { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.25rem; color: var(--text); }
   .brigade-note p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-
   .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; margin-bottom: 2rem; }
   .exp-date { font-size: 0.75rem; color: var(--muted); padding-top: 0.2rem; font-weight: 300; }
   .exp-content h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.2rem; }
   .exp-content .org { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.5rem; font-weight: 500; letter-spacing: 0.04em; }
   .exp-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
-
   .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-
-  footer {
-    padding: 2rem; text-align: center;
-    font-size: 0.72rem; color: var(--muted);
-    letter-spacing: 0.08em; font-weight: 300;
-  }
-
-  .phases-bar {
-    display: flex; gap: 0; margin-bottom: 1.5rem;
-    border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
-  }
-  .phase {
-    flex: 1; padding: 0.7rem 0.6rem; text-align: center;
-    font-size: 0.62rem; letter-spacing: 0.08em;
-    text-transform: uppercase; font-weight: 500;
-    border-right: 1px solid var(--border);
-    position: relative;
-  }
+  footer { padding: 2rem; text-align: center; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; font-weight: 300; }
+  .phases-bar { display: flex; gap: 0; margin-bottom: 1.5rem; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .phase { flex: 1; padding: 0.7rem 0.6rem; text-align: center; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; border-right: 1px solid var(--border); position: relative; }
   .phase:last-child { border-right: none; }
   .phase.done { background: #eef4f1; color: #5a7a6a; }
   .phase.current { background: #deeee7; color: #3a6a5a; font-weight: 600; }
   .phase.upcoming { background: var(--bg); color: var(--muted); }
   .phase .phase-check { display: block; font-size: 0.7rem; margin-bottom: 0.15rem; }
-
   @media (max-width: 600px) {
     .hero h1 { font-size: 2.2rem; }
-    .about-grid, .findings-grid, .method-grid,
-    .severity-grid, .insight-findings { grid-template-columns: 1fr; }
+    .about-grid, .findings-grid, .method-grid, .severity-grid, .insight-findings { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
     nav ul { gap: 1rem; }
     .phases-bar { flex-direction: column; }
@@ -517,7 +198,6 @@
   <section id="work">
     <div class="section-label">Selected Work</div>
 
-    <!-- FOMO study -->
     <div class="case-card uxr-primary">
       <div class="case-header">
         <div class="project-type">UX Research · Quantitative Study</div>
@@ -530,10 +210,8 @@
         <h3>FOMO, Emotion Regulation &amp; Sleep Quality</h3>
         <div class="subtitle">Jagiellonian University · 2025 · N=30 · Pre-post intervention design</div>
       </div>
-
       <div class="case-body">
         <p>Does Fear of Missing Out affect how well young adults sleep — and can emotion regulation strategies buffer that effect? This study examined these questions through a quantitative pre-post design with a 14-day behavioral intervention, and connected findings to implications for product design.</p>
-
         <div class="findings-grid">
           <div class="finding confirmed">
             <div class="icon">H1</div>
@@ -551,9 +229,7 @@
             <div class="value">Confirmed<br><small>p &lt; .05 all</small></div>
           </div>
         </div>
-
         <button class="toggle-btn" onclick="toggleCase(this)">Read full case study ↓</button>
-
         <div class="expanded-content">
           <div class="method-grid">
             <div class="method-block">
@@ -582,40 +258,17 @@
               <p>14-day daily exercises: emotion journal, one authentic statement per day, and social comparison reframing.</p>
             </div>
           </div>
-
-          <div class="method-block" style="margin-bottom:1rem">
-            <h4>Statistical Results</h4>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">FOMO × Sleep quality (Pearson r)</span>
-            <span class="stat-value">r(28) = 0.38, p = .039 ✓</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Moderation: cognitive reappraisal</span>
-            <span class="stat-value">B = -0.006, p = .863 ✗</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Moderation: expressive suppression</span>
-            <span class="stat-value">B = 0.004, p = .868 ✗</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Sleep quality improvement (t-test)</span>
-            <span class="stat-value">t(29) = 2.37, p = .024 ✓</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Decrease in emotional suppression</span>
-            <span class="stat-value">t(29) = 6.26, p &lt; .001 ✓</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Increase in cognitive reappraisal</span>
-            <span class="stat-value">t(29) = -3.28, p = .003 ✓</span>
-          </div>
-
+          <div class="method-block" style="margin-bottom:1rem"><h4>Statistical Results</h4></div>
+          <div class="stat-row"><span class="stat-label">FOMO × Sleep quality (Pearson r)</span><span class="stat-value">r(28) = 0.38, p = .039 ✓</span></div>
+          <div class="stat-row"><span class="stat-label">Moderation: cognitive reappraisal</span><span class="stat-value">B = -0.006, p = .863 ✗</span></div>
+          <div class="stat-row"><span class="stat-label">Moderation: expressive suppression</span><span class="stat-value">B = 0.004, p = .868 ✗</span></div>
+          <div class="stat-row"><span class="stat-label">Sleep quality improvement (t-test)</span><span class="stat-value">t(29) = 2.37, p = .024 ✓</span></div>
+          <div class="stat-row"><span class="stat-label">Decrease in emotional suppression</span><span class="stat-value">t(29) = 6.26, p &lt; .001 ✓</span></div>
+          <div class="stat-row"><span class="stat-label">Increase in cognitive reappraisal</span><span class="stat-value">t(29) = -3.28, p = .003 ✓</span></div>
           <div class="reflection-box">
             <strong>Implications for product design</strong>
             The null moderation finding suggests individual coping strategies may not buffer FOMO's impact on sleep — pointing toward a need for product-level interventions: notification design, social comparison reduction features, screen time nudges. The intervention's success within 14 days shows that short, low-effort behavioral prompts can produce measurable psychological change — a useful framing for product teams designing habit-forming or habit-breaking features.
           </div>
-
           <div class="reflection-box" style="margin-top:0.5rem">
             <strong>Limitations</strong>
             Small convenience sample (N=30) limits generalizability. FOMO measured post-intervention only. No control group. Self-report bias possible.
@@ -624,7 +277,6 @@
       </div>
     </div>
 
-    <!-- JetBrains -->
     <div class="case-card uxr-primary">
       <div class="case-header">
         <div class="project-type">UX Research · Usability Study</div>
@@ -637,16 +289,13 @@
         <h3>JetBrains Store — Usability Study</h3>
         <div class="subtitle">Recruitment task · March 2026 · N=1 exploratory session · Remote via Zoom</div>
       </div>
-
       <div class="case-body">
         <p>This was a recruitment task requiring a usability study of the JetBrains Store. The task was intentionally scoped as a single-participant exploratory session — the goal was to demonstrate research process, analytical reasoning, and ability to generate actionable recommendations from limited data, rather than produce generalizable findings.</p>
         <p>The participant: a semi-technical user with no prior JetBrains experience. A deliberate choice — non-expert users surface navigation and clarity issues that domain-familiar users tend to overlook automatically.</p>
-
         <div class="insight-bar">
           <div class="insight-label">Core Finding</div>
           A semi-technical user could not find a Python development tool — not because it didn't exist, but because the Store speaks in product names, not use cases. He searched for "Python" and found nothing.
         </div>
-
         <div class="severity-grid">
           <div class="severity-item severity-high">
             <div class="severity-label">High severity</div>
@@ -661,9 +310,7 @@
             <p>The Students section has no direct CTA. After successfully finding a relevant offer, the user hit a dead end with no way to proceed.</p>
           </div>
         </div>
-
         <button class="toggle-btn" onclick="toggleCase(this)">Read full case study ↓</button>
-
         <div class="expanded-content">
           <div class="method-grid">
             <div class="method-block">
@@ -691,36 +338,13 @@
               <p>Single-participant exploratory scope per task requirements. Findings serve as hypotheses for future larger-scale testing, not as statistically significant conclusions.</p>
             </div>
           </div>
-
-          <div class="stat-row">
-            <span class="stat-label">RQ1 — Finding the right tool</span>
-            <span class="stat-value">High severity issue</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">RQ2 — Pricing clarity</span>
-            <span class="stat-value">Medium severity issue</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">RQ3 — Special offers &amp; promotions</span>
-            <span class="stat-value">Medium severity issue</span>
-          </div>
-
-          <div class="quote-block">
-            "I'm looking for the word Python in these boxes and I can barely see it. I'll probably give up on this page because there are no tools for Python programming here at all."
-            <cite>— Participant, Task 1 (translated from Polish)</cite>
-          </div>
-          <div class="quote-block">
-            "Why are some of these buttons blue and some white?"
-            <cite>— Participant, Task 2</cite>
-          </div>
-          <div class="quote-block">
-            "The page is readable, but there's no Buy button — at least not on the student section. I don't understand why it's not there."
-            <cite>— Participant, end-of-session debrief</cite>
-          </div>
-
-          <div class="method-block" style="margin: 1.2rem 0 0.7rem">
-            <h4>Recommendations</h4>
-          </div>
+          <div class="stat-row"><span class="stat-label">RQ1 — Finding the right tool</span><span class="stat-value">High severity issue</span></div>
+          <div class="stat-row"><span class="stat-label">RQ2 — Pricing clarity</span><span class="stat-value">Medium severity issue</span></div>
+          <div class="stat-row"><span class="stat-label">RQ3 — Special offers &amp; promotions</span><span class="stat-value">Medium severity issue</span></div>
+          <div class="quote-block">"I'm looking for the word Python in these boxes and I can barely see it. I'll probably give up on this page because there are no tools for Python programming here at all."<cite>— Participant, Task 1 (translated from Polish)</cite></div>
+          <div class="quote-block">"Why are some of these buttons blue and some white?"<cite>— Participant, Task 2</cite></div>
+          <div class="quote-block">"The page is readable, but there's no Buy button — at least not on the student section. I don't understand why it's not there."<cite>— Participant, end-of-session debrief</cite></div>
+          <div class="method-block" style="margin: 1.2rem 0 0.7rem"><h4>Recommendations</h4></div>
           <ul class="reco-list">
             <li>Add use-case or language labels to product cards (e.g. "For Python development") so users can orient by task, not by product name.</li>
             <li>Make "For Individual Use" the default landing tab, or add a prominent user-type selector at the top to reduce wrong-audience confusion.</li>
@@ -728,7 +352,6 @@
             <li>Add a clear CTA within the Students section so users know how to proceed after finding a relevant offer.</li>
             <li>Consider a "What are you trying to do?" entry-point selector that routes users to the right product without requiring JetBrains product knowledge upfront.</li>
           </ul>
-
           <div class="reflection-box" style="margin-top:1.2rem">
             <strong>Limitations</strong>
             N=1 limits generalizability — findings should be treated as hypotheses to test with a larger sample. Session ran ~11 min (planned 20) as the participant completed tasks efficiently. One moderator prompt was used in Task 2.
@@ -737,7 +360,6 @@
       </div>
     </div>
 
-    <!-- Group Trip Planner -->
     <div class="case-card in-progress">
       <div class="case-header">
         <div class="project-type">UX Research + Design · In Progress</div>
@@ -751,39 +373,24 @@
         <h3>Group Trip Planner — From Chaos to Coordination</h3>
         <div class="subtitle">UX course project · Spring 2026 · N=21 · Jagiellonian University</div>
       </div>
-
       <div class="case-body">
         <p>You know the scenario: a group chat with 12 people, 40 links to Booking.com, nobody can decide anything, and one person ends up organising the whole trip alone. Dedicated tools either don't exist or are too complex (Notion) or too simple (shared Notes). This project investigates whether — and how — a purpose-built app could change that dynamic.</p>
-
         <div class="phases-bar">
           <div class="phase done"><span class="phase-check">✓</span>Generative Research</div>
           <div class="phase current"><span class="phase-check">→</span>Synthesis + Design</div>
           <div class="phase upcoming"><span class="phase-check">○</span>Prototype (Figma)</div>
           <div class="phase upcoming"><span class="phase-check">○</span>Usability Testing</div>
         </div>
-
         <div class="insight-bar green">
           <div class="insight-label">Research approach</div>
           Two-phase mixed methods: a generative survey (Phase 1, completed) to map the problem space and identify user priorities; followed by a usability test with think-aloud protocol (Phase 2, planned for June 2026) to evaluate the Figma prototype.
         </div>
-
         <div class="insight-findings">
-          <div class="insight-finding">
-            <div class="if-num">21</div>
-            <div class="if-label">Screened participants</div>
-          </div>
-          <div class="insight-finding">
-            <div class="if-num">95%</div>
-            <div class="if-label">Ages 18–22</div>
-          </div>
-          <div class="insight-finding">
-            <div class="if-num">#1</div>
-            <div class="if-label">Chat apps as planning tool</div>
-          </div>
+          <div class="insight-finding"><div class="if-num">21</div><div class="if-label">Screened participants</div></div>
+          <div class="insight-finding"><div class="if-num">95%</div><div class="if-label">Ages 18–22</div></div>
+          <div class="insight-finding"><div class="if-num">#1</div><div class="if-label">Chat apps as planning tool</div></div>
         </div>
-
         <button class="toggle-btn green-btn" onclick="toggleCase(this)">Phase 1 findings ↓</button>
-
         <div class="expanded-content">
           <div class="method-grid">
             <div class="method-block">
@@ -807,41 +414,17 @@
               <p>Participants ranked 6 potential app features by personal priority — giving us both average preference data and individual variance to identify divergent user needs.</p>
             </div>
           </div>
-
-          <div class="method-block" style="margin-bottom:1rem">
-            <h4 class="green">Key findings from Phase 1</h4>
-          </div>
-
-          <div class="stat-row">
-            <span class="stat-label">Primary planning tool</span>
-            <span class="stat-value">Group chat (Messenger/WhatsApp) — by a wide margin</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Top friction point</span>
-            <span class="stat-value">Information chaos — links and suggestions scattered across platforms</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Second friction point</span>
-            <span class="stat-value">Group decision-making — no one can agree on destination or accommodation</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">"One person organises everything"</span>
-            <span class="stat-value">Reported as frequent or occasional by majority of respondents</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Top-ranked feature</span>
-            <span class="stat-value">Shared trip board (single place for all information)</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">Second-ranked feature</span>
-            <span class="stat-value">Group voting on options (destination, accommodation, dates)</span>
-          </div>
-
+          <div class="method-block" style="margin-bottom:1rem"><h4 class="green">Key findings from Phase 1</h4></div>
+          <div class="stat-row"><span class="stat-label">Primary planning tool</span><span class="stat-value">Group chat (Messenger/WhatsApp) — by a wide margin</span></div>
+          <div class="stat-row"><span class="stat-label">Top friction point</span><span class="stat-value">Information chaos — links and suggestions scattered across platforms</span></div>
+          <div class="stat-row"><span class="stat-label">Second friction point</span><span class="stat-value">Group decision-making — no one can agree on destination or accommodation</span></div>
+          <div class="stat-row"><span class="stat-label">"One person organises everything"</span><span class="stat-value">Reported as frequent or occasional by majority of respondents</span></div>
+          <div class="stat-row"><span class="stat-label">Top-ranked feature</span><span class="stat-value">Shared trip board (single place for all information)</span></div>
+          <div class="stat-row"><span class="stat-label">Second-ranked feature</span><span class="stat-value">Group voting on options (destination, accommodation, dates)</span></div>
           <div class="reflection-box green" style="margin-top:1.2rem">
             <strong>Design implication</strong>
             The gap between what people use (chat) and what they need (structure, shared visibility, decision tooling) is the space the app needs to fill — without replicating the complexity of Notion or the formlessness of a group thread. The shared board + voting combination topped the priority ranking, which gives us a clear starting point for the prototype.
           </div>
-
           <div class="reflection-box green" style="margin-top:0.5rem">
             <strong>Limitations &amp; next steps</strong>
             Convenience sample skews heavily toward 18–22 year olds — findings are most applicable to this segment. Phase 2 usability testing with think-aloud protocol is planned for June 2026 to validate whether the designed solution actually reduces the friction we identified here.
@@ -849,7 +432,6 @@
         </div>
       </div>
     </div>
-
 
   </section>
 
@@ -875,7 +457,8 @@
             <li>AI / LLM product evaluation</li>
             <li>Conversational UX &amp; dialogue design</li>
             <li>HCI &amp; cognitive psychology</li>
-            <li>Figma · Miro · Notion · R · Python</li>
+            <li>Statistical analysis — R · Python (pandas, scipy)</li>
+            <li>Figma · Miro · Notion</li>
           </ul>
         </div>
         <div class="skills-group">
@@ -894,78 +477,38 @@
       <div class="strength-accordion">
         <div class="strength-item">
           <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left">
-              <span class="strength-num">01</span>
-              <div>
-                <div class="strength-name">Relator</div>
-                <div class="strength-domain">Relationship Building</div>
-              </div>
-            </div>
+            <div class="strength-trigger-left"><span class="strength-num">01</span><div><div class="strength-name">Relator</div><div class="strength-domain">Relationship Building</div></div></div>
             <span class="strength-arrow">▼</span>
           </button>
-          <div class="strength-body">
-            <div class="strength-body-inner">I build deep, authentic relationships. Research participants trust me and share more than they would with others — a rare asset in UXR.</div>
-          </div>
+          <div class="strength-body"><div class="strength-body-inner">I build deep, authentic relationships. Research participants trust me and share more than they would with others — a rare asset in UXR.</div></div>
         </div>
         <div class="strength-item">
           <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left">
-              <span class="strength-num">02</span>
-              <div>
-                <div class="strength-name">Futuristic</div>
-                <div class="strength-domain">Strategic Thinking</div>
-              </div>
-            </div>
+            <div class="strength-trigger-left"><span class="strength-num">02</span><div><div class="strength-name">Futuristic</div><div class="strength-domain">Strategic Thinking</div></div></div>
             <span class="strength-arrow">▼</span>
           </button>
-          <div class="strength-body">
-            <div class="strength-body-inner">I see what could be. I notice the implications of technology long before others do — especially valuable at the AI+UXR intersection.</div>
-          </div>
+          <div class="strength-body"><div class="strength-body-inner">I see what could be. I notice the implications of technology long before others do — especially valuable at the AI+UXR intersection.</div></div>
         </div>
         <div class="strength-item">
           <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left">
-              <span class="strength-num">03</span>
-              <div>
-                <div class="strength-name">Discipline</div>
-                <div class="strength-domain">Executing</div>
-              </div>
-            </div>
+            <div class="strength-trigger-left"><span class="strength-num">03</span><div><div class="strength-name">Discipline</div><div class="strength-domain">Executing</div></div></div>
             <span class="strength-arrow">▼</span>
           </button>
-          <div class="strength-body">
-            <div class="strength-body-inner">I bring structure where others see chaos. My research has methodology refined to the last detail — rare in a field that's often improvised.</div>
-          </div>
+          <div class="strength-body"><div class="strength-body-inner">I bring structure where others see chaos. My research has methodology refined to the last detail — rare in a field that's often improvised.</div></div>
         </div>
         <div class="strength-item">
           <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left">
-              <span class="strength-num">04</span>
-              <div>
-                <div class="strength-name">Significance</div>
-                <div class="strength-domain">Influencing</div>
-              </div>
-            </div>
+            <div class="strength-trigger-left"><span class="strength-num">04</span><div><div class="strength-name">Significance</div><div class="strength-domain">Influencing</div></div></div>
             <span class="strength-arrow">▼</span>
           </button>
-          <div class="strength-body">
-            <div class="strength-body-inner">I need my work to matter. That drives my ambition and the quality of everything I produce.</div>
-          </div>
+          <div class="strength-body"><div class="strength-body-inner">I need my work to matter. That drives my ambition and the quality of everything I produce.</div></div>
         </div>
         <div class="strength-item">
           <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left">
-              <span class="strength-num">05</span>
-              <div>
-                <div class="strength-name">Activator</div>
-                <div class="strength-domain">Influencing</div>
-              </div>
-            </div>
+            <div class="strength-trigger-left"><span class="strength-num">05</span><div><div class="strength-name">Activator</div><div class="strength-domain">Influencing</div></div></div>
             <span class="strength-arrow">▼</span>
           </button>
-          <div class="strength-body">
-            <div class="strength-body-inner">I don't wait — I act. In research projects I'm the one who pushes forward when others are still planning.</div>
-          </div>
+          <div class="strength-body"><div class="strength-body-inner">I don't wait — I act. In research projects I'm the one who pushes forward when others are still planning.</div></div>
         </div>
       </div>
     </div>
@@ -1001,7 +544,7 @@
       </div>
 
       <div class="exp-item">
-        <div class="exp-date">Feb 2025 – present</div>
+        <div class="exp-date">Feb – May 2025</div>
         <div class="exp-content">
           <h4>Mentee — UXR &amp; AI Track</h4>
           <div class="org">Tech Leaders Mentoring Program</div>
