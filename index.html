@@ -2,666 +2,1243 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 27S4 19.5 4 11.5C4 7.9 6.9 5 10.5 5c1.9 0 3.7.9 4.9 2.3C16.6 5.9 18.4 5 20.3 5 23.9 5 27 7.9 27 11.5 27 19.5 16 27 16 27z' fill='%23fff'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Magdalena Homel — UX Researcher</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
+<title>Magdalena Homel · Research</title>
+<meta name="description" content="Research repository of Magdalena Homel: UX researcher focused on human and AI interaction. Usability studies, quantitative research, AI product evaluation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: #f5f2ee; --text: #1c1917; --muted: #78716c; --accent: #7c5c3e;
-    --accent-light: #ede8e3; --accent2: #4a5568; --border: #e2ddd8;
-    --card: #faf8f6; --gold: #b8976a; --gold-light: #f7f0e6;
+/* ============================================================
+   A RESEARCH REPOSITORY ABOUT ONE RESEARCHER
+   app shell · sidebar · pages · command palette
+============================================================ */
+:root{
+  --bg:#FAFBFB;
+  --side:#F1F3F3;
+  --card:#FFFFFF;
+  --soft:#F5F6F6;
+  --ink:#1A1E21;
+  --mut:#555E63;
+  --faint:#6F777D;
+  --line:#E3E6E7;
+  --acc:#0E7B53;
+  --acc-ink:#0A5C3E;
+  --acc-soft:#E6F2EC;
+  --acc-line:#CBE4D7;
+  --amber:#B26A14;
+  --c-dm:#0E7B53;   --c-dm-soft:#E6F2EC;   --c-dm-line:#CBE4D7;
+  --c-naud:#C04467; --c-naud-soft:#FBE9EF; --c-naud-line:#F2CEDA;
+  --c-fomo:#5B5BD6; --c-fomo-soft:#EEEEFB; --c-fomo-line:#D9D9F4;
+  --c-jb:#C05B21;   --c-jb-soft:#FBEFE6;   --c-jb-line:#F0D6C4;
+  --c-trip:#0B7285; --c-trip-soft:#E4F3F6; --c-trip-line:#C6E4EA;
+  --r:12px;
+  --sans:"Familjen Grotesk",system-ui,sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,monospace;
+  --sidew:264px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:1.04rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+::selection{background:var(--acc-soft);color:var(--acc-ink)}
+a{color:var(--acc);text-decoration:none}
+a:hover{color:var(--acc-ink)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:6px}
+button{font:inherit;background:none;border:none;cursor:pointer;color:inherit}
+
+.mono{font-family:var(--mono)}
+kbd{
+  font-family:var(--mono);font-size:.72rem;color:var(--mut);
+  background:var(--card);border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:6px;padding:2px 7px;
+}
+
+/* ---------- status dots ---------- */
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.dot.g{background:var(--acc)}
+.dot.a{background:var(--amber)}
+
+/* ============================ SIDEBAR ============================ */
+.side{
+  position:fixed;inset:0 auto 0 0;width:var(--sidew);z-index:40;
+  background:var(--side);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;
+  padding:26px 18px 20px;overflow-y:auto;
+}
+.side-id{padding:0 10px 22px}
+.side-id .nm{font-weight:700;font-size:1.08rem;letter-spacing:-.01em}
+.side-id .rl{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:3px;letter-spacing:.04em}
+.side-group{margin-bottom:22px}
+.side-label{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);padding:0 10px;margin-bottom:8px;display:flex;justify-content:space-between;
+}
+.side a.item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;border-radius:9px;color:var(--ink);
+  font-size:.95rem;font-weight:500;line-height:1.3;
+}
+.side a.item:hover{background:rgba(0,0,0,.045);color:var(--ink)}
+.side a.item.on{background:var(--acc-soft);color:var(--acc-ink);font-weight:600}
+.side a.item .tag{
+  margin-left:auto;font-family:var(--mono);font-size:.64rem;color:var(--faint);
+}
+.side-foot{margin-top:auto;padding:18px 10px 0;border-top:1px solid var(--line)}
+.avail{display:flex;align-items:center;gap:9px;font-size:.86rem;font-weight:600;color:var(--acc-ink)}
+.side-foot .cp{font-family:var(--mono);font-size:.68rem;color:var(--faint);margin-top:10px}
+
+/* ============================ MAIN ============================ */
+.main{margin-left:var(--sidew);min-height:100vh;display:flex;flex-direction:column}
+.topbar{
+  position:sticky;top:0;z-index:30;height:54px;
+  display:flex;align-items:center;gap:14px;padding:0 28px;
+  background:rgba(250,251,251,.82);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.crumb{font-family:var(--mono);font-size:.76rem;color:var(--faint);letter-spacing:.02em;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crumb b{color:var(--ink);font-weight:500}
+.searchbtn{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+  font-size:.85rem;color:var(--mut);
+  border:1px solid var(--line);background:var(--card);
+  border-radius:9px;padding:6px 10px;
+}
+.searchbtn:hover{border-color:#cfd4d6;color:var(--ink)}
+.menubtn{display:none}
+
+.page{display:none;animation:fadein .35s ease}
+.page.on{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.pad{padding:52px 28px 90px}
+.col{max-width:780px;margin:0 auto}
+.colw{max-width:1040px;margin:0 auto}
+
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
+h1{font-weight:700;letter-spacing:-.022em;line-height:1.12;font-size:clamp(1.9rem,4.4vw,2.85rem)}
+h2.sec{font-weight:700;letter-spacing:-.015em;font-size:1.32rem;margin:54px 0 18px}
+.lead{font-size:1.13rem;color:var(--mut);margin-top:18px;max-width:640px}
+.lead b{color:var(--ink);font-weight:600}
+p+p{margin-top:14px}
+
+/* ---------- repo facts strip ---------- */
+.facts{display:flex;gap:36px;flex-wrap:wrap;margin:34px 0 6px}
+.fact .v{font-weight:700;font-size:1.45rem;letter-spacing:-.015em}
+.fact .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:2px}
+
+/* ---------- index table (studies) ---------- */
+.tbl{border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden}
+.tbl-h{
+  display:grid;grid-template-columns:1fr 170px 60px 64px 120px;gap:16px;
+  padding:11px 20px;border-bottom:1px solid var(--line);background:var(--soft);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);
+}
+a.tbl-r{
+  display:grid;grid-template-columns:1fr 170px 60px 64px 120px;gap:16px;align-items:center;
+  padding:16px 20px;color:var(--ink);border-bottom:1px solid var(--line);
+}
+a.tbl-r:last-child{border-bottom:none}
+a.tbl-r:hover{background:#F7FAF8;color:var(--ink)}
+.tbl-r .t{font-weight:600;letter-spacing:-.005em}
+.tbl-r .s{font-size:.86rem;color:var(--mut);margin-top:1px}
+.tbl-r .m{font-family:var(--mono);font-size:.74rem;color:var(--mut)}
+.tbl-r .st{display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600}
+.tbl-r .st.done{color:var(--acc-ink)}
+.tbl-r .st.wip{color:var(--amber)}
+
+/* compact study rows on overview */
+.mini{border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden;margin-top:26px}
+a.mini-r{display:flex;gap:14px;align-items:baseline;padding:15px 20px;border-bottom:1px solid var(--line);color:var(--ink)}
+a.mini-r:last-child{border-bottom:none}
+a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
+.mini-r .n{font-family:var(--mono);font-size:.7rem;color:var(--faint);flex:none;padding-top:2px}
+.mini-r .t{font-weight:600}
+.mini-r .i{color:var(--mut);font-size:.92rem}
+.mini-r .go{margin-left:auto;color:var(--acc);font-weight:600;flex:none;font-size:.9rem}
+
+/* ---------- now block ---------- */
+.now{border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;background:var(--card);padding:20px 22px;margin-top:26px}
+.now .nl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.now ul{list-style:none}
+.now li{padding:4px 0 4px 18px;position:relative;color:var(--mut);font-size:.97rem}
+.now li::before{content:"";position:absolute;left:2px;top:.78em;width:6px;height:6px;border-radius:50%;background:var(--acc-line)}
+
+/* ============================ STUDY PAGES ============================ */
+.study{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:56px;align-items:start}
+.spec{
+  position:sticky;top:78px;
+  border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:18px;
+}
+.spec dl{display:grid;grid-template-columns:1fr;gap:13px}
+.spec dt{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.spec dd{font-size:.9rem;font-weight:500;margin-top:2px}
+.spec .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{
+  font-family:var(--mono);font-size:.66rem;color:var(--mut);
+  border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:var(--soft);
+}
+.stline{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.88rem}
+.stline.done{color:var(--acc-ink)}
+.stline.wip{color:var(--amber)}
+
+.tldr{
+  margin-top:30px;background:var(--acc-soft);border:1px solid var(--acc-line);
+  border-radius:var(--r);padding:22px 24px;
+}
+.tldr .tl{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:10px}
+.tldr p{font-size:1.08rem;line-height:1.55;color:var(--ink);font-weight:500}
+
+.body p{color:var(--mut)}
+.body p b,.body p strong{color:var(--ink);font-weight:600}
+.body ul{list-style:none;margin-top:10px}
+.body li{padding:5px 0 5px 20px;position:relative;color:var(--mut)}
+.body li::before{content:"";position:absolute;left:2px;top:.74em;width:7px;height:7px;border-radius:2px;background:var(--acc-line)}
+
+/* ledger: hairline data rows */
+.ledger{border-top:1px solid var(--line);margin-top:14px}
+.lrow{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
+.lrow .k{color:var(--mut);font-size:.96rem}
+.lrow .v{font-family:var(--mono);font-size:.78rem;text-align:right;white-space:nowrap;color:var(--ink)}
+.lrow .v .ok{color:var(--acc-ink)}
+.lrow .v .no{color:var(--faint)}
+.lrow .v .hi{color:var(--amber);font-weight:500}
+
+/* transcript cards: where participants speak */
+.ts{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:16px}
+.ts .who{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:7px}
+.ts p{color:var(--ink);font-style:italic;font-size:1rem}
+
+/* ============================ ABOUT / EXPERIENCE / CONTACT ============================ */
+.split{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px}
+.how{margin-top:8px}
+.how-it{padding:20px 0;border-bottom:1px solid var(--line)}
+.how-it:last-child{border-bottom:none}
+.how-it h3{font-size:1.06rem;font-weight:700;letter-spacing:-.008em}
+.how-it p{color:var(--mut);font-size:.97rem;margin-top:5px;max-width:620px}
+.listcols{display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
+.lk{border-top:1px solid var(--line)}
+.lk li{list-style:none;padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--mut)}
+.aside-note{font-size:.92rem;color:var(--faint);margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
+.aside-note b{color:var(--mut);font-weight:600}
+
+.xp{border-top:1px solid var(--line);margin-top:8px}
+.xp-r{display:grid;grid-template-columns:185px 1fr;gap:26px;padding:26px 0;border-bottom:1px solid var(--line)}
+.xp-d{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding-top:5px}
+.xp-t{font-weight:700;font-size:1.1rem;letter-spacing:-.008em}
+.xp-o{color:var(--acc-ink);font-weight:600;font-size:.9rem;margin:2px 0 8px}
+.xp-p{color:var(--mut);font-size:.95rem;max-width:620px}
+
+.cta-mail{
+  display:inline-block;margin-top:30px;font-weight:700;letter-spacing:-.015em;
+  font-size:clamp(1.45rem,3.6vw,2.05rem);color:var(--ink);
+  border-bottom:3px solid var(--acc);padding-bottom:2px;
+}
+.cta-mail:hover{color:var(--acc-ink)}
+.c-links{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap}
+.c-links a{font-weight:600;font-size:.97rem}
+.c-note{margin-top:34px;color:var(--faint);font-size:.92rem}
+
+/* 404 */
+.nf{text-align:left;padding-top:30px}
+.nf .code{font-family:var(--mono);font-size:.8rem;color:var(--faint);letter-spacing:.14em}
+.nf h1{margin-top:10px}
+.nf p{color:var(--mut);margin-top:14px;max-width:480px}
+.nf .acts{margin-top:26px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;
+  border:1px solid var(--line);background:var(--card);border-radius:9px;padding:9px 16px;color:var(--ink);
+}
+.btn:hover{border-color:#cfd4d6;color:var(--ink)}
+.btn.solid{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.solid:hover{color:var(--bg);background:#000}
+
+/* ============================ COMMAND PALETTE ============================ */
+.pal-back{
+  position:fixed;inset:0;z-index:90;background:rgba(20,24,26,.32);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  display:none;align-items:flex-start;justify-content:center;padding:14vh 18px 0;
+}
+.pal-back.on{display:flex}
+.pal{
+  width:min(560px,100%);background:var(--card);border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 24px 70px rgba(16,20,22,.22);overflow:hidden;
+  animation:palin .18s ease;
+}
+@keyframes palin{from{opacity:0;transform:translateY(-8px) scale(.99)}to{opacity:1;transform:none}}
+.pal input{
+  width:100%;border:none;outline:none;font:inherit;font-size:1rem;
+  padding:16px 18px;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);
+}
+.pal input::placeholder{color:var(--faint)}
+.pal-list{max-height:330px;overflow-y:auto;padding:8px}
+.pal-g{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:10px 12px 4px}
+.pal-it{
+  display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  padding:10px 12px;border-radius:9px;font-size:.95rem;font-weight:500;color:var(--ink);
+}
+.pal-it .hint{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--faint)}
+.pal-it.sel{background:var(--acc-soft);color:var(--acc-ink)}
+.pal-empty{padding:22px 14px;color:var(--faint);font-size:.92rem}
+.pal-foot{
+  display:flex;gap:16px;padding:10px 14px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.64rem;color:var(--faint);
+}
+
+/* ============================ DRAWER (mobile) ============================ */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(20,24,26,.35);display:none}
+.scrim.on{display:block}
+
+/* ============================ RESPONSIVE ============================ */
+@media (max-width:980px){
+  .study{grid-template-columns:1fr}
+  .spec{position:static;order:-1;margin-top:26px}
+  .spec dl{grid-template-columns:1fr 1fr;gap:14px 18px}
+}
+@media (max-width:880px){
+  .side{transform:translateX(-105%);transition:transform .28s ease;box-shadow:14px 0 40px rgba(16,20,22,.12);width:286px}
+  .side.open{transform:none}
+  .main{margin-left:0}
+  .menubtn{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:var(--card);flex:none;
   }
-  html { scrollbar-width: none; -ms-overflow-style: none; }
-  html::-webkit-scrollbar { display: none; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
-  #progress-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--gold); z-index: 200; transition: width 0.1s linear; }
-  nav { position: sticky; top: 0; background: rgba(245,242,238,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
-  nav .logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--text); text-decoration: none; letter-spacing: 0.01em; }
-  nav ul { list-style: none; display: flex; gap: 2rem; }
-  nav ul a { font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; font-weight: 500; }
-  nav ul a:hover { color: var(--accent); }
-  .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
-  .hero { padding: 7rem 0 5rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -40px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(184,151,106,0.1) 0%, transparent 70%); pointer-events: none; }
-  .hero .eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; font-weight: 500; display: flex; align-items: center; gap: 0.7rem; animation: fadeUp 0.7s ease both; }
-  .hero .eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold); }
-  .hero .hero-name { animation: fadeUp 0.7s 0.1s ease both; }
-  .hero h1 { animation: fadeUp 0.7s 0.2s ease both; }
-  .hero p { animation: fadeUp 0.7s 0.35s ease both; }
-  .hero-links { animation: fadeUp 0.7s 0.48s ease both; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text); margin-bottom: 0.5rem; opacity: 0.75; }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.4rem; font-weight: 400; line-height: 1.15; margin-bottom: 1.8rem; letter-spacing: -0.02em; color: var(--text); }
-  .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero p { font-size: 1rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8; font-weight: 300; }
-  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-  .btn { font-size: 0.75rem; padding: 0.7rem 1.6rem; border-radius: 2px; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; font-weight: 500; display: inline-block; }
-  .btn-primary { background: var(--accent); color: #faf8f6; }
-  .btn-primary:hover { background: #5c3d22; }
-  .btn-secondary { border: 1px solid var(--border); color: var(--muted); background: transparent; }
-  .btn-secondary:hover { border-color: var(--gold); color: var(--accent); }
-  section { padding: 4.5rem 0; border-bottom: 1px solid var(--border); }
-  section:last-child { border-bottom: none; }
-  .section-label { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; font-weight: 500; display: flex; align-items: center; gap: 0.7rem; }
-  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
-  .case-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; margin-bottom: 2rem; }
-  .case-card:hover { box-shadow: 0 8px 32px rgba(124,92,62,0.1); transform: translateY(-1px); }
-  .case-header { padding: 2.2rem 2.2rem 1.8rem; border-bottom: 1px solid var(--border); position: relative; }
-  .case-card.uxr-primary .case-header { border-top: 3px solid var(--gold); }
-  .case-card.uxr-secondary .case-header { border-top: 3px solid #a8b5c0; }
-  .case-card.design-project .case-header { border-top: 3px solid #c4a882; }
-  .case-card.ai-reflection .case-header { border-top: 3px solid #9b8ec4; }
-  .case-card.in-progress .case-header { border-top: 3px solid #8faa9b; }
-  .project-type { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.6rem; }
-  .case-card.uxr-secondary .project-type { color: #7a8fa0; }
-  .case-card.design-project .project-type { color: #9a7a5a; }
-  .case-card.ai-reflection .project-type { color: #7a6ea8; }
-  .case-card.in-progress .project-type { color: #5a7a6a; }
-  .case-tags { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .tag-pill { font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg); border: 1px solid var(--border); color: var(--muted); padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500; }
-  .tag-pill.wip { background: #eef4f1; border-color: #8faa9b; color: #5a7a6a; }
-  .case-header h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.35rem; color: var(--text); }
-  .case-header .subtitle { font-size: 0.8rem; color: var(--muted); font-weight: 300; }
-  .case-body { padding: 2rem 2.2rem; }
-  .case-body > p { color: var(--muted); font-size: 0.96rem; margin-bottom: 1.5rem; line-height: 1.85; }
-  .insight-bar { background: var(--gold-light); border-left: 2px solid var(--gold); padding: 0.9rem 1.1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text); line-height: 1.6; }
-  .insight-bar.green { background: #eef4f1; border-left-color: #8faa9b; }
-  .insight-bar .insight-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.3rem; }
-  .insight-bar.green .insight-label { color: #5a7a6a; }
-  .findings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-  .finding { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1rem; text-align: center; }
-  .finding .icon { font-size: 0.9rem; margin-bottom: 0.3rem; font-weight: 600; color: var(--accent2); }
-  .finding .label { font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; font-weight: 500; }
-  .finding .value { font-size: 0.8rem; color: var(--text); }
-  .finding.confirmed { border-color: var(--gold); }
-  .finding.rejected { border-color: #c4a882; }
-  .insight-findings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-  .insight-finding { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1rem; text-align: center; }
-  .insight-finding .if-num { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #7a9a8a; margin-bottom: 0.2rem; font-weight: 400; }
-  .insight-finding .if-label { font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-  .severity-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-  .severity-item { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 1rem; }
-  .severity-label { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem; }
-  .severity-high { color: #9b5e4a; border-top: 2px solid #c4826a; }
-  .severity-high .severity-label { color: #9b5e4a; }
-  .severity-medium { color: #7a6040; border-top: 2px solid var(--gold); }
-  .severity-medium .severity-label { color: #9a7a3a; }
-  .severity-item p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
-  .quote-block { border-left: 2px solid var(--border); padding: 0.8rem 1.2rem; margin: 1.2rem 0; font-style: italic; color: var(--muted); font-size: 0.88rem; font-family: 'Playfair Display', serif; line-height: 1.7; }
-  .quote-block cite { display: block; font-style: normal; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-top: 0.5rem; font-weight: 500; }
-  .toggle-btn { font-size: 0.75rem; color: var(--accent); background: none; border: 1px solid var(--accent); border-radius: 2px; padding: 0.5rem 1.1rem; cursor: pointer; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; font-weight: 500; font-family: 'DM Sans', sans-serif; }
-  .toggle-btn:hover { background: var(--accent); color: var(--bg); }
-  .toggle-btn.green-btn { color: #5a7a6a; border-color: #8faa9b; }
-  .toggle-btn.green-btn:hover { background: #5a7a6a; color: var(--bg); }
-  .expanded-content { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-  .expanded-content.open { display: block; }
-  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-  .method-block h4 { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600; }
-  .method-block h4.green { color: #5a7a6a; }
-  .method-block p, .method-block li { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-  .method-block ul { padding-left: 1rem; }
-  .method-block ul li { margin-bottom: 0.25rem; }
-  .stat-row { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 0.85rem 1rem; margin-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
-  .stat-row .stat-label { color: var(--muted); }
-  .stat-row .stat-value { color: var(--text); font-weight: 400; }
-  .case-card.in-progress .stat-row .stat-value { font-weight: 400; color: var(--text); }
-  .case-card.in-progress .stat-row { align-items: flex-start; gap: 1.2rem; }
-  .case-card.in-progress .stat-row .stat-label { flex-shrink: 0; max-width: 42%; }
-  .case-card.in-progress .stat-row .stat-value { text-align: right; line-height: 1.5; }
-  .reflection-box { background: var(--accent-light); border-left: 2px solid var(--gold); padding: 1rem 1.2rem; margin-top: 1.2rem; font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-  .reflection-box strong { color: var(--text); display: block; margin-bottom: 0.3rem; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
-  .reflection-box.green { background: #eef4f1; border-left-color: #8faa9b; }
-  .reco-list { list-style: none; margin-top: 1rem; counter-reset: reco; }
-  .reco-list li { padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.8rem; align-items: flex-start; line-height: 1.6; }
-  .reco-list li::before { content: counter(reco); counter-increment: reco; background: var(--gold-light); border: 1px solid var(--gold); color: var(--gold); font-size: 0.65rem; font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
-  .skills-group { margin-bottom: 1.4rem; }
-  .skills-group-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .about-grid h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; grid-column: 1 / -1; color: var(--text); line-height: 1.4; }
-  .about-grid p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; font-weight: 300; }
-  .skills-list { list-style: none; }
-  .skills-list li { padding: 0.45rem 0; border-bottom: 1px solid var(--border); color: var(--muted); display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; }
-  .skills-list li::before { content: '—'; color: var(--gold); font-size: 0.75rem; }
-  .strengths-section { margin-top: 3rem; }
-  .strength-accordion { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-  .strength-item { border-bottom: 1px solid var(--border); }
-  .strength-item:last-child { border-bottom: none; }
-  .strength-trigger { width: 100%; background: none; border: none; padding: 1.1rem 1.4rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.18s; text-align: left; }
-  .strength-trigger:hover { background: var(--accent-light); }
-  .strength-trigger.open { background: var(--gold-light); }
-  .strength-trigger-left { display: flex; align-items: center; gap: 1rem; }
-  .strength-num { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gold); width: 18px; flex-shrink: 0; }
-  .strength-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--text); }
-  .strength-domain { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-  .strength-arrow { font-size: 0.75rem; color: var(--gold); transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; }
-  .strength-trigger.open .strength-arrow { transform: rotate(180deg); }
-  .strength-body { height: 0; overflow: hidden; transition: height 0.38s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gold-light); }
-  .strength-body-inner { padding: 0.2rem 1.4rem 1.2rem 3.5rem; font-size: 0.88rem; color: var(--muted); line-height: 1.75; opacity: 0; transform: translateY(-6px); transition: opacity 0.26s ease 0.1s, transform 0.26s ease 0.1s; }
-  .strength-body.open .strength-body-inner { opacity: 1; transform: translateY(0); }
-  .brigade-note { margin-top: 2rem; border: 1px solid var(--border); border-radius: 3px; padding: 1.2rem 1.4rem; background: var(--card); display: flex; gap: 1.2rem; align-items: flex-start; }
-  .brigade-icon { font-size: 1.1rem; flex-shrink: 0; width: 32px; height: 32px; background: var(--gold-light); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .brigade-note h5 { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.25rem; color: var(--text); }
-  .brigade-note p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-  .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; margin-bottom: 2rem; }
-  .exp-date { font-size: 0.75rem; color: var(--muted); padding-top: 0.2rem; font-weight: 300; }
-  .exp-content h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.2rem; }
-  .exp-content .org { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.5rem; font-weight: 500; letter-spacing: 0.04em; }
-  .exp-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
-  .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-  footer { padding: 2rem; text-align: center; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; font-weight: 300; }
-  .phases-bar { display: flex; gap: 0; margin-bottom: 1.5rem; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
-  .phase { flex: 1; padding: 0.7rem 0.6rem; text-align: center; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; border-right: 1px solid var(--border); position: relative; }
-  .phase:last-child { border-right: none; }
-  .phase.done { background: #eef4f1; color: #5a7a6a; }
-  .phase.current { background: #deeee7; color: #3a6a5a; font-weight: 600; }
-  .phase.upcoming { background: var(--bg); color: var(--muted); }
-  .phase .phase-check { display: block; font-size: 0.7rem; margin-bottom: 0.15rem; }
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 2.2rem; }
-    .about-grid, .findings-grid, .method-grid, .severity-grid, .insight-findings { grid-template-columns: 1fr; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
-    nav ul { gap: 1rem; }
-    .phases-bar { flex-direction: column; }
-    .phase { border-right: none; border-bottom: 1px solid var(--border); }
-    .phase:last-child { border-bottom: none; }
+  .menubtn span,.menubtn span::before,.menubtn span::after{
+    display:block;width:15px;height:2px;background:var(--ink);border-radius:2px;position:relative;content:"";
   }
+  .menubtn span::before{position:absolute;top:-5px}
+  .menubtn span::after{position:absolute;top:5px}
+  .searchbtn .lbl,.searchbtn kbd{display:none}
+  .tbl-h{display:none}
+  a.tbl-r{grid-template-columns:1fr;gap:6px;padding:16px 18px}
+  .tbl-r .m,.tbl-r .yr{display:none}
+  .tbl-r .st{font-size:.78rem}
+  .pad{padding:38px 20px 80px}
+  .topbar{padding:0 16px}
+  .listcols{grid-template-columns:1fr}
+  .xp-r{grid-template-columns:1fr;gap:6px}
+  .facts{gap:26px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .page,.pal,.side{animation:none;transition:none}
+}
+
+/* ===== PROGRESS BAR ===== */
+#top-progress{
+  position:fixed;top:0;left:var(--sidew);right:0;height:2px;z-index:100;
+  background:linear-gradient(90deg,var(--acc-line),var(--acc));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .08s linear;
+  pointer-events:none;
+}
+@media(max-width:880px){#top-progress{left:0}}
+
+/* ===== MICRO-ANIMATIONS ===== */
+.side a.item{transition:background .18s ease,color .18s ease}
+a.mini-r{transition:background .18s ease,transform .2s ease}
+a.mini-r:hover{transform:translateX(3px)}
+a.tbl-r{transition:background .18s ease,transform .15s ease}
+a.tbl-r:hover{transform:translateX(2px)}
+.fact .v{transition:color .3s ease}
+.fact:hover .v{color:var(--acc-ink)}
+.page.on{animation:pagein .3s cubic-bezier(.22,.61,.2,1)}
+@keyframes pagein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.spec{transition:box-shadow .25s ease}
+.spec:hover{box-shadow:0 4px 18px rgba(22,27,30,.07)}
+.side a.item{position:relative}
+.side a.item.on::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:3px;height:60%;border-radius:0 2px 2px 0;background:var(--acc);
+}
+
+/* ===== CV ITEM ===== */
+.side a.item[href*="cv.pdf"]{color:var(--acc-ink);font-weight:600}
+.side a.item[href*="cv.pdf"]:hover{background:var(--acc-soft)}
+
+/* ===== STUDY COLOR ACCENTS ===== */
+.dot.c-dm{background:var(--c-dm)}
+.dot.c-naud{background:var(--c-naud)}
+.dot.c-fomo{background:var(--c-fomo)}
+.dot.c-jb{background:var(--c-jb)}
+.dot.c-trip{background:var(--c-trip)}
+.eyebrow.sc-dm{color:#0A5C3E}
+.eyebrow.sc-naud{color:#9C2F50}
+.eyebrow.sc-fomo{color:#4343B8}
+.eyebrow.sc-jb{color:#9A4516}
+.eyebrow.sc-trip{color:#085B6B}
+.tldr.sc-dm{background:var(--c-dm-soft);border-color:var(--c-dm-line)}
+.tldr.sc-dm .tl{color:#0A5C3E}
+.tldr.sc-naud{background:var(--c-naud-soft);border-color:var(--c-naud-line)}
+.tldr.sc-naud .tl{color:#9C2F50}
+.tldr.sc-fomo{background:var(--c-fomo-soft);border-color:var(--c-fomo-line)}
+.tldr.sc-fomo .tl{color:#4343B8}
+.tldr.sc-jb{background:var(--c-jb-soft);border-color:var(--c-jb-line)}
+.tldr.sc-jb .tl{color:#9A4516}
+.tldr.sc-trip{background:var(--c-trip-soft);border-color:var(--c-trip-line)}
+.tldr.sc-trip .tl{color:#085B6B}
 </style>
 </head>
 <body>
 
-<div id="progress-bar"></div>
+<!-- ============================ SIDEBAR ============================ -->
+<div class="scrim" id="scrim"></div>
+<aside class="side" id="side" aria-label="Repository navigation">
+  <div class="side-id">
+    <div class="nm">Magdalena Homel</div>
+    <div class="rl">ux research · human × AI</div>
+  </div>
 
-<nav>
-  <a href="#" class="logo">Magdalena Homel</a>
-  <ul>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+    <nav class="side-group" aria-label="Index">
+    <div class="side-label"><span>Index</span></div>
+    <a class="item" href="#/overview" data-nav="overview">Overview</a>
+    <a class="item" href="#/studies" data-nav="studies">Studies <span class="tag">05</span></a>
+    <a class="item" href="#/about" data-nav="about">About</a>
+    <a class="item" href="#/experience" data-nav="experience">Experience</a>
+    <a class="item" href="#/contact" data-nav="contact">Contact</a>
+    <a class="item" href="cv.pdf" download="Magdalena_Homel_CV.pdf">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="opacity:.6;flex:none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      CV <span style="font-family:var(--mono);font-size:.64rem;color:var(--faint);margin-left:auto" aria-hidden="true">↓</span></a>
+  </nav>
 
-<div class="container">
+    <nav class="side-group" aria-label="Studies">
+    <div class="side-label"><span>Studies</span><span>05</span></div>
+    <a class="item" href="#/studies/ngo-digital-maturity" data-nav="dm"><span class="dot c-dm" aria-hidden="true"></span>Digital maturity of NGOs</a>
+    <a class="item" href="#/studies/naud-strona-od-nowa" data-nav="naud"><span class="dot c-naud" aria-hidden="true"></span>NAUD · Strona od Nowa</a>
+    <a class="item" href="#/studies/fomo-sleep" data-nav="fomo"><span class="dot c-fomo" aria-hidden="true"></span>FOMO &amp; sleep</a>
+    <a class="item" href="#/studies/jetbrains-store" data-nav="jb"><span class="dot c-jb" aria-hidden="true"></span>JetBrains Store</a>
+    <a class="item" href="#/studies/trip-planner" data-nav="trip"><span class="dot c-trip" aria-hidden="true"></span>Group trip planner</a>
+  </nav>
 
-  <section class="hero">
-    <div class="eyebrow">UX Researcher · AI Products</div>
-    <div class="hero-name">Magdalena Homel</div>
-    <h1>Less guessing.<br><em>More knowing.</em></h1>
-    <p>Cognitive Science student at Jagiellonian University with hands-on experience in qualitative and quantitative research, usability testing, and AI product evaluation — with a background in building LLM-powered products from the inside.</p>
-    <div class="hero-links">
-      <a href="#work" class="btn btn-primary">View my work</a>
-      <a href="#contact" class="btn btn-secondary">Get in touch</a>
-    </div>
+  <div class="side-foot">
+    <div class="avail"><span class="dot g" aria-hidden="true"></span>Open to roles &amp; internships</div>
+    <div class="cp">Kraków · remote friendly · © <span id="y">2026</span></div>
+  </div>
+</aside>
+
+<!-- ============================ MAIN ============================ -->
+<div class="main">
+  <div id="top-progress" aria-hidden="true"></div>
+  <div class="topbar">
+    <button class="menubtn" id="menubtn" aria-label="Open navigation"><span></span></button>
+    <div class="crumb" id="crumb">overview</div>
+
+  </div>
+
+    <!-- ======== OVERVIEW ======== -->
+  <section class="page" id="p-overview" data-title="Overview">
+    <div class="pad"><div class="col">
+      <p class="eyebrow">Research repository</p>
+      <h1>Most AI products fail because teams design for how they think users will behave, not how they actually do.</h1>
+      <p class="lead">
+        I'm Magdalena, a cognitive science researcher in Kraków. I run the studies that replace
+        assumptions with evidence: <b>moderated usability sessions, quantitative surveys,
+        statistical analysis</b>, including live client work inside an NGO website-redesign
+        program. And because I spent 10+ months building LLM products as an engineer, my findings
+        arrive in a language product teams can ship.
+      </p>
+
+      <div class="facts">
+        <div class="fact"><div class="v">5</div><div class="k">Studies</div></div>
+        <div class="fact"><div class="v">2</div><div class="k">With a real client</div></div>
+        <div class="fact"><div class="v">52</div><div class="k">Participants</div></div>
+        <div class="fact"><div class="v">10+</div><div class="k">Months as AI engineer</div></div>
+      </div>
+
+      <h2 class="sec">Start with a finding</h2>
+      <div class="mini">
+        <a class="mini-r" href="#/studies/ngo-digital-maturity">
+          <span class="n"><span class="dot c-dm" style="margin-right:7px"></span>S·01</span>
+          <span><span class="t">Digital maturity of NGOs</span><br><span class="i">A pro-bono program asked what it actually changes. I wrote the plan and I'm helping run the answer.</span></span>
+          <span class="go">→</span>
+        </a>
+        <a class="mini-r" href="#/studies/naud-strona-od-nowa">
+          <span class="n"><span class="dot c-naud" style="margin-right:7px"></span>S·02</span>
+          <span><span class="t">NAUD · Strona od Nowa</span><br><span class="i">Before redesigning an NGO's website I inventoried its work, and found its old domain selling supplements.</span></span>
+          <span class="go">→</span>
+        </a>
+        <a class="mini-r" href="#/studies/fomo-sleep">
+          <span class="n"><span class="dot c-fomo" style="margin-right:7px"></span>S·03</span>
+          <span><span class="t">FOMO &amp; sleep</span><br><span class="i">Coping strategies didn't protect sleep. The fix belongs in the product.</span></span>
+          <span class="go">→</span>
+        </a>
+        <a class="mini-r" href="#/studies/jetbrains-store">
+          <span class="n"><span class="dot c-jb" style="margin-right:7px"></span>S·04</span>
+          <span><span class="t">JetBrains Store</span><br><span class="i">He searched "Python", found nothing, and gave up. The store speaks product names; people speak tasks.</span></span>
+          <span class="go">→</span>
+        </a>
+        <a class="mini-r" href="#/studies/trip-planner">
+          <span class="n"><span class="dot c-trip" style="margin-right:7px"></span>S·05</span>
+          <span><span class="t">Group trip planner</span><br><span class="i">Group chats hold the plan but can't hold a decision. Users ranked a shared board + voting first.</span></span>
+          <span class="go">→</span>
+        </a>
+      </div>
+
+      <div class="now">
+        <div class="nl">Now · June 2026</div>
+        <ul>
+          <li>Running the NGO digital-maturity study: interviews in the field, survey next</li>
+          <li>QA-testing developer builds of the new NAUD website against the UX/UI design</li>
+          <li>Preparing Phase 2 usability tests of the group trip planner prototype</li>
+          <li>Looking for a junior UXR internship at a product company working on AI</li>
+        </ul>
+      </div>
+    </div></div>
   </section>
 
-  <section id="work">
-    <div class="section-label">Selected Work</div>
+  <!-- ======== STUDIES INDEX ======== -->
+  <section class="page" id="p-studies" data-title="Studies">
+    <div class="pad"><div class="colw">
+      <p class="eyebrow">Index · 5 entries</p>
+      <h1>Studies</h1>
+      <p class="lead">Each study is written the way I'd hand it to a team: the insight first, the method right behind it for anyone who wants to check my work. Two are live client work; the rest are academic and recruitment studies, labeled as such.</p>
 
-    <div class="case-card uxr-primary">
-      <div class="case-header">
-        <div class="project-type">UX Research · Quantitative Study</div>
-        <div class="case-tags">
-          <span class="tag-pill">Survey Design</span>
-          <span class="tag-pill">Statistical Analysis</span>
-          <span class="tag-pill">Pre-post Design</span>
-          <span class="tag-pill">Product Implications</span>
-        </div>
-        <h3>FOMO, Emotion Regulation &amp; Sleep Quality</h3>
-        <div class="subtitle">Jagiellonian University · 2025 · N=30 · Pre-post intervention design</div>
+      <div class="tbl" style="margin-top:34px">
+        <div class="tbl-h"><span>Study</span><span>Method</span><span>N</span><span>Year</span><span>Status</span></div>
+        <a class="tbl-r" href="#/studies/ngo-digital-maturity">
+          <span><span class="t">Digital maturity of NGOs</span><br><span class="s">Client work · evaluation &amp; discovery for a pro-bono redesign program</span></span>
+          <span class="m">Mixed · interviews + survey</span>
+          <span class="m">10–12</span>
+          <span class="m yr">2026</span>
+          <span class="st wip"><span class="dot c-dm"></span>In progress</span>
+        </a>
+        <a class="tbl-r" href="#/studies/naud-strona-od-nowa">
+          <span><span class="t">NAUD · Strona od Nowa</span><br><span class="s">Client work · research groundwork for an NGO website redesign</span></span>
+          <span class="m">Desk research · audit · QA</span>
+          <span class="m">·</span>
+          <span class="m yr">2026</span>
+          <span class="st wip"><span class="dot c-naud"></span>In progress</span>
+        </a>
+        <a class="tbl-r" href="#/studies/fomo-sleep">
+          <span><span class="t">Does FOMO keep students awake?</span><br><span class="s">Academic study · sleep, social media and the limits of self-regulation</span></span>
+          <span class="m">Quant · pre–post</span>
+          <span class="m">30</span>
+          <span class="m yr">2025</span>
+          <span class="st done"><span class="dot c-fomo"></span>Completed</span>
+        </a>
+        <a class="tbl-r" href="#/studies/jetbrains-store">
+          <span><span class="t">Watching a non-expert shop for dev tools</span><br><span class="s">Recruitment task · moderated usability study of the JetBrains Store</span></span>
+          <span class="m">Qual · think-aloud</span>
+          <span class="m">1</span>
+          <span class="m yr">2026</span>
+          <span class="st done"><span class="dot c-jb"></span>Completed</span>
+        </a>
+        <a class="tbl-r" href="#/studies/trip-planner">
+          <span><span class="t">Why one friend plans the whole trip</span><br><span class="s">Course project · mixed-methods research for a group travel app</span></span>
+          <span class="m">Mixed methods</span>
+          <span class="m">21</span>
+          <span class="m yr">2026</span>
+          <span class="st wip"><span class="dot c-trip"></span>In progress</span>
+        </a>
       </div>
-      <div class="case-body">
-        <p>Does Fear of Missing Out affect how well young adults sleep — and can emotion regulation strategies buffer that effect? This study examined these questions through a quantitative pre-post design with a 14-day behavioral intervention, and connected findings to implications for product design.</p>
-        <div class="findings-grid">
-          <div class="finding confirmed">
-            <div class="icon">H1</div>
-            <div class="label">FOMO → Sleep</div>
-            <div class="value">Confirmed<br><small>r = 0.38, p = .039</small></div>
-          </div>
-          <div class="finding rejected">
-            <div class="icon">H2</div>
-            <div class="label">Moderation</div>
-            <div class="value">Not confirmed<br><small>p > .86</small></div>
-          </div>
-          <div class="finding confirmed">
-            <div class="icon">H3</div>
-            <div class="label">Intervention</div>
-            <div class="value">Confirmed<br><small>p &lt; .05 all</small></div>
-          </div>
-        </div>
-        <button class="toggle-btn" onclick="toggleCase(this)">Read full case study ↓</button>
-        <div class="expanded-content">
-          <div class="method-grid">
-            <div class="method-block">
-              <h4>Research Questions</h4>
-              <ul>
-                <li>Does FOMO correlate with lower sleep quality?</li>
-                <li>Do emotion regulation strategies moderate this relationship?</li>
-                <li>Can a short intervention shift these patterns?</li>
-              </ul>
-            </div>
-            <div class="method-block">
-              <h4>Measures</h4>
-              <ul>
-                <li>FOMO Scale (Przybylski et al., 2013)</li>
-                <li>Athens Insomnia Scale (AIS)</li>
-                <li>Emotion Regulation Questionnaire (ERQ)</li>
-                <li>Custom habit &amp; demographics surveys</li>
-              </ul>
-            </div>
-            <div class="method-block">
-              <h4>Participants</h4>
-              <p>30 students (18F, 12M), ages 19–26. Jagiellonian University. Inclusion: regular social media use ≥5 days/week.</p>
-            </div>
-            <div class="method-block">
-              <h4>Intervention</h4>
-              <p>14-day daily exercises: emotion journal, one authentic statement per day, and social comparison reframing.</p>
-            </div>
-          </div>
-          <div class="method-block" style="margin-bottom:1rem"><h4>Statistical Results</h4></div>
-          <div class="stat-row"><span class="stat-label">FOMO × Sleep quality (Pearson r)</span><span class="stat-value">r(28) = 0.38, p = .039 ✓</span></div>
-          <div class="stat-row"><span class="stat-label">Moderation: cognitive reappraisal</span><span class="stat-value">B = -0.006, p = .863 ✗</span></div>
-          <div class="stat-row"><span class="stat-label">Moderation: expressive suppression</span><span class="stat-value">B = 0.004, p = .868 ✗</span></div>
-          <div class="stat-row"><span class="stat-label">Sleep quality improvement (t-test)</span><span class="stat-value">t(29) = 2.37, p = .024 ✓</span></div>
-          <div class="stat-row"><span class="stat-label">Decrease in emotional suppression</span><span class="stat-value">t(29) = 6.26, p &lt; .001 ✓</span></div>
-          <div class="stat-row"><span class="stat-label">Increase in cognitive reappraisal</span><span class="stat-value">t(29) = -3.28, p = .003 ✓</span></div>
-          <div class="reflection-box">
-            <strong>Implications for product design</strong>
-            The null moderation finding suggests individual coping strategies may not buffer FOMO's impact on sleep — pointing toward a need for product-level interventions: notification design, social comparison reduction features, screen time nudges. The intervention's success within 14 days shows that short, low-effort behavioral prompts can produce measurable psychological change — a useful framing for product teams designing habit-forming or habit-breaking features.
-          </div>
-          <div class="reflection-box" style="margin-top:0.5rem">
-            <strong>Limitations</strong>
-            Small convenience sample (N=30) limits generalizability. FOMO measured post-intervention only. No control group. Self-report bias possible.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="case-card uxr-primary">
-      <div class="case-header">
-        <div class="project-type">UX Research · Usability Study</div>
-        <div class="case-tags">
-          <span class="tag-pill">Moderated Testing</span>
-          <span class="tag-pill">Think-Aloud</span>
-          <span class="tag-pill">Task Analysis</span>
-          <span class="tag-pill">Recommendations</span>
-        </div>
-        <h3>JetBrains Store — Usability Study</h3>
-        <div class="subtitle">Recruitment task · March 2026 · N=1 exploratory session · Remote via Zoom</div>
-      </div>
-      <div class="case-body">
-        <p>This was a recruitment task requiring a usability study of the JetBrains Store. The task was intentionally scoped as a single-participant exploratory session — the goal was to demonstrate research process, analytical reasoning, and ability to generate actionable recommendations from limited data, rather than produce generalizable findings.</p>
-        <p>The participant: a semi-technical user with no prior JetBrains experience. A deliberate choice — non-expert users surface navigation and clarity issues that domain-familiar users tend to overlook automatically.</p>
-        <div class="insight-bar">
-          <div class="insight-label">Core Finding</div>
-          A semi-technical user could not find a Python development tool — not because it didn't exist, but because the Store speaks in product names, not use cases. He searched for "Python" and found nothing.
-        </div>
-        <div class="severity-grid">
-          <div class="severity-item severity-high">
-            <div class="severity-label">High severity</div>
-            <p>Product-to-use-case mapping is absent. Users who think in terms of tasks ("I want Python") cannot connect to a product (PyCharm) without prior knowledge.</p>
-          </div>
-          <div class="severity-item severity-medium">
-            <div class="severity-label">Medium severity</div>
-            <p>Inconsistent Buy button styling — blue vs white — with no visible functional distinction created confusion about what each button does.</p>
-          </div>
-          <div class="severity-item severity-medium">
-            <div class="severity-label">Medium severity</div>
-            <p>The Students section has no direct CTA. After successfully finding a relevant offer, the user hit a dead end with no way to proceed.</p>
-          </div>
-        </div>
-        <button class="toggle-btn" onclick="toggleCase(this)">Read full case study ↓</button>
-        <div class="expanded-content">
-          <div class="method-grid">
-            <div class="method-block">
-              <h4>Research Questions</h4>
-              <ul>
-                <li>How easily can users find the tools they need?</li>
-                <li>Is pricing information clear and discoverable?</li>
-                <li>Are special offers visible and understandable?</li>
-              </ul>
-            </div>
-            <div class="method-block">
-              <h4>Participant</h4>
-              <p>Male, 50s. Semi-technical background, familiar with online purchasing and developer tools broadly, no prior JetBrains experience. Session conducted in Polish to minimise language barriers and support natural think-aloud verbalization.</p>
-            </div>
-            <div class="method-block">
-              <h4>Tasks</h4>
-              <ul>
-                <li>Find a tool for learning Python and determine its price</li>
-                <li>Find student discounts or free options for young people</li>
-                <li>Find any promotions or special offers on the Store</li>
-              </ul>
-            </div>
-            <div class="method-block">
-              <h4>Method note</h4>
-              <p>Single-participant exploratory scope per task requirements. Findings serve as hypotheses for future larger-scale testing, not as statistically significant conclusions.</p>
-            </div>
-          </div>
-          <div class="stat-row"><span class="stat-label">RQ1 — Finding the right tool</span><span class="stat-value">High severity issue</span></div>
-          <div class="stat-row"><span class="stat-label">RQ2 — Pricing clarity</span><span class="stat-value">Medium severity issue</span></div>
-          <div class="stat-row"><span class="stat-label">RQ3 — Special offers &amp; promotions</span><span class="stat-value">Medium severity issue</span></div>
-          <div class="quote-block">"I'm looking for the word Python in these boxes and I can barely see it. I'll probably give up on this page because there are no tools for Python programming here at all."<cite>— Participant, Task 1 (translated from Polish)</cite></div>
-          <div class="quote-block">"Why are some of these buttons blue and some white?"<cite>— Participant, Task 2</cite></div>
-          <div class="quote-block">"The page is readable, but there's no Buy button — at least not on the student section. I don't understand why it's not there."<cite>— Participant, end-of-session debrief</cite></div>
-          <div class="method-block" style="margin: 1.2rem 0 0.7rem"><h4>Recommendations</h4></div>
-          <ul class="reco-list">
-            <li>Add use-case or language labels to product cards (e.g. "For Python development") so users can orient by task, not by product name.</li>
-            <li>Make "For Individual Use" the default landing tab, or add a prominent user-type selector at the top to reduce wrong-audience confusion.</li>
-            <li>Standardise Buy button styling. If two colors serve different functions, add a visible label or tooltip explaining the distinction.</li>
-            <li>Add a clear CTA within the Students section so users know how to proceed after finding a relevant offer.</li>
-            <li>Consider a "What are you trying to do?" entry-point selector that routes users to the right product without requiring JetBrains product knowledge upfront.</li>
-          </ul>
-          <div class="reflection-box" style="margin-top:1.2rem">
-            <strong>Limitations</strong>
-            N=1 limits generalizability — findings should be treated as hypotheses to test with a larger sample. Session ran ~11 min (planned 20) as the participant completed tasks efficiently. One moderator prompt was used in Task 2.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="case-card in-progress">
-      <div class="case-header">
-        <div class="project-type">UX Research + Design · In Progress</div>
-        <div class="case-tags">
-          <span class="tag-pill">Qualitative Research</span>
-          <span class="tag-pill">Survey Design</span>
-          <span class="tag-pill">Participatory Design</span>
-          <span class="tag-pill">Figma</span>
-          <span class="tag-pill wip">⟳ In Progress</span>
-        </div>
-        <h3>Group Trip Planner — From Chaos to Coordination</h3>
-        <div class="subtitle">UX course project · Spring 2026 · N=21 · Jagiellonian University</div>
-      </div>
-      <div class="case-body">
-        <p>You know the scenario: a group chat with 12 people, 40 links to Booking.com, nobody can decide anything, and one person ends up organising the whole trip alone. Dedicated tools either don't exist or are too complex (Notion) or too simple (shared Notes). This project investigates whether — and how — a purpose-built app could change that dynamic.</p>
-        <div class="phases-bar">
-          <div class="phase done"><span class="phase-check">✓</span>Generative Research</div>
-          <div class="phase current"><span class="phase-check">→</span>Synthesis + Design</div>
-          <div class="phase upcoming"><span class="phase-check">○</span>Prototype (Figma)</div>
-          <div class="phase upcoming"><span class="phase-check">○</span>Usability Testing</div>
-        </div>
-        <div class="insight-bar green">
-          <div class="insight-label">Research approach</div>
-          Two-phase mixed methods: a generative survey (Phase 1, completed) to map the problem space and identify user priorities; followed by a usability test with think-aloud protocol (Phase 2, planned for June 2026) to evaluate the Figma prototype.
-        </div>
-        <div class="insight-findings">
-          <div class="insight-finding"><div class="if-num">21</div><div class="if-label">Screened participants</div></div>
-          <div class="insight-finding"><div class="if-num">95%</div><div class="if-label">Ages 18–22</div></div>
-          <div class="insight-finding"><div class="if-num">#1</div><div class="if-label">Chat apps as planning tool</div></div>
-        </div>
-        <button class="toggle-btn green-btn" onclick="toggleCase(this)">Phase 1 findings ↓</button>
-        <div class="expanded-content">
-          <div class="method-grid">
-            <div class="method-block">
-              <h4 class="green">Study Design</h4>
-              <p>Online survey (Google Forms) distributed via social networks. Screening criteria: actively participated in planning a group trip in the past 2 years, not a professional event organiser. N=24 collected, 21 qualified after screening.</p>
-            </div>
-            <div class="method-block">
-              <h4 class="green">Research Questions</h4>
-              <ul>
-                <li>How do users currently plan group trips, and with what tools?</li>
-                <li>What are the most common friction points?</li>
-                <li>Which features would users prioritise in a dedicated app?</li>
-              </ul>
-            </div>
-            <div class="method-block">
-              <h4 class="green">Sample profile</h4>
-              <p>21 participants, predominantly 18–22 years old (95%), typical group size 3–5 people (86%). Role split: 38% main organiser, 48% active co-planner, 14% joins ready plans.</p>
-            </div>
-            <div class="method-block">
-              <h4 class="green">Participatory design element</h4>
-              <p>Participants ranked 6 potential app features by personal priority — giving us both average preference data and individual variance to identify divergent user needs.</p>
-            </div>
-          </div>
-          <div class="method-block" style="margin-bottom:1rem"><h4 class="green">Key findings from Phase 1</h4></div>
-          <div class="stat-row"><span class="stat-label">Primary planning tool</span><span class="stat-value">Group chat (Messenger/WhatsApp) — by a wide margin</span></div>
-          <div class="stat-row"><span class="stat-label">Top friction point</span><span class="stat-value">Information chaos — links and suggestions scattered across platforms</span></div>
-          <div class="stat-row"><span class="stat-label">Second friction point</span><span class="stat-value">Group decision-making — no one can agree on destination or accommodation</span></div>
-          <div class="stat-row"><span class="stat-label">"One person organises everything"</span><span class="stat-value">Reported as frequent or occasional by majority of respondents</span></div>
-          <div class="stat-row"><span class="stat-label">Top-ranked feature</span><span class="stat-value">Shared trip board (single place for all information)</span></div>
-          <div class="stat-row"><span class="stat-label">Second-ranked feature</span><span class="stat-value">Group voting on options (destination, accommodation, dates)</span></div>
-          <div class="reflection-box green" style="margin-top:1.2rem">
-            <strong>Design implication</strong>
-            The gap between what people use (chat) and what they need (structure, shared visibility, decision tooling) is the space the app needs to fill — without replicating the complexity of Notion or the formlessness of a group thread. The shared board + voting combination topped the priority ranking, which gives us a clear starting point for the prototype.
-          </div>
-          <div class="reflection-box green" style="margin-top:0.5rem">
-            <strong>Limitations &amp; next steps</strong>
-            Convenience sample skews heavily toward 18–22 year olds — findings are most applicable to this segment. Phase 2 usability testing with think-aloud protocol is planned for June 2026 to validate whether the designed solution actually reduces the friction we identified here.
-          </div>
-        </div>
-      </div>
-    </div>
-
+    </div></div>
   </section>
 
-  <section id="about">
-    <div class="section-label">About</div>
-    <div class="about-grid">
-      <h2>Research at the intersection of human cognition and AI.</h2>
-      <div>
-        <p>I'm a 2nd-year Cognitive Science student at Jagiellonian University in Kraków with a background that spans both sides of the AI product equation — I've built LLM-powered products as a Junior AI Engineer, and I'm now focused on understanding how people actually experience them.</p>
-        <br>
-        <p>That dual perspective shapes how I research. I know what questions to ask a product team because I've been inside one. And I know what "the model does X" actually means when it gets translated into interface decisions.</p>
-        <br>
-        <p>I'm drawn to the human side of AI: the gap between what a product can do and what a user believes it can do. I'm particularly interested in research roles at the intersection of human-AI interaction and product development — where understanding how people relate to AI systems is the core of the work.</p>
+  <!-- ======== STUDY 01 · NGO DIGITAL MATURITY ======== -->
+  <section class="page" id="p-dm" data-title="Digital maturity of NGOs">
+    <div class="pad"><div class="colw">
+      <div class="study">
+        <div>
+          <p class="eyebrow sc-dm">S·01 · Client work · in progress</p>
+          <h1>What does a pro-bono program actually change?</h1>
+          <div class="tldr sc-dm">
+            <div class="tl">TL;DR</div>
+            <p>Strona od Nowa rebuilds NGO websites for free. The foundation behind it wanted
+            evidence for two board-level decisions: did past editions actually change anything
+            for the organisations, and which NGOs should the next edition take? I wrote the
+            research plan and I'm now helping run the study.</p>
+          </div>
+          <div class="body">
+            <h2 class="sec">My role</h2>
+            <p>Author of the research plan (revised after team review), designer of the evaluative
+            interview scenario, research ops (consent, recruitment materials, recording
+            logistics), and interviewer. I work in a four-person volunteer research team within
+            Fundacja Kompetencji Cyfrowych: a project lead, a co-interviewer, a benchmark analyst
+            plus the program coordinator who holds the contact base.</p>
+            <h2 class="sec">Why two tracks, not one</h2>
+            <p>The board's two questions need different research. So the plan deliberately splits
+            into an <b>evaluation track</b> (what changed for organisations from previous
+            editions: the website, their digital practice, their confidence) and a <b>discovery
+            track</b> (what barriers and needs current NGOs have, and what makes collaboration
+            with the program effective). One instrument trying to answer both would do neither well.</p>
+            <h2 class="sec">Method, mapped to the questions</h2>
+            <div class="ledger">
+              <div class="lrow"><span class="k">Desk research · mapping table of past-edition organisations</span><span class="v"><span class="ok">done</span></span></div>
+              <div class="lrow"><span class="k">Research plan · questions, methods, sampling, timeline</span><span class="v"><span class="ok">done · revised after review</span></span></div>
+              <div class="lrow"><span class="k">Interview scenario A · previous editions, evaluative</span><span class="v"><span class="ok">done</span></span></div>
+              <div class="lrow"><span class="k">Interview scenario B · current edition</span><span class="v">in progress</span></div>
+              <div class="lrow"><span class="k">Qualitative interviews · 10–12 people, both groups</span><span class="v"><span class="hi">in the field</span></span></div>
+              <div class="lrow"><span class="k">Quantitative survey · wider reach across editions</span><span class="v"><span class="no">planned</span></span></div>
+              <div class="lrow"><span class="k">TechSoup Digital Assessment benchmark</span><span class="v">teammate · in progress</span></div>
+              <div class="lrow"><span class="k">Report with recommendations for the board</span><span class="v"><span class="no">planned</span></span></div>
+            </div>
+            <h2 class="sec">Decisions I'd defend in a review</h2>
+            <p><b>10–12 interviewees instead of ~20 organisations.</b> The first draft aimed wider;
+            after a scoping discussion with the project lead we cut the sample and split it evenly
+            between previous and current editions. Depth with two comparable groups beats breadth
+            a volunteer team can't process well.</p>
+            <p><b>An external maturity framework instead of a homemade scale.</b> Benchmarking
+            against TechSoup's Digital Assessment Tool anchors "digital maturity" in something the
+            board can compare against the wider sector.</p>
+            <p><b>Scenario A is built backwards from the report.</b> Four blocks: life before the
+            project, the collaboration itself, what changed after, and a short discovery module on
+            current barriers. Ten core questions plus optional probes.</p>
+            <h2 class="sec">Research ops, the unglamorous part</h2>
+            <p>I prepared the GDPR consent and information form (a legal review caught real issues:
+            an internal contradiction in the anonymisation clause, inconsistent recording consent,
+            missing data-controller details), drafted two versions of the recruitment invitation
+            (relational and formal), and solved the logistics that decide whether fieldwork happens
+            at all, like the fact that our meeting tool couldn't record sessions.</p>
+            <h2 class="sec">Status &amp; what I'm watching</h2>
+            <p>Fieldwork is running; findings aren't reportable yet, so this case is about the
+            thinking. The risks I'm tracking: self-selection, recall bias in the evaluation track,
+            and recruiting busy NGO staff without a real incentive budget.</p>
+          </div>
+        </div>
+        <aside class="spec" aria-label="Study details">
+          <dl>
+            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-dm"></span>In progress · fieldwork</dd></div>
+            <div><dt>Type</dt><dd>Client work · volunteer research team</dd></div>
+            <div><dt>Client</dt><dd>Fundacja Kompetencji Cyfrowych · board</dd></div>
+            <div><dt>My role</dt><dd>Research plan, interview design, research ops, interviewing</dd></div>
+            <div><dt>Method</dt><dd>Desk research → interviews (10–12) → survey + TechSoup benchmark</dd></div>
+            <div><dt>Year</dt><dd>2026</dd></div>
+            <div><dt>Skills</dt><dd class="chips"><span class="chip">research planning</span><span class="chip">interview scenarios</span><span class="chip">research ops</span><span class="chip">GDPR consent</span><span class="chip">benchmarking</span></dd></div>
+          </dl>
+        </aside>
       </div>
-      <div>
-        <div class="skills-group">
-          <div class="skills-group-label">Research</div>
-          <ul class="skills-list">
-            <li>Qualitative research — interviews, observation</li>
-            <li>Quantitative research — surveys, statistics</li>
-            <li>Usability testing &amp; moderation</li>
-            <li>Research synthesis &amp; reporting</li>
-            <li>AI / LLM product evaluation</li>
-            <li>Conversational UX &amp; dialogue design</li>
-            <li>HCI &amp; cognitive psychology</li>
-            <li>Statistical analysis — R · Python (pandas, scipy)</li>
-            <li>Figma · Miro · Notion</li>
-          </ul>
-        </div>
-        <div class="skills-group">
-          <div class="skills-group-label">Technical background</div>
-          <ul class="skills-list">
-            <li>RAG pipelines · LangChain · pgvector</li>
-            <li>FastAPI · Django · Azure DevOps</li>
-            <li>Jira · Git · CI/CD</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="strengths-section">
-      <div class="section-label" style="margin-bottom:1.2rem">Strengths · Gallup CliftonStrengths Top 5</div>
-      <div class="strength-accordion">
-        <div class="strength-item">
-          <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left"><span class="strength-num">01</span><div><div class="strength-name">Relator</div><div class="strength-domain">Relationship Building</div></div></div>
-            <span class="strength-arrow">▼</span>
-          </button>
-          <div class="strength-body"><div class="strength-body-inner">I build deep, authentic relationships. Research participants trust me and share more than they would with others — a rare asset in UXR.</div></div>
-        </div>
-        <div class="strength-item">
-          <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left"><span class="strength-num">02</span><div><div class="strength-name">Futuristic</div><div class="strength-domain">Strategic Thinking</div></div></div>
-            <span class="strength-arrow">▼</span>
-          </button>
-          <div class="strength-body"><div class="strength-body-inner">I see what could be. I notice the implications of technology long before others do — especially valuable at the AI+UXR intersection.</div></div>
-        </div>
-        <div class="strength-item">
-          <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left"><span class="strength-num">03</span><div><div class="strength-name">Discipline</div><div class="strength-domain">Executing</div></div></div>
-            <span class="strength-arrow">▼</span>
-          </button>
-          <div class="strength-body"><div class="strength-body-inner">I bring structure where others see chaos. My research has methodology refined to the last detail — rare in a field that's often improvised.</div></div>
-        </div>
-        <div class="strength-item">
-          <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left"><span class="strength-num">04</span><div><div class="strength-name">Significance</div><div class="strength-domain">Influencing</div></div></div>
-            <span class="strength-arrow">▼</span>
-          </button>
-          <div class="strength-body"><div class="strength-body-inner">I need my work to matter. That drives my ambition and the quality of everything I produce.</div></div>
-        </div>
-        <div class="strength-item">
-          <button class="strength-trigger" onclick="toggleStrength(this)">
-            <div class="strength-trigger-left"><span class="strength-num">05</span><div><div class="strength-name">Activator</div><div class="strength-domain">Influencing</div></div></div>
-            <span class="strength-arrow">▼</span>
-          </button>
-          <div class="strength-body"><div class="strength-body-inner">I don't wait — I act. In research projects I'm the one who pushes forward when others are still planning.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:3rem">
-      <div class="section-label">Experience</div>
-
-      <div class="exp-item">
-        <div class="exp-date">Feb 2025 – present</div>
-        <div class="exp-content">
-          <h4>UX Researcher</h4>
-          <div class="org">Fundacja Kompetencji Cyfrowych · Remote</div>
-          <p>Volunteering across two parallel tracks: a pro-bono redesign initiative ("Strona od Nowa") working directly with NGO clients on UX audits, usability testing, and research synthesis in cross-functional sprints; and a UXR-focused research project investigating the digital maturity of NGOs served by the programme, including research design, stakeholder mapping, and benchmark analysis (TechSoup Digital Assessment Tool).</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Nov 2025 – Apr 2026</div>
-        <div class="exp-content">
-          <h4>Junior AI Engineer</h4>
-          <div class="org">Omniviser · Remote</div>
-          <p>Built and iterated on LLM-powered product features end-to-end: designed conversational flows, structured RAG pipeline outputs for user-facing delivery, and contributed to AI agent orchestration logic. Participated in QA of AI-driven features across cross-functional teams.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Aug – Nov 2025</div>
-        <div class="exp-content">
-          <h4>AI Engineering Intern</h4>
-          <div class="org">Omniviser · Remote</div>
-          <p>Supported development of scalable AI orchestration workflows in a production environment. Contributed to CI/CD processes and system documentation. Promoted to Junior AI Engineer after four months.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Feb – May 2025</div>
-        <div class="exp-content">
-          <h4>Mentee — UXR &amp; AI Track</h4>
-          <div class="org">Tech Leaders Mentoring Program</div>
-          <p>Structured mentorship developing UX research and AI product skills, with a focus on career direction and cross-functional thinking.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Sep – Dec 2025</div>
-        <div class="exp-content">
-          <h4>Mentee</h4>
-          <div class="org">Google Student Mentoring Program · Warsaw</div>
-          <p>Selected as one of 20 participants nationwide. 1:1 mentoring focused on career development, cross-functional collaboration, and decision-making in tech environments.</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:3rem">
-      <div class="section-label">Education</div>
-      <div class="exp-item">
-        <div class="exp-date">Oct 2024 – Jun 2027</div>
-        <div class="exp-content">
-          <h4>BSc Cognitive Science</h4>
-          <div class="org">Jagiellonian University · Kraków</div>
-          <p>Interdisciplinary programme combining cognitive psychology, HCI, statistics, neuroscience and AI. Relevant coursework: research methods, human-computer interaction, statistical analysis, perception, bilingualism &amp; cognition.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-date">Aug 2025</div>
-        <div class="exp-content">
-          <h4>Certificate in Advanced English — C1</h4>
-          <div class="org">Cambridge English · CEFR Level C1 · Score 198/210</div>
-        </div>
-      </div>
-    </div>
+    </div></div>
   </section>
 
-  <section id="brigade" style="padding:3rem 0">
-    <div class="section-label">Beyond Work</div>
-    <div class="brigade-note">
-      <div class="brigade-icon" style="font-family:'Playfair Display',serif; font-size:1rem; color:var(--gold); letter-spacing:0;">✦</div>
-      <div>
-        <h5>Volunteer Fire Brigade · Jun 2022 – present</h5>
-        <p>Active member of a volunteer fire brigade. Competed in municipal and county firefighting competitions, earning 1st place in the women's team category twice. Rapid decision-making under pressure, precise teamwork in high-stakes environments, and a strong sense of personal responsibility — skills that translate directly into research: staying calm when a session goes sideways, knowing when to act and when to wait.</p>
+  <!-- ======== STUDY 02 · NAUD ======== -->
+  <section class="page" id="p-naud" data-title="NAUD · Strona od Nowa">
+    <div class="pad"><div class="colw">
+      <div class="study">
+        <div>
+          <p class="eyebrow sc-naud">S·02 · Client work · in progress</p>
+          <h1>The groundwork an NGO website redesign stands on</h1>
+          <div class="tldr sc-naud">
+            <div class="tl">TL;DR</div>
+            <p>NAUD is a foundation running science education for children, mid-rebrand, getting a
+            new website through the Strona od Nowa program. Before anyone designed anything, I
+            built the evidence base: a two-version inventory, verification of the entire web
+            presence, an SEO audit, and now QA of developer builds. The verification surfaced the
+            kind of finding audits exist for: the foundation's former domain had lapsed and now
+            serves a commercial supplements site.</p>
+          </div>
+          <div class="body">
+            <h2 class="sec">My role</h2>
+            <p>Researcher on the inventory and audit track, inside a cross-functional volunteer
+            team (program coordinators, UX/UI designers, developers). The client is real, the
+            deadlines are real, and the foundation's board reads what I write.</p>
+            <h2 class="sec">Why an inventory before a sitemap</h2>
+            <p>A website's structure should come from what the organisation actually does, not
+            from a template. NAUD's years of activity lived scattered across old pages, partner
+            sites and press mentions. The first deliverable was a research report inventorying
+            all of it, structured so the team could derive the new information architecture
+            from evidence.</p>
+            <p><b>The two-version design was deliberate.</b> Version 1 mapped everything desk
+            research could reach and made the gaps explicit; the gap list became a focused
+            questionnaire for the foundation. Version 2 folded in their answers into a
+            publication-ready document.</p>
+            <h2 class="sec">Verify everything, not a sample</h2>
+            <p>I checked every source behind the report: 33 links across the foundation's web
+            presence. Sampling would have missed the headline:</p>
+            <figure class="ts">
+              <div class="who">Field note · link verification</div>
+              <p>The foundation's former domain, naud.edu.pl, had lapsed and now serves a
+              commercial supplements site. Anyone following old materials lands on someone else's shop.</p>
+            </figure>
+            <div class="ledger" aria-label="Verification results">
+              <div class="lrow"><span class="k">Sources verified across the foundation's web presence</span><span class="v">33</span></div>
+              <div class="lrow"><span class="k">Dead listing-site links found</span><span class="v"><span class="hi">4</span></span></div>
+              <div class="lrow"><span class="k">Lost domain serving third-party commercial content</span><span class="v"><span class="hi">1 · former primary domain</span></span></div>
+              <div class="lrow"><span class="k">Facts corrected or attributed properly</span><span class="v">several · v2</span></div>
+            </div>
+            <h2 class="sec">QA as the last research task</h2>
+            <p>I now test each developer build against the UX/UI design (colors, typography,
+            spacing) before designer handoff. It's the same skill as research: noticing the gap
+            between intention and reality, and documenting it so someone can act.</p>
+            <h2 class="sec">Status &amp; honest framing</h2>
+            <p>The site is in development, so outcome metrics don't exist yet. If I ran it again,
+            I'd open the client question list in week one instead of after v1.</p>
+          </div>
+        </div>
+        <aside class="spec" aria-label="Study details">
+          <dl>
+            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-naud"></span>In progress · build QA</dd></div>
+            <div><dt>Type</dt><dd>Client work · pro-bono program</dd></div>
+            <div><dt>Client</dt><dd>NAUD · children's science education foundation, Warsaw</dd></div>
+            <div><dt>My role</dt><dd>Inventory research, link &amp; domain verification, SEO audit, design QA</dd></div>
+            <div><dt>Team</dt><dd>Cross-functional volunteers: coordination, UX/UI, dev</dd></div>
+            <div><dt>Year</dt><dd>2026</dd></div>
+            <div><dt>Skills</dt><dd class="chips"><span class="chip">desk research</span><span class="chip">content inventory</span><span class="chip">SEO audit</span><span class="chip">design QA</span><span class="chip">client communication</span></dd></div>
+          </dl>
+        </aside>
       </div>
-    </div>
+    </div></div>
   </section>
 
-  <section id="contact">
-    <div class="section-label">Contact</div>
-    <h2 style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:400; margin-bottom:1rem">Let's talk.</h2>
-    <p style="color:var(--muted); max-width:480px; font-size:0.92rem; line-height:1.8; font-weight:300">I'm open to internship opportunities, research collaborations, and conversations about UX research and AI. Feel free to reach out.</p>
-    <div class="contact-row">
-      <a href="mailto:magda@homel.pl" class="btn btn-primary">magda@homel.pl</a>
-      <a href="https://www.linkedin.com/in/mhomel/" class="btn btn-secondary">LinkedIn</a>
-      <a href="https://github.com/mhomel" class="btn btn-secondary">GitHub</a>
-    </div>
+<!-- ======== STUDY 01 · FOMO ======== -->
+  <section class="page" id="p-fomo" data-title="FOMO & sleep">
+    <div class="pad"><div class="colw">
+      <div class="study">
+        <div>
+          <p class="eyebrow sc-fomo">S·03 · Quantitative · academic study</p>
+          <h1>Does FOMO keep students awake?</h1>
+
+          <div class="tldr sc-fomo">
+            <div class="tl">TL;DR</div>
+            <p>Yes: higher FOMO predicted worse sleep. And the coping strategies people already use
+            didn't soften the effect, which moves the responsibility upstream. If a product fuels
+            FOMO, the product has to carry the fix.</p>
+          </div>
+
+          <div class="body">
+            <h2 class="sec">Why this study</h2>
+            <p>Young adults check social feeds last thing at night and first thing in the morning.
+            The folk theory says people who regulate their emotions well are protected from the
+            costs. I wanted to test the folk theory with instruments, not vibes: does Fear of
+            Missing Out actually correlate with sleep quality, and does emotion regulation
+            moderate the damage?</p>
+
+            <h2 class="sec">Setup</h2>
+            <p>Pre–post design with a 14-day behavioral intervention. 30 students (18F / 12M, ages
+            19–26) at Jagiellonian University, all using social media at least five days a week.</p>
+            <ul>
+              <li>FOMO Scale (Przybylski et al., 2013)</li>
+              <li>Athens Insomnia Scale for sleep quality</li>
+              <li>Emotion Regulation Questionnaire (reappraisal + suppression)</li>
+              <li>Daily exercises: emotion journal, one authentic statement a day, social-comparison reframing</li>
+            </ul>
+
+            <h2 class="sec">What the data said</h2>
+            <div class="ledger">
+              <div class="lrow"><span class="k">H1 · FOMO correlates with worse sleep</span><span class="v"><span class="ok">confirmed</span> · r(28) = 0.38, p = .039</span></div>
+              <div class="lrow"><span class="k">H2 · cognitive reappraisal moderates it</span><span class="v"><span class="no">rejected</span> · B = −0.006, p = .863</span></div>
+              <div class="lrow"><span class="k">H2 · expressive suppression moderates it</span><span class="v"><span class="no">rejected</span> · B = 0.004, p = .868</span></div>
+              <div class="lrow"><span class="k">H3 · sleep quality after intervention</span><span class="v"><span class="ok">improved</span> · t(29) = 2.37, p = .024</span></div>
+              <div class="lrow"><span class="k">H3 · emotional suppression after intervention</span><span class="v"><span class="ok">decreased</span> · t(29) = 6.26, p &lt; .001</span></div>
+              <div class="lrow"><span class="k">H3 · cognitive reappraisal after intervention</span><span class="v"><span class="ok">increased</span> · t(29) = −3.28, p = .003</span></div>
+            </div>
+
+            <h2 class="sec">What it means for product teams</h2>
+            <p>The null moderation result is the interesting one. If individual coping doesn't
+            buffer FOMO's cost to sleep, then waiting for users to self-regulate is not a
+            strategy. The levers are product-level: <b>notification design, fewer social
+            comparison surfaces, screen-time nudges</b>.</p>
+            <p>The second lesson is about effect size of small things: fourteen days of low-effort
+            daily prompts produced measurable psychological change. Useful calibration for any
+            team designing habit-forming, or habit-breaking, features.</p>
+
+            <h2 class="sec">Honest limitations</h2>
+            <p>Small convenience sample (N = 30). FOMO measured post-intervention only. No control
+            group, and self-report bias is possible. I'd treat the correlations as a reason to run
+            the bigger study, not as the final word.</p>
+          </div>
+        </div>
+
+        <aside class="spec" aria-label="Study details">
+          <dl>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot c-fomo"></span>Completed</dd></div>
+            <div><dt>Type</dt><dd>Academic study · solo</dd></div>
+            <div><dt>My role</dt><dd>End to end: design, measures, analysis, report</dd></div>
+            <div><dt>Method</dt><dd>Quantitative, pre–post intervention</dd></div>
+            <div><dt>Sample</dt><dd>N = 30 students, 19–26</dd></div>
+            <div><dt>Year</dt><dd>2025</dd></div>
+            <div><dt>Context</dt><dd>Jagiellonian University</dd></div>
+            <div><dt>Skills</dt><dd class="chips"><span class="chip">survey design</span><span class="chip">statistics</span><span class="chip">intervention</span><span class="chip">reporting</span></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div></div>
   </section>
 
+  <!-- ======== STUDY 02 · JETBRAINS ======== -->
+  <section class="page" id="p-jb" data-title="JetBrains Store">
+    <div class="pad"><div class="colw">
+      <div class="study">
+        <div>
+          <p class="eyebrow sc-jb">S·04 · Usability · recruitment task</p>
+          <h1>Watching a non-expert shop for developer tools</h1>
+
+          <div class="tldr sc-jb">
+            <div class="tl">TL;DR</div>
+            <p>He typed "Python" into the JetBrains Store and concluded it had nothing for him.
+            The catalog speaks in product names while people arrive with tasks. One exploratory
+            session, three severity-rated issues, five recommendations a team could ship.</p>
+          </div>
+
+          <div class="body">
+            <h2 class="sec">The brief</h2>
+            <p>A recruitment task: run a usability study of the JetBrains Store, scoped to a single
+            participant. The point of an N = 1 study isn't generalizable findings. It's
+            demonstrating <b>process, analytical reasoning, and the ability to turn limited data
+            into decisions</b>.</p>
+            <p>I deliberately recruited a semi-technical participant (male, 50s, comfortable with
+            online shopping, zero JetBrains experience). Non-experts surface the clarity problems
+            that domain-familiar users step over without noticing. The session ran remotely over
+            Zoom, in Polish, so the think-aloud could be natural rather than performed.</p>
+
+            <h2 class="sec">What happened</h2>
+            <p>Three tasks: find a tool for learning Python and its price, find student offers,
+            find any promotions. Task one collapsed immediately, and that collapse was the study's
+            most valuable moment.</p>
+
+            <div class="ts">
+              <div class="who">Participant · task 1 · translated from Polish</div>
+              <p>"I'm looking for the word Python in these boxes and I can barely see it. I'll
+              probably give up on this page, there are no tools for Python programming here at all."</p>
+            </div>
+            <div class="ts">
+              <div class="who">Participant · task 2</div>
+              <p>"Why are some of these buttons blue and some white?"</p>
+            </div>
+            <div class="ts">
+              <div class="who">Participant · debrief</div>
+              <p>"The page is readable, but there's no Buy button. At least not on the student
+              section. I don't understand why it's not there."</p>
+            </div>
+
+            <h2 class="sec">Issues by severity</h2>
+            <div class="ledger">
+              <div class="lrow"><span class="k">No mapping from use case to product. "I want Python" can't reach "PyCharm" without prior knowledge.</span><span class="v"><span class="hi">high</span></span></div>
+              <div class="lrow"><span class="k">Two Buy button styles (blue / white) with no visible functional difference.</span><span class="v">medium</span></div>
+              <div class="lrow"><span class="k">Students section ends in a dead end: a relevant offer with no CTA.</span><span class="v">medium</span></div>
+            </div>
+
+            <h2 class="sec">Recommendations</h2>
+            <ul>
+              <li>Label product cards by use case and language ("For Python development"), so people can orient by task</li>
+              <li>Default to the "For Individual Use" tab, or add a prominent user-type selector up top</li>
+              <li>Standardise Buy button styling, or make the functional difference visible</li>
+              <li>Give the Students section a clear CTA so a found offer leads somewhere</li>
+              <li>Consider a "What are you trying to do?" entry point that routes visitors without requiring product knowledge</li>
+            </ul>
+
+            <h2 class="sec">Honest limitations</h2>
+            <p>N = 1 by design: every finding is a hypothesis for a larger test, not a conclusion.
+            The session ran about 11 minutes of a planned 20 because the participant moved fast,
+            and one moderator prompt was used in task 2.</p>
+          </div>
+        </div>
+
+        <aside class="spec" aria-label="Study details">
+          <dl>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot c-jb"></span>Completed</dd></div>
+            <div><dt>Type</dt><dd>Recruitment task · solo</dd></div>
+            <div><dt>My role</dt><dd>Study design, moderation, analysis, recommendations</dd></div>
+            <div><dt>Method</dt><dd>Moderated usability, think-aloud</dd></div>
+            <div><dt>Sample</dt><dd>N = 1, exploratory</dd></div>
+            <div><dt>Date</dt><dd>March 2026</dd></div>
+            <div><dt>Setting</dt><dd>Remote · Zoom · session in Polish</dd></div>
+            <div><dt>Skills</dt><dd class="chips"><span class="chip">moderation</span><span class="chip">task design</span><span class="chip">severity rating</span><span class="chip">recommendations</span></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ======== STUDY 03 · TRIP PLANNER ======== -->
+  <section class="page" id="p-trip" data-title="Group trip planner">
+    <div class="pad"><div class="colw">
+      <div class="study">
+        <div>
+          <p class="eyebrow sc-trip">S·05 · Mixed methods · course project</p>
+          <h1>Why one friend always plans the whole trip</h1>
+
+          <div class="tldr sc-trip">
+            <div class="tl">TL;DR · Phase 1</div>
+            <p>21 young travelers plan trips in group chats and quietly hate it. Information
+            scatters, decisions stall, one person carries everything. Asked to rank six possible
+            features, they put a shared trip board and group voting on top, so that pair is what
+            the prototype is built around.</p>
+          </div>
+
+          <div class="body">
+            <h2 class="sec">The problem</h2>
+            <p>A group chat with twelve people and forty Booking.com links is not a planning tool,
+            it's an archive of indecision. The tools that could help are either too heavy (Notion)
+            or too shapeless (shared notes). This course project asks whether a purpose-built app
+            can change the dynamic, and what it must do first.</p>
+
+            <h2 class="sec">Phase 1 · generative survey</h2>
+            <p>Online survey distributed through social networks. Screening: actively helped plan
+            a group trip in the last two years, not a professional organiser. 24 responses
+            collected, <b>21 qualified</b>. Mostly ages 18–22 (95%), typical group of 3–5 people
+            (86%). Roles split into main organisers (38%), active co-planners (48%) and people who
+            join ready plans (14%).</p>
+            <p>The participatory part: respondents ranked six candidate features by personal
+            priority, which gives both an average preference order and the individual variance
+            that flags divergent needs.</p>
+
+            <h2 class="sec">What Phase 1 found</h2>
+            <div class="ledger">
+              <div class="lrow"><span class="k">Primary planning tool</span><span class="v">group chat, by a wide margin</span></div>
+              <div class="lrow"><span class="k">Top friction</span><span class="v">information scattered across platforms</span></div>
+              <div class="lrow"><span class="k">Second friction</span><span class="v">group decisions stall</span></div>
+              <div class="lrow"><span class="k">"One person organises everything"</span><span class="v">frequent or occasional for most</span></div>
+              <div class="lrow"><span class="k">Top-ranked feature</span><span class="v"><span class="ok">shared trip board</span></span></div>
+              <div class="lrow"><span class="k">Second-ranked feature</span><span class="v"><span class="ok">group voting on options</span></span></div>
+            </div>
+            <p style="margin-top:16px">The design space sits exactly in the gap between what people
+            use (chat) and what they need (structure, shared visibility, decision tooling),
+            without rebuilding Notion's complexity or the chat's formlessness.</p>
+
+            <h2 class="sec">Where it goes next</h2>
+            <div class="ledger">
+              <div class="lrow"><span class="k">Generative research · survey</span><span class="v"><span class="ok">done</span></span></div>
+              <div class="lrow"><span class="k">Synthesis + design</span><span class="v"><span class="hi">in progress</span></span></div>
+              <div class="lrow"><span class="k">Prototype · Figma</span><span class="v"><span class="no">planned</span></span></div>
+              <div class="lrow"><span class="k">Usability testing · think-aloud</span><span class="v"><span class="no">June 2026</span></span></div>
+            </div>
+
+            <h2 class="sec">Honest limitations</h2>
+            <p>Convenience sample, heavily 18–22, so findings travel best within that segment.
+            Phase 2 exists to check whether the design actually reduces the friction Phase 1
+            identified, rather than assuming it will.</p>
+          </div>
+        </div>
+
+        <aside class="spec" aria-label="Study details">
+          <dl>
+            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-trip"></span>In progress</dd></div>
+            <div><dt>Type</dt><dd>Course project</dd></div>
+            <div><dt>My role</dt><dd>Research &amp; design, end to end</dd></div>
+            <div><dt>Method</dt><dd>Mixed methods: survey → usability test</dd></div>
+            <div><dt>Sample</dt><dd>N = 21 (of 24 screened)</dd></div>
+            <div><dt>Year</dt><dd>Spring 2026</dd></div>
+            <div><dt>Context</dt><dd>UX course · Jagiellonian University</dd></div>
+            <div><dt>Skills</dt><dd class="chips"><span class="chip">survey design</span><span class="chip">participatory</span><span class="chip">figma</span><span class="chip">synthesis</span></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ======== ABOUT ======== -->
+  <section class="page" id="p-about" data-title="About">
+    <div class="pad"><div class="col">
+      <p class="eyebrow">About</p>
+      <h1>A researcher who has shipped.</h1>
+      <div class="body" style="margin-top:22px">
+        <p>I'm a second-year cognitive science student at Jagiellonian University in Kraków. For nearly a year I worked as an AI engineer, building LLM features that real users touched: RAG
+        pipelines, conversational flows, agent orchestration. Then I moved to the question that
+        interested me more: <b>what those users were actually doing on the other side of the
+        screen</b>.</p>
+        <p>That history changes how I research. I can read a pipeline diagram and an interview
+        transcript in the same afternoon, I know which findings an engineering team can act on by
+        Monday, and I don't need "the model does X" translated for me.</p>
+        <p>The theme I keep returning to is the distance between what an AI product does and what
+        its users believe it does. That distance is where trust breaks, and where the most
+        interesting research questions live.</p>
+        <p>Outside of research: I'm writing a psychological-legal thriller, six years in, 70k words, still not done. I listen to a lot of jazz. I go on long forest walks and keep a handwritten journal. I'm drawn to questions about cults and closed communities, which is probably why AI sycophancy and how people project emotions onto systems became my research niche.</p>
+      </div>
+
+      <h2 class="sec">How I work</h2>
+      <div class="how">
+        <div class="how-it">
+          <h3>Insight first, evidence attached</h3>
+          <p>Reports open with the decision-relevant finding. The methodology sits right behind it,
+          for anyone who wants to check my work. Nobody has to read forty slides to learn one thing.</p>
+        </div>
+        <div class="how-it">
+          <h3>Structure is kindness</h3>
+          <p>Screeners, protocols and analysis plans exist before the first session starts. In a
+          field that often improvises, a clean method is what makes the surprising result believable.</p>
+        </div>
+        <div class="how-it">
+          <h3>Participants talk to a person, not a protocol</h3>
+          <p>Sessions feel like conversations. That's deliberate, and it's where the honest quotes
+          come from.</p>
+        </div>
+      </div>
+
+      <h2 class="sec">Toolkit</h2>
+      <div class="listcols">
+        <ul class="lk">
+          <li>Qualitative: interviews, observation, moderation</li>
+          <li>Quantitative: surveys, statistics in R &amp; Python</li>
+          <li>Usability testing · think-aloud</li>
+          <li>Research ops: consent, recruitment, logistics</li>
+          <li>Synthesis &amp; research reporting</li>
+          <li>AI / LLM product evaluation</li>
+          <li>Conversational UX</li>
+        </ul>
+        <ul class="lk">
+          <li>HCI &amp; cognitive psychology foundations</li>
+          <li>Figma · Miro · Notion</li>
+          <li>RAG pipelines · LangChain · pgvector</li>
+          <li>FastAPI · Django · Azure DevOps</li>
+          <li>Jira · Git · CI/CD</li>
+          <li>English C1 (Cambridge, 198/210) · Polish native</li>
+        </ul>
+      </div>
+
+      <p class="aside-note">
+        <b>Gallup CliftonStrengths, if you're into that:</b> Relator, Futuristic, Discipline,
+        Significance, Activator.<br><br>
+        <b>Off-screen:</b> volunteer fire brigade since 2022, twice 1st place in women's team
+        firefighting competitions. It taught me to stay calm when a session goes sideways, and to
+        know when to act and when to wait.<br><br>
+        <b>Colophon:</b> one hand-built HTML file. Familjen Grotesk &amp; Spline Sans Mono. No
+        trackers, no cookies. Updated June 2026.
+      </p>
+    </div></div>
+  </section>
+
+  <!-- ======== EXPERIENCE ======== -->
+  <section class="page" id="p-experience" data-title="Experience">
+    <div class="pad"><div class="col">
+      <p class="eyebrow">Experience</p>
+      <h1>Where the evidence comes from.</h1>
+
+      <div class="xp" style="margin-top:30px">
+        <div class="xp-r">
+          <div class="xp-d">Feb 2025 · now</div>
+          <div>
+            <div class="xp-t">UX Researcher</div>
+            <div class="xp-o">Fundacja Kompetencji Cyfrowych · remote</div>
+            <p class="xp-p">Two volunteer tracks. In "Strona od Nowa" I work directly with NGO
+            clients: UX audits, usability testing, synthesis inside cross-functional sprints. In
+            parallel I run a research project on the digital maturity of the NGOs the programme
+            serves: research design, stakeholder mapping, benchmarking against the TechSoup
+            Digital Assessment Tool.</p>
+          </div>
+        </div>
+        <div class="xp-r">
+          <div class="xp-d">Nov 2025 · Apr 2026</div>
+          <div>
+            <div class="xp-t">Junior AI Engineer</div>
+            <div class="xp-o">Omniviser · remote</div>
+            <p class="xp-p">Built LLM-powered features end-to-end: conversational flows, RAG
+            pipeline outputs structured for user-facing delivery, agent orchestration logic. QA
+            of AI features across cross-functional teams.</p>
+          </div>
+        </div>
+        <div class="xp-r">
+          <div class="xp-d">Aug · Nov 2025</div>
+          <div>
+            <div class="xp-t">AI Engineering Intern</div>
+            <div class="xp-o">Omniviser · remote</div>
+            <p class="xp-p">Scalable AI orchestration workflows in production, CI/CD, system
+            documentation. Promoted to Junior AI Engineer after four months.</p>
+          </div>
+        </div>
+        <div class="xp-r">
+          <div class="xp-d">Sep · Dec 2025</div>
+          <div>
+            <div class="xp-t">Mentee, Google Student Mentoring Program</div>
+            <div class="xp-o">Warsaw</div>
+            <p class="xp-p">One of 20 selected nationwide. 1:1 mentoring on career development,
+            cross-functional collaboration and decision-making in tech.</p>
+          </div>
+        </div>
+        <div class="xp-r">
+          <div class="xp-d">Feb · May 2025</div>
+          <div>
+            <div class="xp-t">Mentee, UXR &amp; AI track</div>
+            <div class="xp-o">Tech Leaders Mentoring Program</div>
+            <p class="xp-p">Structured mentorship in UX research and AI product skills, focused on
+            career direction and cross-functional thinking.</p>
+          </div>
+        </div>
+        <div class="xp-r">
+          <div class="xp-d">2024 · 2027</div>
+          <div>
+            <div class="xp-t">BSc Cognitive Science</div>
+            <div class="xp-o">Jagiellonian University · Kraków</div>
+            <p class="xp-p">Cognitive psychology, HCI, statistics, neuroscience, AI. Coursework in
+            research methods, human-computer interaction, statistical analysis, perception,
+            bilingualism &amp; cognition.</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section class="page" id="p-contact" data-title="Contact">
+    <div class="pad"><div class="col">
+      <p class="eyebrow">Contact</p>
+      <h1>Say hello.</h1>
+      <p class="lead">Internships, research collaborations, or a conversation about how people
+      relate to AI systems. I read everything.</p>
+      <div><a class="cta-mail" href="mailto:magda@homel.pl">magda@homel.pl</a></div>
+      <div class="c-links">
+        <a href="https://www.linkedin.com/in/mhomel/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/mhomel" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <p class="c-note"><span class="dot g" style="margin-right:7px"></span>Open to junior UXR roles &amp; internships · Kraków (CET) or remote · usually replies within two days</p>
+    </div></div>
+  </section>
+
+  <!-- ======== 404 ======== -->
+  <section class="page" id="p-nf" data-title="Not found">
+    <div class="pad"><div class="col nf">
+      <div class="code">ERR · 404</div>
+      <h1>This page isn't in the repository.</h1>
+      <p>An empty state should still tell you where to go. Try the search, or start from the
+      overview.</p>
+      <div class="acts">
+        <a class="btn solid" href="#/overview">Open overview</a>
+        <button class="btn" data-openpal>Search <kbd style="margin-left:2px">⌘K</kbd></button>
+      </div>
+    </div></div>
+  </section>
 </div>
 
-<footer>© 2026 Magdalena Homel · Kraków, Poland</footer>
+<!-- ============================ COMMAND PALETTE ============================ -->
+<div class="pal-back" id="palback" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="pal">
+    <input id="palin" type="text" placeholder="Jump to a study, a page, or say hi…" autocomplete="off">
+    <div class="pal-list" id="pallist"></div>
+    <div class="pal-foot"><span>↑↓ navigate</span><span>↵ open</span><span>esc close</span></div>
+  </div>
+</div>
 
 <script>
-  const bar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const total = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (scrolled / total * 100) + '%';
+(function(){
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  /* ---------------- router ---------------- */
+  var routes = {
+    'overview':   {page:'p-overview',  crumb:'<b>overview</b>',                         nav:'overview'},
+    'studies':    {page:'p-studies',   crumb:'<b>studies</b>',                          nav:'studies'},
+    'studies/ngo-digital-maturity': {page:'p-dm',   crumb:'studies / <b>ngo-digital-maturity</b>', nav:'dm'},
+    'studies/naud-strona-od-nowa':  {page:'p-naud', crumb:'studies / <b>naud-strona-od-nowa</b>',  nav:'naud'},
+    'studies/fomo-sleep':      {page:'p-fomo', crumb:'studies / <b>fomo-sleep</b>',     nav:'fomo'},
+    'studies/jetbrains-store': {page:'p-jb',   crumb:'studies / <b>jetbrains-store</b>',nav:'jb'},
+    'studies/trip-planner':    {page:'p-trip', crumb:'studies / <b>trip-planner</b>',   nav:'trip'},
+    'about':      {page:'p-about',     crumb:'<b>about</b>',                            nav:'about'},
+    'experience': {page:'p-experience',crumb:'<b>experience</b>',                       nav:'experience'},
+    'contact':    {page:'p-contact',   crumb:'<b>contact</b>',                          nav:'contact'}
+  };
+
+  function route(){
+    var h = location.hash.replace(/^#\/?/,'').replace(/\/$/,'');
+    if (h === '') h = 'overview';
+    var r = routes[h] || {page:'p-nf', crumb:'<b>404</b>', nav:null};
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('on'); });
+    var el = document.getElementById(r.page);
+    el.classList.add('on');
+    document.getElementById('crumb').innerHTML = r.crumb;
+    document.querySelectorAll('.side a.item').forEach(function(a){
+      a.classList.toggle('on', a.dataset.nav === r.nav);
+      if (a.dataset.nav === r.nav) a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+    document.title = 'Magdalena Homel';
+    window.scrollTo(0,0);
+    closeSide();
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------------- mobile drawer ---------------- */
+  var side = document.getElementById('side'), scrim = document.getElementById('scrim');
+  function openSide(){ side.classList.add('open'); scrim.classList.add('on'); }
+  function closeSide(){ side.classList.remove('open'); scrim.classList.remove('on'); }
+  var _mb = document.getElementById('menubtn');
+  if(_mb) _mb.addEventListener('click', openSide);
+  scrim.addEventListener('click', closeSide);
+
+  /* ---------------- command palette ---------------- */
+  var items = [
+    {g:'Studies', t:'Digital maturity of NGOs · client work', go:'#/studies/ngo-digital-maturity'},
+    {g:'Studies', t:'NAUD · Strona od Nowa · client work',    go:'#/studies/naud-strona-od-nowa'},
+    {g:'Studies', t:'FOMO & sleep · quantitative',        go:'#/studies/fomo-sleep'},
+    {g:'Studies', t:'JetBrains Store · usability',        go:'#/studies/jetbrains-store'},
+    {g:'Studies', t:'Group trip planner · mixed methods', go:'#/studies/trip-planner'},
+    {g:'Pages',   t:'Overview',   go:'#/overview'},
+    {g:'Pages',   t:'All studies',go:'#/studies'},
+    {g:'Pages',   t:'About',      go:'#/about'},
+    {g:'Pages',   t:'Experience', go:'#/experience'},
+    {g:'Pages',   t:'Contact',    go:'#/contact'},
+    {g:'Reach out', t:'Email magda@homel.pl', go:'mailto:magda@homel.pl', ext:true},
+    {g:'Reach out', t:'LinkedIn',  go:'https://www.linkedin.com/in/mhomel/', ext:true},
+    {g:'Reach out', t:'GitHub',    go:'https://github.com/mhomel', ext:true}
+  ];
+  var back = document.getElementById('palback'),
+      input = document.getElementById('palin'),
+      list = document.getElementById('pallist'),
+      open = false, filtered = items.slice(), sel = 0, lastFocus = null;
+
+  function render(){
+    list.innerHTML = '';
+    if (!filtered.length){
+      list.innerHTML = '<div class="pal-empty">Nothing matches. An empty state should still help: try "study", "about" or "email".</div>';
+      return;
+    }
+    var g = null;
+    filtered.forEach(function(it, i){
+      if (it.g !== g){ g = it.g;
+        var gl = document.createElement('div'); gl.className='pal-g'; gl.textContent=g; list.appendChild(gl);
+      }
+      var b = document.createElement('button');
+      b.className = 'pal-it' + (i===sel ? ' sel' : '');
+      b.innerHTML = '<span>'+it.t+'</span>' + (it.ext ? '<span class="hint">↗</span>' : '<span class="hint">↵</span>');
+      b.addEventListener('click', function(){ go(it); });
+      list.appendChild(b);
+    });
+  }
+  function filter(){
+    var q = input.value.trim().toLowerCase();
+    filtered = items.filter(function(it){ return (it.g+' '+it.t).toLowerCase().indexOf(q) > -1; });
+    sel = 0; render();
+  }
+  function go(it){
+    closePal();
+    if (it.ext){ window.open(it.go, it.go.indexOf('mailto:')===0 ? '_self' : '_blank'); }
+    else { location.hash = it.go.slice(1); }
+  }
+  function openPal(){
+    open = true; lastFocus = document.activeElement;
+    back.classList.add('on'); input.value=''; filter(); input.focus();
+  }
+  function closePal(){
+    open = false; back.classList.remove('on');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  var _palbtn = document.getElementById('palbtn');
+  if(_palbtn) _palbtn.addEventListener('click', openPal);
+  document.querySelectorAll('[data-openpal]').forEach(function(b){ b.addEventListener('click', openPal); });
+  back.addEventListener('click', function(e){ if (e.target === back) closePal(); });
+  input.addEventListener('input', filter);
+
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if ((k === 'k' || k === 'K') && (e.metaKey || e.ctrlKey)){ e.preventDefault(); open ? closePal() : openPal(); return; }
+    if (k === '/' && !open && !/input|textarea/i.test(document.activeElement.tagName)){ e.preventDefault(); openPal(); return; }
+    if (!open) return;
+    if (k === 'Escape'){ closePal(); }
+    else if (k === 'ArrowDown'){ e.preventDefault(); sel = Math.min(sel+1, filtered.length-1); render(); }
+    else if (k === 'ArrowUp'){ e.preventDefault(); sel = Math.max(sel-1, 0); render(); }
+    else if (k === 'Enter'){ e.preventDefault(); if (filtered[sel]) go(filtered[sel]); }
   });
 
-  function toggleCase(btn) {
-    const expanded = btn.nextElementSibling;
-    const isOpen = expanded.classList.contains('open');
-    expanded.classList.toggle('open');
-    if (!btn.dataset.originalLabel) btn.dataset.originalLabel = btn.textContent;
-    btn.textContent = isOpen ? btn.dataset.originalLabel : 'Close ↑';
+  /* show ctrl on non-mac */
+  if (navigator.platform.indexOf('Mac') === -1){
+    document.querySelectorAll('kbd').forEach(function(kb){
+      if (kb.textContent.trim() === '⌘K') kb.textContent = 'Ctrl K';
+    });
   }
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
+  /* progress bar */
+  var _pb = document.getElementById('top-progress');
+  if(_pb) window.addEventListener('scroll', function(){
+    var pct = window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    _pb.style.transform = 'scaleX(' + Math.min(1, Math.max(0, pct)) + ')';
+  }, {passive:true});
 
-  (function(){
-    function openBody(body) {
-      body.style.height = body.scrollHeight + 'px';
-      body.classList.add('open');
-    }
-    function closeBody(body) {
-      body.style.height = body.scrollHeight + 'px';
-      requestAnimationFrame(() => {
-        body.style.height = '0px';
-        body.classList.remove('open');
-      });
-    }
-    function toggleStrength(btn) {
-      const body = btn.nextElementSibling;
-      const isOpen = body.classList.contains('open');
-      document.querySelectorAll('.strength-body').forEach(b => {
-        if (b !== body && b.classList.contains('open')) closeBody(b);
-      });
-      document.querySelectorAll('.strength-trigger.open').forEach(b => {
-        if (b !== btn) b.classList.remove('open');
-      });
-      if (isOpen) {
-        closeBody(body);
-        btn.classList.remove('open');
-      } else {
-        openBody(body);
-        btn.classList.add('open');
-      }
-    }
-    window.toggleStrength = toggleStrength;
-  })();
+  route();
+})();
 </script>
+
 </body>
 </html>
