@@ -11,10 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   A RESEARCH REPOSITORY ABOUT ONE RESEARCHER
-   app shell · sidebar · pages · command palette
-============================================================ */
 :root{
   --bg:#FAFBFB;
   --side:#F1F3F3;
@@ -60,12 +56,11 @@ kbd{
   border-radius:6px;padding:2px 7px;
 }
 
-/* ---------- status dots ---------- */
 .dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
-.dot.g{background:var(--acc)}
+.dot.g{background:var(--acc);animation:availPulse 2.6s ease-in-out infinite}
+@keyframes availPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(14,123,83,.35)}50%{opacity:.55;box-shadow:0 0 0 4px rgba(14,123,83,0)}}
 .dot.a{background:var(--amber)}
 
-/* ============================ SIDEBAR ============================ */
 .side{
   position:fixed;inset:0 auto 0 0;width:var(--sidew);z-index:65;
   background:var(--side);border-right:1px solid var(--line);
@@ -94,7 +89,6 @@ kbd{
 .avail{display:flex;align-items:center;gap:9px;font-size:.86rem;font-weight:600;color:var(--acc-ink)}
 .side-foot .cp{font-family:var(--mono);font-size:.68rem;color:var(--faint);margin-top:10px}
 
-/* ============================ MAIN ============================ */
 .main{margin-left:var(--sidew);min-height:100vh;display:flex;flex-direction:column}
 .topbar{
   position:sticky;top:0;z-index:30;height:54px;
@@ -129,12 +123,10 @@ h2.sec{font-weight:700;letter-spacing:-.015em;font-size:1.32rem;margin:54px 0 18
 .lead b{color:var(--ink);font-weight:600}
 p+p{margin-top:14px}
 
-/* ---------- repo facts strip ---------- */
 .facts{display:flex;gap:36px;flex-wrap:wrap;margin:34px 0 6px}
 .fact .v{font-weight:700;font-size:1.45rem;letter-spacing:-.015em}
 .fact .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:2px}
 
-/* ---------- index table (studies) ---------- */
 .tbl{border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden}
 .tbl-h{
   display:grid;grid-template-columns:1fr 170px 60px 64px 120px;gap:16px;
@@ -154,7 +146,6 @@ a.tbl-r:hover{background:#F7FAF8;color:var(--ink)}
 .tbl-r .st.done{color:var(--acc-ink)}
 .tbl-r .st.wip{color:var(--amber)}
 
-/* compact study rows on overview */
 .mini{border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden;margin-top:26px}
 a.mini-r{display:flex;gap:14px;align-items:baseline;padding:15px 20px;border-bottom:1px solid var(--line);color:var(--ink)}
 a.mini-r:last-child{border-bottom:none}
@@ -164,14 +155,12 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 .mini-r .i{color:var(--mut);font-size:.92rem}
 .mini-r .go{margin-left:auto;color:var(--acc);font-weight:600;flex:none;font-size:.9rem}
 
-/* ---------- now block ---------- */
 .now{border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;background:var(--card);padding:20px 22px;margin-top:26px}
 .now .nl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
 .now ul{list-style:none}
 .now li{padding:4px 0 4px 18px;position:relative;color:var(--mut);font-size:.97rem}
 .now li::before{content:"";position:absolute;left:2px;top:.78em;width:6px;height:6px;border-radius:50%;background:var(--acc-line)}
 
-/* ============================ STUDY PAGES ============================ */
 .study{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:56px;align-items:start}
 .spec{
   position:sticky;top:78px;
@@ -202,7 +191,6 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 .body li{padding:5px 0 5px 20px;position:relative;color:var(--mut)}
 .body li::before{content:"";position:absolute;left:2px;top:.74em;width:7px;height:7px;border-radius:2px;background:var(--acc-line)}
 
-/* ledger: hairline data rows */
 .ledger{border-top:1px solid var(--line);margin-top:14px}
 .lrow{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
 .lrow .k{color:var(--mut);font-size:.96rem}
@@ -211,12 +199,10 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 .lrow .v .no{color:var(--faint)}
 .lrow .v .hi{color:var(--amber);font-weight:500}
 
-/* transcript cards: where participants speak */
 .ts{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:16px}
 .ts .who{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:7px}
 .ts p{color:var(--ink);font-style:italic;font-size:1rem}
 
-/* ============================ ABOUT / EXPERIENCE / CONTACT ============================ */
 .split{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px}
 .how{margin-top:8px}
 .how-it{padding:20px 0;border-bottom:1px solid var(--line)}
@@ -246,7 +232,6 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 .c-links a{font-weight:600;font-size:.97rem}
 .c-note{margin-top:34px;color:var(--faint);font-size:.92rem}
 
-/* 404 */
 .nf{text-align:left;padding-top:30px}
 .nf .code{font-family:var(--mono);font-size:.8rem;color:var(--faint);letter-spacing:.14em}
 .nf h1{margin-top:10px}
@@ -260,7 +245,6 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 .btn.solid{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .btn.solid:hover{color:var(--bg);background:#000}
 
-/* ============================ COMMAND PALETTE ============================ */
 .pal-back{
   position:fixed;inset:0;z-index:90;background:rgba(20,24,26,.32);
   -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
@@ -292,11 +276,9 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
   font-family:var(--mono);font-size:.64rem;color:var(--faint);
 }
 
-/* ============================ DRAWER (mobile) ============================ */
 .scrim{position:fixed;inset:0;z-index:60;background:rgba(20,24,26,.35);display:none}
 .scrim.on{display:block}
 
-/* ============================ RESPONSIVE ============================ */
 @media (max-width:980px){
   .study{grid-template-columns:1fr}
   .spec{position:static;order:-1;margin-top:26px}
@@ -330,9 +312,9 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .page,.pal,.side{animation:none;transition:none}
+  .dot.g{animation:none}
 }
 
-/* ===== PROGRESS BAR ===== */
 #top-progress{
   position:fixed;top:0;left:var(--sidew);right:0;height:2px;z-index:100;
   background:linear-gradient(90deg,var(--acc-line),var(--acc));
@@ -342,7 +324,6 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 }
 @media(max-width:880px){#top-progress{left:0}}
 
-/* ===== MICRO-ANIMATIONS ===== */
 .side a.item{transition:background .18s ease,color .18s ease}
 a.mini-r{transition:background .18s ease,transform .2s ease}
 a.mini-r:hover{transform:translateX(3px)}
@@ -360,11 +341,9 @@ a.tbl-r:hover{transform:translateX(2px)}
   width:3px;height:60%;border-radius:0 2px 2px 0;background:var(--acc);
 }
 
-/* ===== CV ITEM ===== */
 .side a.item[href*="cv.pdf"]{color:var(--acc-ink);font-weight:600}
 .side a.item[href*="cv.pdf"]:hover{background:var(--acc-soft)}
 
-/* ===== STUDY COLOR ACCENTS ===== */
 .dot.c-dm{background:var(--c-dm)}
 .dot.c-naud{background:var(--c-naud)}
 .dot.c-fomo{background:var(--c-fomo)}
@@ -386,7 +365,6 @@ a.tbl-r:hover{transform:translateX(2px)}
 .tldr.sc-trip{background:var(--c-trip-soft);border-color:var(--c-trip-line)}
 .tldr.sc-trip .tl{color:#085B6B}
 
-/* ===== FORCE LIGHT ALWAYS (no dark-mode / auto-invert) ===== */
 html{background:#FAFBFB}
 @media (prefers-color-scheme:dark){
   :root{
@@ -396,7 +374,6 @@ html{background:#FAFBFB}
   body{background:#FAFBFB;color:#1A1E21}
 }
 
-/* ===== HIDE NATIVE SCROLLBAR (keep scrolling) ===== */
 html{scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar{width:0;height:0;display:none}
 body{scrollbar-width:none}
@@ -406,7 +383,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 </head>
 <body>
 
-<!-- ============================ SIDEBAR ============================ -->
 <div class="scrim" id="scrim"></div>
 <aside class="side" id="side" aria-label="Repository navigation">
   <div class="side-id">
@@ -441,7 +417,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
   </div>
 </aside>
 
-<!-- ============================ MAIN ============================ -->
 <div class="main">
   <div id="top-progress" aria-hidden="true"></div>
   <div class="topbar">
@@ -450,7 +425,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 
   </div>
 
-    <!-- ======== OVERVIEW ======== -->
   <section class="page" id="p-overview" data-title="Overview">
     <div class="pad"><div class="col">
       <p class="eyebrow">Research repository</p>
@@ -500,18 +474,17 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       </div>
 
       <div class="now">
-        <div class="nl">Now · June 2026</div>
+        <div class="nl">Now · July 2026</div>
         <ul>
-          <li>Running the NGO digital-maturity study: interviews in the field, survey next</li>
+          <li>NGO digital-maturity study: interviews running on both tracks (previous &amp; current editions)</li>
           <li>QA-testing developer builds of the new NAUD website against the UX/UI design</li>
-          <li>Preparing Phase 2 usability tests of the group trip planner prototype</li>
-          <li>Looking for a junior UXR internship at a product company working on AI</li>
+          <li>Group trip planner: prototype and test plan ready, starting usability testing interviews</li>
+          <li>Looking for a junior UXR role or internship at a product company working on AI</li>
         </ul>
       </div>
     </div></div>
   </section>
 
-  <!-- ======== STUDIES INDEX ======== -->
   <section class="page" id="p-studies" data-title="Studies">
     <div class="pad"><div class="colw">
       <p class="eyebrow">Index · 5 entries</p>
@@ -559,7 +532,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div></div>
   </section>
 
-  <!-- ======== STUDY 01 · NGO DIGITAL MATURITY ======== -->
   <section class="page" id="p-dm" data-title="Digital maturity of NGOs">
     <div class="pad"><div class="colw">
       <div class="study">
@@ -591,8 +563,9 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
               <div class="lrow"><span class="k">Desk research · mapping table of past-edition organisations</span><span class="v"><span class="ok">done</span></span></div>
               <div class="lrow"><span class="k">Research plan · questions, methods, sampling, timeline</span><span class="v"><span class="ok">done · revised after review</span></span></div>
               <div class="lrow"><span class="k">Interview scenario A · previous editions, evaluative</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Interview scenario B · current edition</span><span class="v">in progress</span></div>
-              <div class="lrow"><span class="k">Qualitative interviews · 10–12 people, both groups</span><span class="v"><span class="hi">in the field</span></span></div>
+              <div class="lrow"><span class="k">Interview scenario B · current edition</span><span class="v"><span class="ok">done</span></span></div>
+              <div class="lrow"><span class="k">Qualitative interviews · 10–12 people, both groups</span><span class="v"><span class="hi">in the field · both scenarios</span></span></div>
+              <div class="lrow"><span class="k">Qualitative synthesis</span><span class="v"><span class="no">early stage</span></span></div>
               <div class="lrow"><span class="k">Quantitative survey · wider reach across editions</span><span class="v"><span class="no">planned</span></span></div>
               <div class="lrow"><span class="k">TechSoup Digital Assessment benchmark</span><span class="v">teammate · in progress</span></div>
               <div class="lrow"><span class="k">Report with recommendations for the board</span><span class="v"><span class="no">planned</span></span></div>
@@ -615,9 +588,11 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             (relational and formal), and solved the logistics that decide whether fieldwork happens
             at all, like the fact that our meeting tool couldn't record sessions.</p>
             <h2 class="sec">Status &amp; what I'm watching</h2>
-            <p>Fieldwork is running; findings aren't reportable yet, so this case is about the
-            thinking. The risks I'm tracking: self-selection, recall bias in the evaluation track,
-            and recruiting busy NGO staff without a real incentive budget.</p>
+            <p>Interviews are running on both tracks (previous and current editions, scenarios A
+            and B), and I'm starting the first pass of qualitative synthesis alongside fieldwork,
+            so this case is still about the thinking rather than the findings. The risks
+            I'm tracking: self-selection, recall bias in the evaluation track, and recruiting busy
+            NGO staff without a real incentive budget.</p>
           </div>
         </div>
         <aside class="spec" aria-label="Study details">
@@ -635,7 +610,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div></div>
   </section>
 
-  <!-- ======== STUDY 02 · NAUD ======== -->
   <section class="page" id="p-naud" data-title="NAUD · Strona od Nowa">
     <div class="pad"><div class="colw">
       <div class="study">
@@ -691,7 +665,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
         </div>
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-naud"></span>In progress · build QA</dd></div>
+            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-naud"></span>In progress · testing dev builds</dd></div>
             <div><dt>Type</dt><dd>Client work · pro-bono program</dd></div>
             <div><dt>Client</dt><dd>NAUD · children's science education foundation, Warsaw</dd></div>
             <div><dt>My role</dt><dd>Inventory research, link &amp; domain verification, SEO audit, design QA</dd></div>
@@ -704,7 +678,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div></div>
   </section>
 
-<!-- ======== STUDY 01 · FOMO ======== -->
   <section class="page" id="p-fomo" data-title="FOMO & sleep">
     <div class="pad"><div class="colw">
       <div class="study">
@@ -779,7 +752,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div></div>
   </section>
 
-  <!-- ======== STUDY 02 · JETBRAINS ======== -->
   <section class="page" id="p-jb" data-title="JetBrains Store">
     <div class="pad"><div class="colw">
       <div class="study">
@@ -864,7 +836,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div></div>
   </section>
 
-  <!-- ======== STUDY 03 · TRIP PLANNER ======== -->
   <section class="page" id="p-trip" data-title="Group trip planner">
     <div class="pad"><div class="colw">
       <div class="study">
@@ -913,9 +884,10 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             <h2 class="sec">Where it goes next</h2>
             <div class="ledger">
               <div class="lrow"><span class="k">Generative research · survey</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Synthesis + design</span><span class="v"><span class="hi">in progress</span></span></div>
-              <div class="lrow"><span class="k">Prototype · Figma</span><span class="v"><span class="no">planned</span></span></div>
-              <div class="lrow"><span class="k">Usability testing · think-aloud</span><span class="v"><span class="no">June 2026</span></span></div>
+              <div class="lrow"><span class="k">Synthesis + design</span><span class="v"><span class="ok">done</span></span></div>
+              <div class="lrow"><span class="k">Usability test plan · moderator guide, consent forms, scenario documents</span><span class="v"><span class="ok">done</span></span></div>
+              <div class="lrow"><span class="k">Prototype · Figma</span><span class="v"><span class="ok">done</span></span></div>
+              <div class="lrow"><span class="k">Usability testing · think-aloud</span><span class="v"><span class="hi">starting</span></span></div>
             </div>
 
             <h2 class="sec">Honest limitations</h2>
@@ -927,7 +899,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-trip"></span>In progress</dd></div>
+            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-trip"></span>In progress · usability testing</dd></div>
             <div><dt>Type</dt><dd>Course project</dd></div>
             <div><dt>My role</dt><dd>Research &amp; design, end to end</dd></div>
             <div><dt>Method</dt><dd>Mixed methods: survey → usability test</dd></div>
@@ -941,7 +913,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div></div>
   </section>
 
-  <!-- ======== ABOUT ======== -->
   <section class="page" id="p-about" data-title="About">
     <div class="pad"><div class="col">
       <p class="eyebrow">About</p>
@@ -1007,12 +978,11 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
         firefighting competitions. It taught me to stay calm when a session goes sideways, and to
         know when to act and when to wait.<br><br>
         <b>Colophon:</b> one hand-built HTML file. Familjen Grotesk &amp; Spline Sans Mono. No
-        trackers, no cookies. Updated June 2026.
+        trackers, no cookies. Updated July 2026.
       </p>
     </div></div>
   </section>
 
-<!-- ======== EXPERIENCE ======== -->
 <section class="page" id="p-experience" data-title="Experience">
   <div class="pad"><div class="col">
     <p class="eyebrow">Experience</p>
@@ -1100,7 +1070,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div>
   </div></div>
 </section>
-  <!-- ======== CONTACT ======== -->
   <section class="page" id="p-contact" data-title="Contact">
     <div class="pad"><div class="col">
       <p class="eyebrow">Contact</p>
@@ -1116,7 +1085,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     </div></div>
   </section>
 
-  <!-- ======== 404 ======== -->
   <section class="page" id="p-nf" data-title="Not found">
     <div class="pad"><div class="col nf">
       <div class="code">ERR · 404</div>
@@ -1131,7 +1099,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
   </section>
 </div>
 
-<!-- ============================ COMMAND PALETTE ============================ -->
 <div class="pal-back" id="palback" role="dialog" aria-modal="true" aria-label="Search">
   <div class="pal">
     <input id="palin" type="text" placeholder="Jump to a study, a page, or say hi…" autocomplete="off">
@@ -1144,7 +1111,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 (function(){
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  /* ---------------- router ---------------- */
   var routes = {
     'overview':   {page:'p-overview',  crumb:'<b>overview</b>',                         nav:'overview'},
     'studies':    {page:'p-studies',   crumb:'<b>studies</b>',                          nav:'studies'},
@@ -1177,7 +1143,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
   }
   window.addEventListener('hashchange', route);
 
-  /* ---------------- mobile drawer ---------------- */
   var side = document.getElementById('side'), scrim = document.getElementById('scrim');
   function openSide(){ side.classList.add('open'); scrim.classList.add('on'); }
   function closeSide(){ side.classList.remove('open'); scrim.classList.remove('on'); }
@@ -1185,7 +1150,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
   if(_mb) _mb.addEventListener('click', openSide);
   scrim.addEventListener('click', closeSide);
 
-  /* ---------------- command palette ---------------- */
   var items = [
     {g:'Studies', t:'Digital maturity of NGOs · client work', go:'#/studies/ngo-digital-maturity'},
     {g:'Studies', t:'NAUD · Strona od Nowa · client work',    go:'#/studies/naud-strona-od-nowa'},
@@ -1259,14 +1223,12 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     else if (k === 'Enter'){ e.preventDefault(); if (filtered[sel]) go(filtered[sel]); }
   });
 
-  /* show ctrl on non-mac */
   if (navigator.platform.indexOf('Mac') === -1){
     document.querySelectorAll('kbd').forEach(function(kb){
       if (kb.textContent.trim() === '⌘K') kb.textContent = 'Ctrl K';
     });
   }
 
-  /* progress bar */
   var _pb = document.getElementById('top-progress');
   if(_pb) window.addEventListener('scroll', function(){
     var pct = window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
