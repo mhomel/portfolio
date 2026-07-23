@@ -467,7 +467,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
         </a>
         <a class="mini-r" href="#/studies/trip-planner">
           <span class="n"><span class="dot c-trip" style="margin-right:7px"></span>S·03</span>
-          <span><span class="t">Group trip planner</span><br><span class="i">Group chats hold the plan but can't hold a decision. Usability testing confirmed the fix — and found the one gap that matters: nobody can see who's voted.</span></span>
+          <span><span class="t">Group trip planner</span><br><span class="i">Group chats hold the plan but can't hold a decision. Usability testing confirmed the fix and found the one gap that matters: nobody can see who's voted.</span></span>
           <span class="go">→</span>
         </a>
         <a class="mini-r" href="#/studies/fomo-sleep">
@@ -858,7 +858,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             scatters, decisions stall, one person carries everything. They ranked a shared trip
             board and group voting as the features they wanted most, so I built the prototype
             around that pair. Four usability sessions on the finished prototype confirmed the
-            concept lands instantly — 19 of 20 tasks were completed without help — and converged,
+            concept lands instantly (19 of 20 tasks were completed without help) and converged,
             independently, on the one real blocker: nobody can see who has actually voted, so the
             person chasing stragglers has nothing to point at.</p>
           </div>
@@ -899,28 +899,28 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 
             <div class="shots">
               <figure>
-                <img src="migo-01-tablica.webp" alt="MIGO — trip board, main dashboard" loading="lazy">
-                <figcaption>Trip board — what's decided, what's still pending.</figcaption>
+                <img src="migo-01-tablica.webp" alt="MIGO: trip board, main dashboard" loading="lazy">
+                <figcaption>Trip board: what's decided, what's still pending.</figcaption>
               </figure>
               <figure>
-                <img src="migo-02-termin.webp" alt="MIGO — date voting" loading="lazy">
-                <figcaption>Date voting — multi-select, since availability isn't binary.</figcaption>
+                <img src="migo-02-termin.webp" alt="MIGO: date voting" loading="lazy">
+                <figcaption>Date voting: multi-select, since availability isn't binary.</figcaption>
               </figure>
               <figure>
-                <img src="migo-03-porownanie.webp" alt="MIGO — accommodation comparison" loading="lazy">
-                <figcaption>Accommodation comparison — links from different platforms, side by side.</figcaption>
+                <img src="migo-03-porownanie.webp" alt="MIGO: accommodation comparison" loading="lazy">
+                <figcaption>Accommodation comparison: links from different platforms, side by side.</figcaption>
               </figure>
               <figure>
-                <img src="migo-04-status.webp" alt="MIGO — decision status" loading="lazy">
-                <figcaption>Decision status — progress across all planning areas.</figcaption>
+                <img src="migo-04-status.webp" alt="MIGO: decision status" loading="lazy">
+                <figcaption>Decision status: progress across all planning areas.</figcaption>
               </figure>
               <figure>
-                <img src="migo-05-nocleg.webp" alt="MIGO — accommodation voting" loading="lazy">
-                <figcaption>Accommodation voting — single-select, once options are compared.</figcaption>
+                <img src="migo-05-nocleg.webp" alt="MIGO: accommodation voting" loading="lazy">
+                <figcaption>Accommodation voting: single-select, once options are compared.</figcaption>
               </figure>
               <figure>
-                <img src="migo-06-podsumowanie.webp" alt="MIGO — final summary" loading="lazy">
-                <figcaption>Final summary — every confirmed decision before departure.</figcaption>
+                <img src="migo-06-podsumowanie.webp" alt="MIGO: final summary" loading="lazy">
+                <figcaption>Final summary: every confirmed decision before departure.</figcaption>
               </figure>
             </div>
 
@@ -931,7 +931,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             <h2 class="sec">Phase 2 · usability testing</h2>
             <p>Four remote, moderated think-aloud sessions (Google Meet, ~20–25 min each), run by
             the two of us against a click-through prototype. Because the prototype only supports
-            moving between screens — no text entry, no completing a vote — each session tested
+            moving between screens (no text entry, no completing a vote), each session tested
             <b>navigation and expectations, not task completion</b>: could a first-time viewer find
             the right place, and did the screen mean what they thought it meant.</p>
             <div class="ledger">
@@ -950,7 +950,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             </div>
             <p>All three described the same workaround attempt: clicking into each tab separately
             hoping to find names, and giving up. The screen shows an aggregate count, never who
-            cast it — the exact "who hasn't answered yet" gap Phase 1's survey had already flagged
+            cast it: the exact "who hasn't answered yet" gap Phase 1's survey had already flagged
             as the top source of friction. Two smaller, single-participant issues showed up in the
             same task: the reminder button sat below the fold and needed a scroll to find, and one
             participant's mental model of the bottom navigation bar (Board / Decisions / Plan /
@@ -958,13 +958,13 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             the current one.</p>
             <p>Naming caused one more stumble: one participant expected the "Plan" tab to hold a
             high-level "where are we going, what are we doing" overview, and was briefly thrown
-            when it opened a detailed day-by-day schedule instead — flagged unprompted as her main
+            when it opened a detailed day-by-day schedule instead. She flagged this unprompted as her main
             difficulty, though she recovered within seconds. A second participant considered the
             same tab mid-task, then self-corrected immediately without reporting any confusion.</p>
             <p><b>Everyone said they'd use it.</b> All four participants reacted enthusiastically
             and said they'd use the app for a real trip. One added an unprompted segmentation note
-            worth testing further: he expected the value to scale with group size — a lot for a
-            group of six or seven, maybe not worth it for three or four people who coordinate fine
+            worth testing further: he expected the value to scale with group size: more for a
+            group of six or seven, less for three or four people who coordinate fine
             without help.</p>
             <p>The wishlist was long but thin: a Splitwise-style cost-split module and multi-select
             date voting each came up with two of the four participants independently. A calendar
@@ -972,49 +972,49 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             in the final summary, red highlighting for urgent/overdue items, tappable icons
             linking from the summary to details, photo thumbnails on saved listings, and a
             condensed day-by-day itinerary each came from a single participant. None of these are
-            confirmed group needs at n = 4 — they're a prioritized list for the next round of
+            confirmed group needs at n = 4. They're a prioritized list for the next round of
             research, not a backlog.</p>
 
             <h2 class="sec">Decisions I'd defend in a review</h2>
             <p><b>Four participants, not more.</b> The usability round stayed deliberately small:
             Nielsen's five-user threshold catches most navigation problems, and a two-person team
             can't process a larger qualitative sample well in the time available. The wishlist
-            above never gets ranked past "came up twice" for the same reason — n = 4 is right for
+            above never gets ranked past "came up twice" for the same reason: n = 4 is right for
             catching interface problems and the wrong size for prioritizing features.</p>
             <p><b>Scoped to navigation, not task completion.</b> The prototype doesn't support text
             entry or completing a vote, so rather than build around that gap, we scoped the test
             to it: could a first-time viewer find the right place and describe what they expected
             to happen there. Interface aesthetics, the product concept itself, and participant
-            competence were explicitly out of scope — a wrong click reads as interface information,
+            competence were explicitly out of scope: a wrong click reads as interface information,
             never as a participant mistake.</p>
             <p><b>Split moderation, cross-checked synthesis.</b> Iga Drobiszewska and I moderated
-            two sessions each — she ran participants 02 and 03, I ran 01 and 04. Writing the
+            two sessions each: she ran participants 02 and 03, I ran 01 and 04. Writing the
             synthesis, I went back to the specific observation sheet behind every claim before it
             went in: a pattern one participant raised doesn't get to read as "participants said"
             just because the sentence sounds stronger that way.</p>
 
             <h2 class="sec">What this means for v2</h2>
-            <p>The fix isn't a new feature — it's making a field visible that the interface already
+            <p>The fix isn't a new feature. It's making a field visible that the interface already
             has. Pair every vote count with the names behind it, and default-sort the decision
             status screen by "awaiting your vote" instead of by task. That single change addresses
             the one problem three independent participants hit and the top friction Phase 1's
             survey had already flagged (76% cited "agreeing on a date," 52% cited "part of the
-            group not engaging") — the qualitative and quantitative data point at the same fix.
-            Everything else on the wishlist — calendar view, cost-splitting, red priority states —
+            group not engaging"): the qualitative and quantitative data point at the same fix.
+            Everything else on the wishlist (calendar view, cost-splitting, red priority states)
             competes for a v2 backlog; this doesn't. It's the one finding load-bearing enough to
             block a release on.</p>
 
             <h2 class="sec">Honest limitations</h2>
             <p>Convenience sample, heavily 18–22 in both phases, so findings travel best within
             that segment. The usability round (n = 4) is a standard size for catching navigation
-            problems (Nielsen, 2000), but it's the wrong size for ranking feature requests — the
+            problems (Nielsen, 2000), but it's the wrong size for ranking feature requests: the
             wishlist above is a set of leads, not a validated backlog. Sessions were split between
             two moderators, which is normal for a two-person team but is worth naming as a source
             of small inconsistency in how prompts were delivered.</p>
 
             <h2 class="sec">What I'd do differently</h2>
             <p>I'd stop treating the decision-status screen as "just another task" in the test
-            script. It was task 4 of 5, scripted the same as the others — but Phase 1's own data
+            script. It was task 4 of 5, scripted the same as the others, but Phase 1's own data
             already told us this was the highest-friction moment in the whole journey. A dedicated,
             deeper probe there (not just "find it and tell me what's missing") would likely have
             surfaced the naming gap in three participants instead of needing all four sessions to
