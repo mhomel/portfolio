@@ -975,15 +975,34 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             confirmed group needs at n = 4 — they're a prioritized list for the next round of
             research, not a backlog.</p>
 
-            <h2 class="sec">Where it stands</h2>
-            <div class="ledger">
-              <div class="lrow"><span class="k">Generative research · survey</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Synthesis + design</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Prototype · Figma</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Usability test plan · moderator guide, consent forms, scenario documents</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Usability testing · 4 participants, think-aloud</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Synthesis of findings</span><span class="v"><span class="ok">done</span></span></div>
-            </div>
+            <h2 class="sec">Decisions I'd defend in a review</h2>
+            <p><b>Four participants, not more.</b> The usability round stayed deliberately small:
+            Nielsen's five-user threshold catches most navigation problems, and a two-person team
+            can't process a larger qualitative sample well in the time available. The wishlist
+            above never gets ranked past "came up twice" for the same reason — n = 4 is right for
+            catching interface problems and the wrong size for prioritizing features.</p>
+            <p><b>Scoped to navigation, not task completion.</b> The prototype doesn't support text
+            entry or completing a vote, so rather than build around that gap, we scoped the test
+            to it: could a first-time viewer find the right place and describe what they expected
+            to happen there. Interface aesthetics, the product concept itself, and participant
+            competence were explicitly out of scope — a wrong click reads as interface information,
+            never as a participant mistake.</p>
+            <p><b>Split moderation, cross-checked synthesis.</b> Iga Drobiszewska and I moderated
+            two sessions each — she ran participants 02 and 03, I ran 01 and 04. Writing the
+            synthesis, I went back to the specific observation sheet behind every claim before it
+            went in: a pattern one participant raised doesn't get to read as "participants said"
+            just because the sentence sounds stronger that way.</p>
+
+            <h2 class="sec">What this means for v2</h2>
+            <p>The fix isn't a new feature — it's making a field visible that the interface already
+            has. Pair every vote count with the names behind it, and default-sort the decision
+            status screen by "awaiting your vote" instead of by task. That single change addresses
+            the one problem three independent participants hit and the top friction Phase 1's
+            survey had already flagged (76% cited "agreeing on a date," 52% cited "part of the
+            group not engaging") — the qualitative and quantitative data point at the same fix.
+            Everything else on the wishlist — calendar view, cost-splitting, red priority states —
+            competes for a v2 backlog; this doesn't. It's the one finding load-bearing enough to
+            block a release on.</p>
 
             <h2 class="sec">Honest limitations</h2>
             <p>Convenience sample, heavily 18–22 in both phases, so findings travel best within
@@ -992,6 +1011,15 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             wishlist above is a set of leads, not a validated backlog. Sessions were split between
             two moderators, which is normal for a two-person team but is worth naming as a source
             of small inconsistency in how prompts were delivered.</p>
+
+            <h2 class="sec">What I'd do differently</h2>
+            <p>I'd stop treating the decision-status screen as "just another task" in the test
+            script. It was task 4 of 5, scripted the same as the others — but Phase 1's own data
+            already told us this was the highest-friction moment in the whole journey. A dedicated,
+            deeper probe there (not just "find it and tell me what's missing") would likely have
+            surfaced the naming gap in three participants instead of needing all four sessions to
+            triangulate it. Next round, the screens flagged as high-risk by earlier research get
+            more time, not equal time.</p>
           </div>
         </div>
 
@@ -999,7 +1027,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
           <dl>
             <div><dt>Status</dt><dd class="stline done"><span class="dot c-trip"></span>Completed</dd></div>
             <div><dt>Type</dt><dd>Course project</dd></div>
-            <div><dt>My role</dt><dd>Research &amp; design, end to end; co-moderated testing</dd></div>
+            <div><dt>My role</dt><dd>Research &amp; design, end to end, with Iga Drobiszewska; moderated 2 of 4 usability sessions</dd></div>
             <div><dt>Method</dt><dd>Mixed methods: survey → prototype → usability test</dd></div>
             <div><dt>Sample</dt><dd>N = 21 survey (of 24 screened) + N = 4 usability test</dd></div>
             <div><dt>Year</dt><dd>Spring 2026</dd></div>
