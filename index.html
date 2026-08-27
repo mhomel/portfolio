@@ -431,7 +431,11 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
   <div class="topbar">
     <button class="menubtn" id="menubtn" aria-label="Open navigation"><span></span></button>
     <div class="crumb" id="crumb">overview</div>
-
+    <button class="searchbtn" id="palbtn" aria-label="Search">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="lbl">Search</span>
+      <kbd>⌘K</kbd>
+    </button>
   </div>
 
   <section class="page" id="p-overview" data-title="Overview">
@@ -449,7 +453,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="facts">
         <div class="fact"><div class="v">5</div><div class="k">Studies</div></div>
         <div class="fact"><div class="v">2</div><div class="k">With a real client</div></div>
-        <div class="fact"><div class="v">56</div><div class="k">Participants</div></div>
+        <div class="fact"><div class="v">58</div><div class="k">Participants</div></div>
         <div class="fact"><div class="v">8</div><div class="k">Months as AI engineer</div></div>
       </div>
 
@@ -457,12 +461,12 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="mini">
         <a class="mini-r" href="#/studies/ngo-digital-maturity">
           <span class="n"><span class="dot c-dm" style="margin-right:7px"></span>S·01</span>
-          <span><span class="t">Digital maturity of NGOs</span><br><span class="i">A pro-bono program asked what it actually changes. I wrote the plan and I'm helping run the answer.</span></span>
+          <span><span class="t">Digital maturity of NGOs</span><br><span class="i">Two NGOs knew for years their website was failing them. Awareness was never the barrier.</span></span>
           <span class="go">→</span>
         </a>
         <a class="mini-r" href="#/studies/naud-strona-od-nowa">
           <span class="n"><span class="dot c-naud" style="margin-right:7px"></span>S·02</span>
-          <span><span class="t">NAUD · Strona od Nowa</span><br><span class="i">Before redesigning an NGO's website I inventoried its work, and found its old domain selling supplements.</span></span>
+          <span><span class="t">NAUD · Strona od Nowa</span><br><span class="i">115 impressions, 6 clicks, and two thirds of them searching for one man's name.</span></span>
           <span class="go">→</span>
         </a>
         <a class="mini-r" href="#/studies/trip-planner">
@@ -485,8 +489,8 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="now">
         <div class="nl">Now · August 2026</div>
         <ul>
-          <li>Synthesising the NGO digital-maturity study toward the board report</li>
-          <li>Starting work on my BSc thesis, somewhere in the AI space</li>
+          <li>Writing up the NGO digital-maturity findings for the foundation's board</li>
+          <li>Starting my BSc thesis on why people bring psychological problems to AI</li>
           <li>Looking for a junior UXR role, internship or freelance research collaboration</li>
         </ul>
       </div>
@@ -497,23 +501,23 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     <div class="pad"><div class="colw">
       <p class="eyebrow">Index · 5 entries</p>
       <h1>Studies</h1>
-      <p class="lead">Each study is written the way I'd hand it to a team: the insight first, the method right behind it for anyone who wants to check my work. Two are live client work; the rest are academic and recruitment studies, labeled as such.</p>
+      <p class="lead">Each study is written the way I'd hand it to a team: the insight first, the method right behind it for anyone who wants to check my work. Two were done for a real client with a real board reading the output; the rest are academic and recruitment studies, labeled as such.</p>
 
       <div class="tbl" style="margin-top:34px">
         <div class="tbl-h"><span>Study</span><span>Method</span><span>N</span><span>Year</span><span>Status</span></div>
         <a class="tbl-r" href="#/studies/ngo-digital-maturity">
-          <span><span class="t">Digital maturity of NGOs</span><br><span class="s">Client work · evaluation &amp; discovery for a pro-bono redesign program</span></span>
-          <span class="m">Mixed · interviews + survey</span>
-          <span class="m">10–12</span>
+          <span><span class="t">Digital maturity of NGOs</span><br><span class="s">Client work · evaluation &amp; discovery for a pro-bono redesign programme</span></span>
+          <span class="m">Qual · in-depth interviews</span>
+          <span class="m">2 orgs</span>
           <span class="m yr">2026</span>
-          <span class="st wip"><span class="dot c-dm"></span>In progress</span>
+          <span class="st done"><span class="dot c-dm"></span>Completed</span>
         </a>
         <a class="tbl-r" href="#/studies/naud-strona-od-nowa">
-          <span><span class="t">NAUD · Strona od Nowa</span><br><span class="s">Client work · research groundwork for an NGO website redesign</span></span>
-          <span class="m">Desk research · audit · QA</span>
+          <span><span class="t">NAUD · Strona od Nowa</span><br><span class="s">Client work · search analytics and research groundwork for an NGO redesign</span></span>
+          <span class="m">Search data · audit · QA</span>
           <span class="m">·</span>
           <span class="m yr">2026</span>
-          <span class="st wip"><span class="dot c-naud"></span>Handed off</span>
+          <span class="st done"><span class="dot c-naud"></span>Delivered</span>
         </a>
         <a class="tbl-r" href="#/studies/trip-planner">
           <span><span class="t">Why one friend plans the whole trip</span><br><span class="s">Course project · mixed-methods research for a group travel app</span></span>
@@ -544,73 +548,178 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     <div class="pad"><div class="colw">
       <div class="study">
         <div>
-          <p class="eyebrow sc-dm">S·01 · Client work · in progress</p>
-          <h1>What does a pro-bono program actually change?</h1>
+          <p class="eyebrow sc-dm">S·01 · Client work · qualitative phase complete</p>
+          <h1>Nobody needed convincing their website was bad</h1>
           <div class="tldr sc-dm">
             <div class="tl">TL;DR</div>
             <p>Strona od Nowa rebuilds NGO websites for free. The foundation behind it wanted
-            evidence for two board-level decisions: did past editions actually change anything
-            for the organisations, and which NGOs should the next edition take? I wrote the
-            research plan and I'm now helping run the study.</p>
+            evidence for two board-level decisions: what past editions actually changed, and which
+            organisations the next edition should take. I designed the study and ran the interviews.
+            Both organisations had known for years that their site was failing them. What they
+            didn't have was the capacity to fix it. That single finding moves the programme's
+            problem from persuasion to selection.</p>
           </div>
           <div class="body">
             <h2 class="sec">My role</h2>
             <p>Author of the research plan (revised after team review), designer of the evaluative
-            interview scenario, research ops (consent, recruitment materials, recording
-            logistics), and interviewer. I work in a four-person volunteer research team within
-            Fundacja Kompetencji Cyfrowych: a project lead, a co-interviewer, a benchmark analyst
-            plus the program coordinator who holds the contact base.</p>
+            interview scenario, research ops, interviewer, and author of the qualitative synthesis.
+            I worked inside a four-person volunteer research team at Fundacja Kompetencji Cyfrowych:
+            a project lead, a co-interviewer, a benchmark analyst, and the programme coordinator who
+            holds the contact base.</p>
+
             <h2 class="sec">Why the plan splits in two</h2>
-            <p>The board asked two questions that need different research. So the plan has an
-            <b>evaluation track</b> (what changed for organisations from previous
-            editions: the website, their digital practice, their confidence) and a <b>discovery
-            track</b> (what barriers and needs current NGOs have, and what makes collaboration
-            with the program effective). One instrument trying to answer both would do neither well.</p>
-            <h2 class="sec">Method, mapped to the questions</h2>
-            <div class="ledger">
-              <div class="lrow"><span class="k">Desk research · mapping table of past-edition organisations</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Research plan · questions, methods, sampling, timeline</span><span class="v"><span class="ok">done · revised after review</span></span></div>
-              <div class="lrow"><span class="k">Interview scenario A · previous editions, evaluative</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Interview scenario B · current edition</span><span class="v"><span class="ok">done</span></span></div>
-              <div class="lrow"><span class="k">Qualitative interviews · 10–12 people, both groups</span><span class="v"><span class="hi">in the field · both scenarios</span></span></div>
-              <div class="lrow"><span class="k">Qualitative synthesis</span><span class="v"><span class="hi">under way</span></span></div>
-              <div class="lrow"><span class="k">Quantitative survey · wider reach across editions</span><span class="v"><span class="no">planned</span></span></div>
-              <div class="lrow"><span class="k">TechSoup Digital Assessment benchmark</span><span class="v">teammate · in progress</span></div>
-              <div class="lrow"><span class="k">Report with recommendations for the board</span><span class="v"><span class="no">planned</span></span></div>
+            <p>The board asked two questions that need different research. The plan therefore has an
+            <b>evaluation track</b> (what changed for organisations from previous editions: the
+            website, their digital practice, their confidence) and a <b>discovery track</b> (what
+            barriers current NGOs face, and what makes collaboration with the programme work). One
+            instrument trying to answer both would have answered neither well.</p>
+
+            <h2 class="sec">Sampling: two organisations, two points in the programme cycle</h2>
+            <p>Rather than spread thin interviews across whatever organisations replied, I sampled
+            purposively at the two ends of the programme: one organisation <b>mid-project</b>, still
+            supplying content and negotiating design decisions, and one <b>a year past handover</b>,
+            living with the result. The first can describe friction while it's still happening; the
+            second can describe what survived. Two organisations is a small sample and I treat every
+            finding below as a hypothesis, but the comparison across the cycle is what makes two
+            interviews say more than two scattered ones would.</p>
+            <p>The two also differ on every dimension that plausibly matters: a 15-person
+            association with paid staff and international programmes, and a volunteer-run foundation
+            running tabletop games and workshops for excluded kids. Where they converge, the finding
+            is worth taking seriously.</p>
+
+            <h2 class="sec">What I found</h2>
+
+            <p><b>1. Awareness was never the barrier. Agency was.</b> Both organisations could
+            describe exactly what was wrong with their old site, in detail, years before they
+            applied. One had gone as far as taking a WordPress course and still abandoned the site
+            for six months.</p>
+            <div class="ts">
+              <div class="who">Mid-project organisation · translated from Polish</div>
+              <p>I even went on a WordPress course specifically to learn it. I just hated it, and I
+              stopped opening the site for six months. When I open it I want to cry.</p>
             </div>
+            <div class="ts">
+              <div class="who">Post-handover organisation · translated from Polish</div>
+              <p>We knew it had to be better. We just had no power to make it happen.</p>
+            </div>
+            <p>Digital-competence programmes are usually built on the assumption that small
+            organisations don't know what they're missing. These two knew. Anything framed as
+            awareness-raising would have been aimed at a problem they didn't have.</p>
+
+            <p><b>2. The bottleneck is content, not technology.</b> The hardest part of both projects
+            had nothing to do with code. One organisation struggled to describe work it had been
+            doing for a decade, because nobody inside had ever needed to put it into words. The other
+            arrived with no opinion at all, so the team had to build a preference in him before it
+            could build anything for him.</p>
+            <div class="ts">
+              <div class="who">Mid-project organisation · translated from Polish</div>
+              <p>Some things we simply know, and they're obvious to us. Having to write down how we
+              do them and why they're like that turned out not to be easy at all.</p>
+            </div>
+            <p>Both named the same intervention as the most valuable part of the whole project: the
+            brand workshop the design team ran at the start, which forced articulation before design.
+            One said it should be sold as a standalone service.</p>
+
+            <p><b>3. Recruitment leaks before it reaches the form.</b> Neither project nearly
+            happened, for opposite reasons. One applied on the final day, having spent weeks assuming
+            they were too established to deserve the help. The other applied expecting nothing,
+            because a similar offer had gone nowhere a year earlier, and because he assumed there
+            was a catch: an overpriced domain and hosting contract attached to the free website.</p>
+            <div class="ts">
+              <div class="who">Post-handover organisation · translated from Polish</div>
+              <p>I was sure you were another outfit that builds you a site but makes you buy the
+              domain and hosting from them, well above market rate.</p>
+            </div>
+            <p>Both found the programme through peer networks rather than the open call: a WhatsApp
+            group of volunteer coordinators, and an NGO group on Facebook. Trust arrived through
+            people, not through the announcement.</p>
+
+            <p><b>4. The website's job is credibility, not traffic.</b> Neither organisation talked
+            about reach. They talked about not being embarrassed. The clearest measure of change came
+            from the post-handover interview: he had stopped hoping people wouldn't visit.</p>
+            <div class="ts">
+              <div class="who">Post-handover organisation · translated from Polish</div>
+              <p>Before, when someone asked, I'd say yes we have a site, and hope they wouldn't go
+              to it. Now I send people there.</p>
+            </div>
+            <p>The mid-project organisation described the same goal from the other side: they wanted
+            parents to feel safe clicking. This matters for how the programme reports its impact.
+            Traffic numbers on a small NGO site will always look unimpressive, and they are measuring
+            the wrong thing.</p>
+
+            <p><b>5. Maintenance is the unfunded part, and that's where the value leaks.</b> The
+            mid-project organisation works entirely from grants, has no commercial income, and had
+            no budget line for keeping the site alive. She had already concluded that the next grant
+            application needs one. The post-handover organisation was trained properly, got written
+            instructions and a screen-share walkthrough, and still doesn't use the custom calendar
+            feature he asked for, because there's no time. Both asked for the same thing in almost
+            the same words: someone they can call.</p>
+
+            <h2 class="sec">What I recommended to the board</h2>
+            <ul>
+              <li>Select for capacity to supply content, not for how badly the current site performs. The applicants who struggle are the ones who can't articulate their own work, and that predicts a hard project better than technical starting point does.</li>
+              <li>Treat the brand and articulation workshop as a deliverable in its own right rather than a preamble to design. It was the most valued part of both projects.</li>
+              <li>Make finished work visible in the call, and let past participants vouch publicly. Tag them; they will comment. One participant said outright he'd have applied sooner and trusted faster.</li>
+              <li>State in the call that there are no attached costs. The suspicion of an upsell is doing real damage to recruitment.</li>
+              <li>Say out loud that established organisations are eligible. One nearly disqualified itself for being too big.</li>
+              <li>Recommend, at handover, that organisations write a maintenance line into their next grant application, and offer a named post-launch contact even in a limited form.</li>
+            </ul>
+
             <h2 class="sec">Decisions I'd defend in a review</h2>
-            <p><b>10–12 interviewees instead of ~20 organisations.</b> The first draft aimed wider;
-            after a scoping discussion with the project lead we cut the sample and split it evenly
-            between previous and current editions. Depth with two comparable groups beats breadth
-            a volunteer team can't process well.</p>
             <p><b>An external maturity framework instead of a homemade scale.</b> Benchmarking
             against TechSoup's Digital Assessment Tool anchors "digital maturity" in something the
-            board can compare against the wider sector.</p>
-            <p><b>Scenario A is built backwards from the report.</b> Four blocks: life before the
-            project, the collaboration itself, what changed after, and a short discovery module on
-            current barriers. Ten core questions plus optional probes.</p>
+            board can compare against the wider sector, rather than a scale we invented and would
+            then have to justify.</p>
+            <p><b>The interview scenario is built backwards from the report.</b> Four blocks: life
+            before the project, the collaboration itself, what changed after, and a short discovery
+            module on current barriers. Ten core questions plus optional probes, so a block could be
+            dropped when a conversation ran long without losing the report's spine.</p>
+            <p><b>Reading enthusiasm as data about the relationship, not only about the
+            programme.</b> Both interviews were extremely warm, and one participant asked me to make
+            sure the team got named and praised in the report. That is worth recording, but it comes
+            from people who received months of skilled work for free. Free work suppresses criticism,
+            and one participant said so himself: you don't look a gift horse in the mouth. His team
+            had to ask him the same question five times before he'd admit to disliking anything. I
+            weighted the concrete process complaints heavily and the praise lightly.</p>
+
             <h2 class="sec">Research ops, the unglamorous part</h2>
             <p>I prepared the GDPR consent and information form (a legal review caught real issues:
             an internal contradiction in the anonymisation clause, inconsistent recording consent,
             missing data-controller details), drafted two versions of the recruitment invitation
             (relational and formal), and solved the logistics that decide whether fieldwork happens
             at all, like the fact that our meeting tool couldn't record sessions.</p>
-            <h2 class="sec">Status &amp; what I'm watching</h2>
-            <p>Interviews are running on both tracks and I'm working through the first pass of
-            synthesis alongside fieldwork, so what this case shows is the thinking; the findings
-            come with the board report. The risks I'm tracking: self-selection, recall bias in the
-            evaluation track, and recruiting busy NGO staff without a real incentive budget.</p>
+
+            <h2 class="sec">Honest limitations</h2>
+            <p>This is the qualitative phase. The planned survey was not fielded: response rates
+            from the wider contact base were too low to produce anything worth analysing, and
+            organisations that had already received a free website did not reliably answer a request
+            for twenty more minutes. That is itself consistent with finding 3, and it is why the
+            recommendations above are framed as hypotheses for the board rather than sector-level
+            claims.</p>
+            <p>Two organisations, both willing to talk, so self-selection runs in the obvious
+            direction: the ones who had a bad experience are the least likely to have accepted the
+            invitation. The evaluation track also depends on recall about a project that finished a
+            year ago. And the gift relation described above shapes every positive statement in the
+            transcripts.</p>
+
+            <h2 class="sec">What I'd do differently</h2>
+            <p>I'd have run the survey first, or at least fielded it while the interviews were still
+            being scheduled. I sequenced it the textbook way, qualitative to inform quantitative, and
+            in a volunteer project with no incentive budget that put the fragile instrument last,
+            when goodwill and attention had already been spent. Next time the cheap instrument goes
+            out while people still remember who we are.</p>
           </div>
         </div>
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-dm"></span>In progress · synthesis</dd></div>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot c-dm"></span>Qualitative phase complete</dd></div>
             <div><dt>Type</dt><dd>Client work · volunteer research team</dd></div>
             <div><dt>Client</dt><dd>Fundacja Kompetencji Cyfrowych · board</dd></div>
-            <div><dt>My role</dt><dd>Research plan, interview design, research ops, interviewing</dd></div>
-            <div><dt>Method</dt><dd>Desk research → interviews (10–12) → survey + TechSoup benchmark</dd></div>
+            <div><dt>My role</dt><dd>Research plan, interview design, research ops, interviewing, synthesis</dd></div>
+            <div><dt>Method</dt><dd>Desk research → purposive in-depth interviews → TechSoup benchmark</dd></div>
+            <div><dt>Sample</dt><dd>2 organisations, sampled at opposite ends of the programme cycle</dd></div>
             <div><dt>Year</dt><dd>2026</dd></div>
-            <div><dt>Skills</dt><dd class="chips"><span class="chip">research planning</span><span class="chip">interview scenarios</span><span class="chip">research ops</span><span class="chip">GDPR consent</span><span class="chip">benchmarking</span></dd></div>
+            <div><dt>Skills</dt><dd class="chips"><span class="chip">research planning</span><span class="chip">interview scenarios</span><span class="chip">purposive sampling</span><span class="chip">research ops</span><span class="chip">GDPR consent</span><span class="chip">qualitative synthesis</span></dd></div>
           </dl>
         </aside>
       </div>
@@ -621,37 +730,89 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
     <div class="pad"><div class="colw">
       <div class="study">
         <div>
-          <p class="eyebrow sc-naud">S·02 · Client work · handed off</p>
-          <h1>The groundwork an NGO website redesign stands on</h1>
+          <p class="eyebrow sc-naud">S·02 · Client work · delivered</p>
+          <h1>A whole foundation's search traffic came from one man's name</h1>
           <div class="tldr sc-naud">
             <div class="tl">TL;DR</div>
-            <p>NAUD is a foundation running science education for children, mid-rebrand, getting a
-            new website through the Strona od Nowa program. Before anyone designed anything, I
-            built the evidence base: a two-version inventory, verification of the entire web
-            presence, an SEO audit, and QA of the developer builds. One finding stood out. The
-            foundation's former domain had lapsed and now serves a commercial supplements site.</p>
+            <p>NAUD runs science workshops for children and was getting a free new website. Before
+            anyone designed anything, I analysed where its existing traffic actually came from. In
+            30 days the site drew 115 impressions and 6 clicks, and roughly two thirds of both came
+            from people searching for the founder by name. Not one impression came from anyone
+            looking for science workshops for children. The redesign brief changed as a result.</p>
           </div>
           <div class="body">
             <h2 class="sec">My role</h2>
-            <p>Researcher on the inventory and audit track, inside a cross-functional volunteer
-            team (program coordinators, UX/UI designers, developers). The deadlines were real and
-            the foundation's board read what I wrote.</p>
-            <h2 class="sec">Why an inventory before a sitemap</h2>
-            <p>A sitemap should describe what the organisation actually does. NAUD's years of
-            activity lived scattered across old pages, partner sites and press mentions, so the
-            first deliverable was a research report inventorying all of it, structured so the team
-            could derive the new information architecture from evidence.</p>
-            <p><b>The two-version design was deliberate.</b> Version 1 mapped everything desk
-            research could reach and made the gaps explicit; the gap list became a focused
-            questionnaire for the foundation. Version 2 folded in their answers into a
-            publication-ready document.</p>
-            <h2 class="sec">All 33 links, one at a time</h2>
-            <p>I checked every source behind the report: 33 links across the foundation's web
-            presence. Sampling would have missed this:</p>
+            <p>Search and content analytics, plus the research groundwork the redesign stood on: a
+            two-version activity inventory, verification of the foundation's entire web presence,
+            and QA of developer builds. I worked inside a cross-functional volunteer team
+            (programme coordinators, UX/UI designers, developers). The deadlines were real and the
+            foundation's board read what I wrote.</p>
+
+            <h2 class="sec">The analysis</h2>
+            <p>I was handed panel access and a one-line task with no brief, which meant the first
+            decision was what question to answer. Reporting the site's SEO score would have been
+            accurate and useless. The question the redesign actually needed was: <b>who reaches this
+            site today, and is it the audience the foundation says it wants?</b></p>
+            <p>Source data: 30 days of Google Search Console data to 15 April 2026, surfaced through
+            the site's Rank Math panel, plus a content-signal audit across all 17 subpages.</p>
+
+            <div class="ledger" aria-label="Search performance">
+              <div class="lrow"><span class="k">Impressions, 30 days</span><span class="v">115</span></div>
+              <div class="lrow"><span class="k">Clicks, 30 days</span><span class="v"><span class="hi">6</span></span></div>
+              <div class="lrow"><span class="k">Impressions from searches for the founder's name</span><span class="v"><span class="hi">68%</span></span></div>
+              <div class="lrow"><span class="k">Clicks from searches for the founder's name</span><span class="v"><span class="hi">67%</span></span></div>
+              <div class="lrow"><span class="k">Impressions from generic phrases (children's workshops, STEAM, science education)</span><span class="v"><span class="hi">0</span></span></div>
+              <div class="lrow"><span class="k">Average position of every non-brand phrase</span><span class="v">26–29 · page three</span></div>
+              <div class="lrow"><span class="k">Subpages with no meta title, description or keyword</span><span class="v"><span class="hi">15 / 17</span></span></div>
+              <div class="lrow"><span class="k">Trend across impressions, clicks, position, CTR</span><span class="v"><span class="hi">all declining</span></span></div>
+            </div>
+
+            <h2 class="sec">Why the content said the wrong thing</h2>
+            <p>The most frequent words on the homepage were "deska", "warszawa", "projektu", "miasto
+            stołeczne", "ramach". They come from the grant-acknowledgement clause the city requires.
+            A search engine reading that page concludes the organisation is a municipal project, not
+            a science-education charity. The homepage had no H1 at all, and the logo appeared twice
+            without alt text.</p>
+            <p>The foundation is also mid-rebrand, from its full name to the NAUD acronym, and uses
+            both. Nothing on the site resolved the two into one entity.</p>
+
+            <h2 class="sec">Who actually reaches the site</h2>
+            <p>Three groups fall out of the query data. People who already know the founder by name,
+            who account for most traffic and nearly all clicks. People who know a local landmark or a
+            specific past project, who see the site but almost never click, because it sits on page
+            three. And the group that doesn't appear in the data at all: parents looking for science
+            activities, prospective donors, institutions looking for a partner.</p>
+            <p>That third group is precisely the audience the foundation's own brief said the new
+            site should attract. The gap between who arrives and who is wanted is the finding, and a
+            redesign is the one moment when it can be closed.</p>
+
+            <h2 class="sec">What I recommended</h2>
+            <ul>
+              <li>Define the target keyword list before a single line of new content is written, not after</li>
+              <li>Rewrite the homepage around what the foundation does, and move the funding clause off the top of the page</li>
+              <li>One H1 per page carrying the actual proposition, for example free science workshops for children</li>
+              <li>Meta title and description for every subpage, alt text on every image, which serves accessibility as well as search</li>
+              <li>Build visibility for the NAUD brand independently of any individual, since a single person's name is currently a single point of failure</li>
+              <li>Create a Google Business profile, which the foundation did not have and which costs nothing</li>
+            </ul>
+            <p>I delivered this as a written report and a 16-slide presentation to the project team
+            and the foundation, with the analysis framed for a non-technical audience. The
+            conclusion I opened with: the current site works as a business card, not as something
+            findable.</p>
+
+            <h2 class="sec">The inventory, and the domain nobody had checked</h2>
+            <p>A sitemap should describe what an organisation actually does, so the second
+            deliverable inventoried a decade of activity scattered across old pages, partner sites
+            and press mentions. Version 1 mapped what desk research could reach and made the gaps
+            explicit; that gap list became a focused questionnaire for the foundation, and version 2
+            folded their answers into a publication-ready document.</p>
+            <p>I checked all 33 sources behind the report individually. Sampling would have missed
+            this:</p>
             <figure class="ts">
               <div class="who">Field note · link verification</div>
-              <p>The foundation's former domain, naud.edu.pl, had lapsed and now serves a
-              commercial supplements site. Anyone following old materials lands on someone else's shop.</p>
+              <p>The foundation's former domain had lapsed and now serves a commercial supplements
+              site. Anyone following an old flyer, press mention or partner link lands in someone
+              else's shop.</p>
             </figure>
             <div class="ledger" aria-label="Verification results">
               <div class="lrow"><span class="k">Sources verified across the foundation's web presence</span><span class="v">33</span></div>
@@ -659,26 +820,42 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
               <div class="lrow"><span class="k">Lost domain serving third-party commercial content</span><span class="v"><span class="hi">1 · former primary domain</span></span></div>
               <div class="lrow"><span class="k">Facts corrected or attributed properly</span><span class="v">several · v2</span></div>
             </div>
+
             <h2 class="sec">QA as the last research task</h2>
-            <p>The final stretch of my involvement was testing each developer build against the
-            UX/UI design: colors, typography, spacing. It needs the same attention as research.
-            Spot where the built thing has drifted from the intended one, and write it down clearly
-            enough that a developer can act on it.</p>
-            <h2 class="sec">Status &amp; honest framing</h2>
-            <p>My part is done and handed over. The developers are still working toward launch, so
-            there are no outcome numbers on this case and won't be for a while. If I ran it again,
-            I'd open the client question list in week one instead of after v1.</p>
+            <p>The final stretch was testing each developer build against the UX/UI design: colours,
+            typography, spacing. It needs the same attention as research. Spot where the built thing
+            has drifted from the intended one, and write it down clearly enough that a developer can
+            act on it.</p>
+
+            <h2 class="sec">Honest limitations</h2>
+            <p>Thirty days of search data on a low-traffic site is a small window, and the absolute
+            numbers are small enough that the percentages should be read as direction rather than
+            precision. Search Console reports only what reached Google, so it says nothing about
+            people arriving from Facebook or from a flyer. The structural findings, the missing
+            metadata and the funding clause dominating the homepage, don't depend on volume, which
+            is why I anchored the recommendations there.</p>
+
+            <h2 class="sec">Status and what I'd do differently</h2>
+            <p>My part is delivered and handed over, and the site is in final development. There are
+            no post-launch outcome numbers on this case and won't be for a while, which is exactly
+            the baseline problem: nobody had measured this site before, so the pre-redesign picture
+            above is now the benchmark anything after launch gets compared against.</p>
+            <p>If I ran it again I'd open the client question list in week one instead of after
+            version 1, and I'd ask for the analytics access at kickoff rather than mid-project. The
+            keyword finding should have shaped the information architecture, and it arrived only
+            just in time to.</p>
           </div>
         </div>
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline wip"><span class="dot c-naud"></span>My part handed off · site in development</dd></div>
-            <div><dt>Type</dt><dd>Client work · pro-bono program</dd></div>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot c-naud"></span>Delivered · site in final development</dd></div>
+            <div><dt>Type</dt><dd>Client work · pro-bono programme</dd></div>
             <div><dt>Client</dt><dd>NAUD · children's science education foundation, Warsaw</dd></div>
-            <div><dt>My role</dt><dd>Inventory research, link &amp; domain verification, SEO audit, design QA</dd></div>
-            <div><dt>Team</dt><dd>Cross-functional volunteers: coordination, UX/UI, dev</dd></div>
+            <div><dt>My role</dt><dd>Search &amp; content analytics, inventory research, link verification, design QA</dd></div>
+            <div><dt>Method</dt><dd>Search Console analysis · content audit · desk research · QA</dd></div>
+            <div><dt>Data</dt><dd>30 days GSC · 17 subpages · 33 sources verified</dd></div>
             <div><dt>Year</dt><dd>2026</dd></div>
-            <div><dt>Skills</dt><dd class="chips"><span class="chip">desk research</span><span class="chip">content inventory</span><span class="chip">SEO audit</span><span class="chip">design QA</span><span class="chip">client communication</span></dd></div>
+            <div><dt>Skills</dt><dd class="chips"><span class="chip">search analytics</span><span class="chip">behavioural data</span><span class="chip">content audit</span><span class="chip">desk research</span><span class="chip">design QA</span><span class="chip">client reporting</span></dd></div>
           </dl>
         </aside>
       </div>
@@ -1077,6 +1254,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
           <li>Qualitative: interviews, observation, moderation</li>
           <li>Quantitative: surveys, statistics in R &amp; Python</li>
           <li>Usability testing · think-aloud</li>
+          <li>Search &amp; behavioural analytics (Search Console)</li>
           <li>Research ops: consent, recruitment, logistics</li>
           <li>Synthesis &amp; research reporting</li>
           <li>AI / LLM product evaluation</li>
@@ -1118,11 +1296,12 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
           <div class="xp-o">Fundacja Kompetencji Cyfrowych · remote</div>
           <p class="xp-p">
             Two volunteer tracks. In "Strona od Nowa" I worked directly with an NGO
-            client: content inventory, web-presence audit, SEO, design QA of developer
-            builds inside a cross-functional sprint team. In parallel I run a research
-            project on the digital maturity of the NGOs the programme serves: research
-            design, interview scenarios, stakeholder mapping, benchmarking against the
-            TechSoup Digital Assessment Tool.
+            client: search and content analytics on their existing site, activity
+            inventory, web-presence verification, and design QA of developer builds
+            inside a cross-functional sprint team. In parallel I designed and ran a
+            research project on the digital maturity of the organisations the programme
+            serves: research design, interview scenarios, fieldwork, synthesis, and
+            benchmarking against the TechSoup Digital Assessment Tool.
           </p>
         </div>
       </div>
