@@ -388,6 +388,32 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 .shots-cta:hover{color:#085B6B}
 @media (max-width:980px){.shots{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.shots{grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto}}
+
+/* ===== ZMIANY PO UWAGACH JOANNY (paź 2026) ===== */
+
+/* (3) Status w tabeli i w panelu bocznym: jedna zielona kropka dla wszystkich "completed".
+   Kolor badania został w pasku po lewej stronie wiersza (--rc ustawiany w HTML). */
+.dot.ok{background:var(--acc)}
+a.tbl-r{box-shadow:inset 3px 0 0 var(--rc,transparent)}
+
+/* (4) Drugi wiersz pod tytułem badania: dawny tytuł-teaser jako podtytuł */
+.sub{font-size:1.16rem;line-height:1.4;color:var(--mut);font-weight:500;margin-top:14px;max-width:640px}
+
+/* (2) Elementy graficzne: wykres słupkowy z własnych danych i cytat w ramce */
+.fig{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:20px 22px}
+.fig-t{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.bar-r{display:grid;grid-template-columns:minmax(150px,230px) 1fr 48px;gap:14px;align-items:center;padding:7px 0}
+.bar-k{font-size:.9rem;color:var(--mut);line-height:1.3}
+.bar-t{height:14px;background:var(--soft);border-radius:7px;overflow:hidden;border:1px solid var(--line)}
+.bar-f{display:block;height:100%;background:var(--c-naud);border-radius:7px}
+.bar-v{font-family:var(--mono);font-size:.82rem;text-align:right;color:var(--ink)}
+.bar-v.zero{color:var(--c-naud);font-weight:500}
+.fig-c{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:12px;line-height:1.45}
+@media (max-width:560px){.bar-r{grid-template-columns:1fr 44px;gap:6px 12px}.bar-k{grid-column:1 / -1}}
+
+.pullq{margin-top:26px;border-left:4px solid var(--c-dm);background:var(--card);border-radius:0 var(--r) var(--r) 0;padding:22px 26px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pullq p{font-size:1.4rem;line-height:1.35;font-weight:600;letter-spacing:-.012em;color:var(--ink)}
+.pullq .who{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc-ink);margin-top:12px}
 </style>
 </head>
 <body>
@@ -441,9 +467,12 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
   <section class="page" id="p-overview" data-title="Overview">
     <div class="pad"><div class="col">
       <p class="eyebrow">Research repository</p>
-      <h1>People build a private theory of what an AI product is doing for them. My work is finding out what that theory says.</h1>
+      <!-- ZMIANA (uwaga 1 Joanny): z nagłówka usunięte "an AI". Żadne z pięciu badań nie dotyczy produktu AI,
+           więc nagłówek opisuje teraz to, co faktycznie robisz w badaniach. AI zostaje we wstępie, w pasku bocznym i w About. -->
+      <h1>People build a private theory of what a product is doing for them. My work is finding out what that theory says.</h1>
       <p class="lead">
-        I'm Magdalena, a cognitive science researcher in Kraków. I run the studies that replace
+        I'm Magdalena, a cognitive science researcher in Kraków who studies how people understand
+        the digital products they use, AI products included. I run the studies that replace
         assumptions with evidence: <b>moderated usability sessions, statistical analysis of survey
         data, and behavioural analytics on live sites</b>, including client work inside an NGO
         website-redesign programme. And because I spent eight months building LLM products as an
@@ -461,27 +490,27 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="mini">
         <a class="mini-r" href="#/studies/trip-planner">
           <span class="n"><span class="dot c-trip" style="margin-right:7px"></span>S·01</span>
-          <span><span class="t">Group trip planner</span><br><span class="i">Group chats hold the plan but can't hold a decision. Usability testing confirmed the fix and found the one gap that matters: nobody can see who's voted.</span></span>
+          <span><span class="t">Group trip planner: survey and usability test</span><br><span class="i">Group chats hold the plan but can't hold a decision. Usability testing confirmed the fix and found the one gap that matters: nobody can see who's voted.</span></span>
           <span class="go">→</span>
         </a>
         <a class="mini-r" href="#/studies/strona-od-nowa">
           <span class="n"><span class="dot c-naud" style="margin-right:7px"></span>S·02</span>
-          <span><span class="t">Strona od Nowa · search analytics</span><br><span class="i">115 impressions, 6 clicks, and two thirds of them searching for one man's name.</span></span>
+          <span><span class="t">Strona od Nowa: search analytics for an NGO redesign</span><br><span class="i">115 impressions, 6 clicks, and two thirds of them searching for one man's name.</span></span>
           <span class="go">→</span>
         </a>
         <a class="mini-r" href="#/studies/ngo-digital-maturity">
           <span class="n"><span class="dot c-dm" style="margin-right:7px"></span>S·03</span>
-          <span><span class="t">Digital maturity of NGOs</span><br><span class="i">Two NGOs knew for years their website was failing them. Awareness was never the barrier.</span></span>
+          <span><span class="t">Digital maturity of NGOs: interviews</span><br><span class="i">Two NGOs knew for years their website was failing them. Awareness was never the barrier.</span></span>
           <span class="go">→</span>
         </a>
         <a class="mini-r" href="#/studies/fomo-sleep">
           <span class="n"><span class="dot c-fomo" style="margin-right:7px"></span>S·04</span>
-          <span><span class="t">FOMO &amp; sleep</span><br><span class="i">Coping strategies didn't protect sleep. The fix belongs in the product.</span></span>
+          <span><span class="t">FOMO and sleep: pre-post study, N = 30</span><br><span class="i">Coping strategies didn't protect sleep. The fix belongs in the product.</span></span>
           <span class="go">→</span>
         </a>
         <a class="mini-r" href="#/studies/jetbrains-store">
           <span class="n"><span class="dot c-jb" style="margin-right:7px"></span>S·05</span>
-          <span><span class="t">JetBrains Store</span><br><span class="i">He searched "Python", found nothing, and gave up. The store speaks product names; people speak tasks.</span></span>
+          <span><span class="t">JetBrains Store: moderated usability test, N = 1</span><br><span class="i">He searched "Python", found nothing, and gave up. The store speaks product names; people speak tasks.</span></span>
           <span class="go">→</span>
         </a>
       </div>
@@ -504,42 +533,45 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <h1>Studies</h1>
       <p class="lead">Each study is written the way I'd hand it to a team: the insight first, the method right behind it for anyone who wants to check my work. Two were done for a real client with a real board reading the output; the rest are academic and recruitment studies, labelled as such.</p>
 
+      <!-- ZMIANY (uwagi 3 i 4 Joanny):
+           - tytuły mają jeden wzór "Temat: metoda", dawne tytuły-teasery są podtytułami na stronach badań
+           - kolor badania jest w pasku po lewej (--rc), a kropka statusu jest zawsze zielona -->
       <div class="tbl" style="margin-top:34px">
         <div class="tbl-h"><span>Study</span><span>Method</span><span>N</span><span>Year</span><span>Status</span></div>
-        <a class="tbl-r" href="#/studies/trip-planner">
-          <span><span class="t">Why one friend plans the whole trip</span><br><span class="s">Course project · mixed-methods research for a group travel app</span></span>
+        <a class="tbl-r" href="#/studies/trip-planner" style="--rc:var(--c-trip)">
+          <span><span class="t">Group trip planner: survey and usability test</span><br><span class="s">Course project · mixed-methods research for a group travel app</span></span>
           <span class="m">Mixed methods</span>
           <span class="m">21 + 4</span>
           <span class="m yr">2026</span>
-          <span class="st done"><span class="dot c-trip"></span>Completed</span>
+          <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/strona-od-nowa">
-          <span><span class="t">Strona od Nowa</span><br><span class="s">Client work · search analytics and research groundwork for an NGO redesign</span></span>
+        <a class="tbl-r" href="#/studies/strona-od-nowa" style="--rc:var(--c-naud)">
+          <span><span class="t">Strona od Nowa: search analytics for an NGO redesign</span><br><span class="s">Client work · search analytics and research groundwork</span></span>
           <span class="m">Search data · audit · QA</span>
           <span class="m">·</span>
           <span class="m yr">2026</span>
-          <span class="st done"><span class="dot c-naud"></span>Completed</span>
+          <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/ngo-digital-maturity">
-          <span><span class="t">Digital maturity of NGOs</span><br><span class="s">Client work · evaluation &amp; discovery for a pro-bono redesign programme</span></span>
+        <a class="tbl-r" href="#/studies/ngo-digital-maturity" style="--rc:var(--c-dm)">
+          <span><span class="t">Digital maturity of NGOs: interviews</span><br><span class="s">Client work · evaluation &amp; discovery for a pro-bono redesign programme</span></span>
           <span class="m">Qual · in-depth interviews</span>
           <span class="m">2 orgs</span>
           <span class="m yr">2026</span>
-          <span class="st done"><span class="dot c-dm"></span>Completed</span>
+          <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/fomo-sleep">
-          <span><span class="t">Does FOMO keep students awake?</span><br><span class="s">Academic study · sleep, social media and the limits of self-regulation</span></span>
+        <a class="tbl-r" href="#/studies/fomo-sleep" style="--rc:var(--c-fomo)">
+          <span><span class="t">FOMO and sleep: pre-post study, N = 30</span><br><span class="s">Academic study · sleep, social media and the limits of self-regulation</span></span>
           <span class="m">Quant · pre–post</span>
           <span class="m">30</span>
           <span class="m yr">2025</span>
-          <span class="st done"><span class="dot c-fomo"></span>Completed</span>
+          <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/jetbrains-store">
-          <span><span class="t">Watching a non-expert shop for dev tools</span><br><span class="s">Recruitment task · moderated usability study of the JetBrains Store</span></span>
+        <a class="tbl-r" href="#/studies/jetbrains-store" style="--rc:var(--c-jb)">
+          <span><span class="t">JetBrains Store: moderated usability test, N = 1</span><br><span class="s">Recruitment task · think-aloud study of a non-expert shopping for dev tools</span></span>
           <span class="m">Qual · think-aloud</span>
           <span class="m">1</span>
           <span class="m yr">2026</span>
-          <span class="st done"><span class="dot c-jb"></span>Completed</span>
+          <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
       </div>
     </div></div>
@@ -550,7 +582,8 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="study">
         <div>
           <p class="eyebrow sc-dm">S·03 · Client work · completed</p>
-          <h1>Nobody needed convincing their website was bad</h1>
+          <h1>Digital maturity of NGOs: interviews</h1>
+          <p class="sub">Nobody needed convincing their website was bad</p>
           <div class="tldr sc-dm">
             <div class="tl">TL;DR</div>
             <p>Strona od Nowa rebuilds NGO websites for free. The foundation behind it wanted
@@ -561,6 +594,14 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             didn't have was the capacity to fix it. That single finding moves the programme's
             problem from persuasion to selection.</p>
           </div>
+
+          <!-- ZMIANA (uwaga 2 Joanny): cytat wyciągnięty nad tekst jako element graficzny.
+               W punkcie 1 poniżej ten sam cytat został usunięty, żeby się nie powtarzał. -->
+          <blockquote class="pullq">
+            <p>We knew it had to be better. We just had no power to make it happen.</p>
+            <div class="who">Post-handover organisation · translated from Polish</div>
+          </blockquote>
+
           <div class="body">
             <h2 class="sec">My role</h2>
             <p>Author of the research plan (revised after team review), designer of the evaluative
@@ -599,10 +640,6 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
               <div class="who">Mid-project organisation · translated from Polish</div>
               <p>I even went on a WordPress course specifically to learn it. I just hated it, and I
               stopped opening the site for six months. When I open it I want to cry.</p>
-            </div>
-            <div class="ts">
-              <div class="who">Post-handover organisation · translated from Polish</div>
-              <p>We knew it had to be better. We just had no power to make it happen.</p>
             </div>
             <p>Digital-competence programmes are usually built on the assumption that small
             organisations don't know what they're missing. These two knew. Anything framed as
@@ -714,7 +751,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
         </div>
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline done"><span class="dot c-dm"></span>Completed · findings delivered</dd></div>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot ok"></span>Completed · findings delivered</dd></div>
             <div><dt>Type</dt><dd>Client work · volunteer research team</dd></div>
             <div><dt>Client</dt><dd>Fundacja Kompetencji Cyfrowych · board</dd></div>
             <div><dt>My role</dt><dd>Research plan, interview design, research ops, interviewing, synthesis</dd></div>
@@ -733,7 +770,8 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="study">
         <div>
           <p class="eyebrow sc-naud">S·02 · Client work · completed</p>
-          <h1>A whole foundation's search traffic came from one man's name</h1>
+          <h1>Strona od Nowa: search analytics for an NGO redesign</h1>
+          <p class="sub">A whole foundation's search traffic came from one man's name</p>
           <div class="tldr sc-naud">
             <div class="tl">TL;DR</div>
             <p>The client is a foundation running science workshops for children, and it was getting a
@@ -758,6 +796,16 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
             site today, and is it the audience the foundation says it wants?</b></p>
             <p>Source data: 30 days of Google Search Console data to 15 April 2026, surfaced through
             the site's Rank Math panel, plus a content-signal audit across all 17 subpages.</p>
+
+            <!-- ZMIANA (uwaga 2 Joanny): wykres słupkowy z liczb, które już masz w tabeli poniżej (68%, 67%, 0%).
+                 Nic nowego nie jest tu wymyślone, to ta sama dana w formie obrazka. -->
+            <div class="fig" role="img" aria-label="Bar chart: 68% of impressions and 67% of clicks came from searches for the founder's name; 0% of impressions came from generic phrases.">
+              <div class="fig-t">Where the search traffic came from · 30 days</div>
+              <div class="bar-r"><span class="bar-k">Impressions from the founder's name</span><span class="bar-t"><span class="bar-f" style="width:68%"></span></span><span class="bar-v">68%</span></div>
+              <div class="bar-r"><span class="bar-k">Clicks from the founder's name</span><span class="bar-t"><span class="bar-f" style="width:67%"></span></span><span class="bar-v">67%</span></div>
+              <div class="bar-r"><span class="bar-k">Impressions from generic phrases (children's workshops, STEAM, science education)</span><span class="bar-t"><span class="bar-f" style="width:0%"></span></span><span class="bar-v zero">0%</span></div>
+              <div class="fig-c">Google Search Console via Rank Math, 30 days to 15 April 2026. Total: 115 impressions, 6 clicks.</div>
+            </div>
 
             <div class="ledger" aria-label="Search performance">
               <div class="lrow"><span class="k">Impressions, 30 days</span><span class="v">115</span></div>
@@ -853,7 +901,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
         </div>
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline done"><span class="dot c-naud"></span>Completed · delivered to client</dd></div>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot ok"></span>Completed · delivered to client</dd></div>
             <div><dt>Type</dt><dd>Client work · pro-bono programme</dd></div>
             <div><dt>Client</dt><dd>A children's science education foundation, Warsaw · anonymised</dd></div>
             <div><dt>My role</dt><dd>Search &amp; content analytics, inventory research, link verification, design QA</dd></div>
@@ -872,7 +920,8 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="study">
         <div>
           <p class="eyebrow sc-fomo">S·04 · Quantitative · academic study</p>
-          <h1>Does FOMO keep students awake?</h1>
+          <h1>FOMO and sleep: pre-post study, N = 30</h1>
+          <p class="sub">Does FOMO keep students awake?</p>
 
           <div class="tldr sc-fomo">
             <div class="tl">TL;DR</div>
@@ -926,7 +975,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline done"><span class="dot c-fomo"></span>Completed</dd></div>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot ok"></span>Completed</dd></div>
             <div><dt>Type</dt><dd>Academic study · solo</dd></div>
             <div><dt>My role</dt><dd>End to end: design, measures, analysis, report</dd></div>
             <div><dt>Method</dt><dd>Quantitative, pre–post intervention</dd></div>
@@ -945,7 +994,8 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="study">
         <div>
           <p class="eyebrow sc-jb">S·05 · Usability · recruitment task</p>
-          <h1>Watching a non-expert shop for developer tools</h1>
+          <h1>JetBrains Store: moderated usability test, N = 1</h1>
+          <p class="sub">Watching a non-expert shop for developer tools</p>
 
           <div class="tldr sc-jb">
             <div class="tl">TL;DR</div>
@@ -1010,7 +1060,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline done"><span class="dot c-jb"></span>Completed</dd></div>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot ok"></span>Completed</dd></div>
             <div><dt>Type</dt><dd>Recruitment task · solo</dd></div>
             <div><dt>My role</dt><dd>Study design, moderation, analysis, recommendations</dd></div>
             <div><dt>Method</dt><dd>Moderated usability, think-aloud</dd></div>
@@ -1029,7 +1079,8 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
       <div class="study">
         <div>
           <p class="eyebrow sc-trip">S·01 · Mixed methods · course project</p>
-          <h1>Why one friend always plans the whole trip</h1>
+          <h1>Group trip planner: survey and usability test</h1>
+          <p class="sub">Why one friend always plans the whole trip</p>
 
           <div class="tldr sc-trip">
             <div class="tl">TL;DR</div>
@@ -1202,7 +1253,7 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 
         <aside class="spec" aria-label="Study details">
           <dl>
-            <div><dt>Status</dt><dd class="stline done"><span class="dot c-trip"></span>Completed</dd></div>
+            <div><dt>Status</dt><dd class="stline done"><span class="dot ok"></span>Completed</dd></div>
             <div><dt>Type</dt><dd>Course project</dd></div>
             <div><dt>My role</dt><dd>Research &amp; design, end to end, with Iga Drobiszewska; moderated 2 of 4 usability sessions</dd></div>
             <div><dt>Method</dt><dd>Mixed methods: survey → prototype → usability test</dd></div>
@@ -1473,11 +1524,11 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
   scrim.addEventListener('click', closeSide);
 
   var items = [
-    {g:'Studies', t:'Group trip planner · mixed methods', go:'#/studies/trip-planner'},
-    {g:'Studies', t:'Strona od Nowa · search analytics',      go:'#/studies/strona-od-nowa'},
-    {g:'Studies', t:'Digital maturity of NGOs · client work', go:'#/studies/ngo-digital-maturity'},
-    {g:'Studies', t:'FOMO & sleep · quantitative',        go:'#/studies/fomo-sleep'},
-    {g:'Studies', t:'JetBrains Store · usability',        go:'#/studies/jetbrains-store'},
+    {g:'Studies', t:'Group trip planner: survey and usability test', go:'#/studies/trip-planner'},
+    {g:'Studies', t:'Strona od Nowa: search analytics for an NGO redesign', go:'#/studies/strona-od-nowa'},
+    {g:'Studies', t:'Digital maturity of NGOs: interviews', go:'#/studies/ngo-digital-maturity'},
+    {g:'Studies', t:'FOMO and sleep: pre-post study, N = 30', go:'#/studies/fomo-sleep'},
+    {g:'Studies', t:'JetBrains Store: moderated usability test, N = 1', go:'#/studies/jetbrains-store'},
     {g:'Pages',   t:'Overview',   go:'#/overview'},
     {g:'Pages',   t:'All studies',go:'#/studies'},
     {g:'Pages',   t:'About',      go:'#/about'},
