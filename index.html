@@ -155,7 +155,8 @@ a.mini-r:hover{background:#F7FAF8;color:var(--ink)}
 .mini-r .i{color:var(--mut);font-size:.92rem}
 .mini-r .go{margin-left:auto;color:var(--acc);font-weight:600;flex:none;font-size:.9rem}
 
-.now{border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;background:var(--card);padding:20px 22px;margin-top:26px}
+/* Blok "Now": zwykła ramka z jasnym tłem, bez kolorowego paska po lewej */
+.now{border:1px solid var(--line);border-radius:var(--r);background:var(--soft);padding:20px 22px;margin-top:26px}
 .now .nl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
 .now ul{list-style:none}
 .now li{padding:4px 0 4px 18px;position:relative;color:var(--mut);font-size:.97rem}
@@ -336,10 +337,6 @@ a.tbl-r:hover{transform:translateX(2px)}
 .spec{transition:box-shadow .25s ease}
 .spec:hover{box-shadow:0 4px 18px rgba(22,27,30,.07)}
 .side a.item{position:relative}
-.side a.item.on::before{
-  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
-  width:3px;height:60%;border-radius:0 2px 2px 0;background:var(--acc);
-}
 
 .side a.item[href*="cv.pdf"]{color:var(--acc-ink);font-weight:600}
 .side a.item[href*="cv.pdf"]:hover{background:var(--acc-soft)}
@@ -392,14 +389,14 @@ body::-webkit-scrollbar{width:0;height:0;display:none}
 /* ===== ZMIANY PO UWAGACH JOANNY (paź 2026) ===== */
 
 /* (3) Status w tabeli i w panelu bocznym: jedna zielona kropka dla wszystkich "completed".
-   Kolor badania został w pasku po lewej stronie wiersza (--rc ustawiany w HTML). */
+   Kolor badania jest teraz w małej kropce przed tytułem (klasy .dot.c-...), bez paska po lewej stronie wiersza. */
 .dot.ok{background:var(--acc)}
-a.tbl-r{box-shadow:inset 3px 0 0 var(--rc,transparent)}
+.tbl-r .t .dot{margin-right:9px;position:relative;top:-1px}
 
 /* (4) Drugi wiersz pod tytułem badania: dawny tytuł-teaser jako podtytuł */
 .sub{font-size:1.16rem;line-height:1.4;color:var(--mut);font-weight:500;margin-top:14px;max-width:640px}
 
-/* (2) Elementy graficzne: wykres słupkowy z własnych danych i cytat w ramce */
+/* (2) Elementy graficzne: wykres słupkowy z własnych danych i cytat */
 .fig{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:20px 22px}
 .fig-t{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
 .bar-r{display:grid;grid-template-columns:minmax(150px,230px) 1fr 48px;gap:14px;align-items:center;padding:7px 0}
@@ -411,8 +408,11 @@ a.tbl-r{box-shadow:inset 3px 0 0 var(--rc,transparent)}
 .fig-c{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:12px;line-height:1.45}
 @media (max-width:560px){.bar-r{grid-template-columns:1fr 44px;gap:6px 12px}.bar-k{grid-column:1 / -1}}
 
-.pullq{margin-top:26px;border-left:4px solid var(--c-dm);background:var(--card);border-radius:0 var(--r) var(--r) 0;padding:22px 26px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.pullq p{font-size:1.4rem;line-height:1.35;font-weight:600;letter-spacing:-.012em;color:var(--ink)}
+/* Cytat nad tekstem: sam duży tekst z zielonymi cudzysłowami, bez ramki i bez paska */
+.pullq{margin-top:30px}
+.pullq p{font-size:1.4rem;line-height:1.35;font-weight:600;letter-spacing:-.012em;color:var(--ink);max-width:620px}
+.pullq p::before{content:"\201C";color:var(--c-dm)}
+.pullq p::after{content:"\201D";color:var(--c-dm)}
 .pullq .who{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc-ink);margin-top:12px}
 </style>
 </head>
@@ -516,10 +516,11 @@ a.tbl-r{box-shadow:inset 3px 0 0 var(--rc,transparent)}
       </div>
 
       <div class="now">
-        <div class="nl">Now · October 2026</div>
+        <div class="nl">Now · November 2026</div>
         <ul>
-          <li>Part-time, remote UX internship at Ideacto, with a research and analytics focus</li>
-          <li>Working on my BSc thesis, final year of cognitive science at Jagiellonian University</li>
+          <li>Part-time, remote UX internship at Ideacto, with a research and analytics focus, running until the end of December</li>
+          <li>Writing my BSc thesis on how people perceive and relate to AI systems, final year of cognitive science at Jagiellonian University</li>
+          <li>Learning qualitative data analysis in MAXQDA, in a university course</li>
           <li>Waiting for the next edition of Strona od Nowa</li>
           <li>Looking for a junior UXR role, internship or freelance research collaboration</li>
         </ul>
@@ -535,39 +536,39 @@ a.tbl-r{box-shadow:inset 3px 0 0 var(--rc,transparent)}
 
       <!-- ZMIANY (uwagi 3 i 4 Joanny):
            - tytuły mają jeden wzór "Temat: metoda", dawne tytuły-teasery są podtytułami na stronach badań
-           - kolor badania jest w pasku po lewej (--rc), a kropka statusu jest zawsze zielona -->
+           - kolor badania jest w kropce przed tytułem, a kropka statusu jest zawsze zielona -->
       <div class="tbl" style="margin-top:34px">
         <div class="tbl-h"><span>Study</span><span>Method</span><span>N</span><span>Year</span><span>Status</span></div>
-        <a class="tbl-r" href="#/studies/trip-planner" style="--rc:var(--c-trip)">
-          <span><span class="t">Group trip planner: survey and usability test</span><br><span class="s">Course project · mixed-methods research for a group travel app</span></span>
+        <a class="tbl-r" href="#/studies/trip-planner">
+          <span><span class="t"><span class="dot c-trip" aria-hidden="true"></span>Group trip planner: survey and usability test</span><br><span class="s">Course project · mixed-methods research for a group travel app</span></span>
           <span class="m">Mixed methods</span>
           <span class="m">21 + 4</span>
           <span class="m yr">2026</span>
           <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/strona-od-nowa" style="--rc:var(--c-naud)">
-          <span><span class="t">Strona od Nowa: search analytics for an NGO redesign</span><br><span class="s">Client work · search analytics and research groundwork</span></span>
+        <a class="tbl-r" href="#/studies/strona-od-nowa">
+          <span><span class="t"><span class="dot c-naud" aria-hidden="true"></span>Strona od Nowa: search analytics for an NGO redesign</span><br><span class="s">Client work · search analytics and research groundwork</span></span>
           <span class="m">Search data · audit · QA</span>
           <span class="m">·</span>
           <span class="m yr">2026</span>
           <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/ngo-digital-maturity" style="--rc:var(--c-dm)">
-          <span><span class="t">Digital maturity of NGOs: interviews</span><br><span class="s">Client work · evaluation &amp; discovery for a pro-bono redesign programme</span></span>
+        <a class="tbl-r" href="#/studies/ngo-digital-maturity">
+          <span><span class="t"><span class="dot c-dm" aria-hidden="true"></span>Digital maturity of NGOs: interviews</span><br><span class="s">Client work · evaluation &amp; discovery for a pro-bono redesign programme</span></span>
           <span class="m">Qual · in-depth interviews</span>
           <span class="m">2 orgs</span>
           <span class="m yr">2026</span>
           <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/fomo-sleep" style="--rc:var(--c-fomo)">
-          <span><span class="t">FOMO and sleep: pre-post study, N = 30</span><br><span class="s">Academic study · sleep, social media and the limits of self-regulation</span></span>
+        <a class="tbl-r" href="#/studies/fomo-sleep">
+          <span><span class="t"><span class="dot c-fomo" aria-hidden="true"></span>FOMO and sleep: pre-post study, N = 30</span><br><span class="s">Academic study · sleep, social media and the limits of self-regulation</span></span>
           <span class="m">Quant · pre–post</span>
           <span class="m">30</span>
           <span class="m yr">2025</span>
           <span class="st done"><span class="dot ok"></span>Completed</span>
         </a>
-        <a class="tbl-r" href="#/studies/jetbrains-store" style="--rc:var(--c-jb)">
-          <span><span class="t">JetBrains Store: moderated usability test, N = 1</span><br><span class="s">Recruitment task · think-aloud study of a non-expert shopping for dev tools</span></span>
+        <a class="tbl-r" href="#/studies/jetbrains-store">
+          <span><span class="t"><span class="dot c-jb" aria-hidden="true"></span>JetBrains Store: moderated usability test, N = 1</span><br><span class="s">Recruitment task · think-aloud study of a non-expert shopping for dev tools</span></span>
           <span class="m">Qual · think-aloud</span>
           <span class="m">1</span>
           <span class="m yr">2026</span>
@@ -1336,7 +1337,7 @@ a.tbl-r{box-shadow:inset 3px 0 0 var(--rc,transparent)}
         firefighting competitions. It taught me to stay calm when a session goes sideways, and to
         know when to act and when to wait.<br><br>
         <b>Colophon:</b> one hand-built HTML file. Familjen Grotesk &amp; Spline Sans Mono. No
-        trackers, no cookies. Updated October 2026.
+        trackers, no cookies. Updated November 2026.
       </p>
     </div></div>
   </section>
